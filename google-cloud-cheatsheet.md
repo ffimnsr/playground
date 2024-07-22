@@ -67,3 +67,9 @@ Viewing system logs:
 ```
 gcloud logging logs list
 ```
+
+Connect to VM using SSH:
+
+```
+gcloud compute ssh <VM_NAME> --zone $ZONE
+```
