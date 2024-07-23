@@ -121,3 +121,9 @@ Delete object in a bucket:
 ```
 gsutil rm gs://<BUCKET_NAME>/<OBJECT_NAME>
 ```
+
+Connect to Cloud SQL instance:
+
+```
+gcloud sql connect <INSTANCE_NAME> --user=root
+```
