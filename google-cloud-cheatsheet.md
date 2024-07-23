@@ -73,3 +73,51 @@ Connect to VM using SSH:
 ```
 gcloud compute ssh <VM_NAME> --zone $ZONE
 ```
+
+Create GKE cluster:
+
+```
+gcloud container clusters create <CLUSTER_NAME> --zone $ZONE
+```
+
+Get credentials for the cluster:
+
+```
+gcloud container clusters get-credentials <CLUSTER_NAME> --zone $ZONE
+```
+
+Delete GKE cluster:
+
+```
+gcloud container clusters delete <CLUSTER_NAME> --zone $ZONE
+```
+
+Create a bucket:
+
+```
+gsutil mb gs://<BUCKET_NAME>
+```
+
+List bucket contents:
+
+```
+gsutil ls gs://<BUCKET_NAME>
+```
+
+Make object publicly accessible:
+
+```
+gsutil acl ch -u AllUsers:R gs://<BUCKET_NAME>/<OBJECT_NAME>
+```
+
+Remove public access:
+
+```
+gsutil acl ch -d AllUsers gs://<BUCKET_NAME>/<OBJECT_NAME>
+```
+
+Delete object in a bucket:
+
+```
+gsutil rm gs://<BUCKET_NAME>/<OBJECT_NAME>
+```
