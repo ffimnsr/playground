@@ -6,6 +6,13 @@ Environment variables that I usually use:
 ```
 export PROJECT_ID=$(gcloud config get-value project)
 export ZONE=$(gcloud config get-value compute/zone)
+export REGION="${ZONE%-*}"
+```
+
+Alternative:
+
+```
+export PROJECT_ID=$DEVSHELL_PROJECT_ID
 ```
 
 Set region:
