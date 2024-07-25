@@ -7,11 +7,10 @@ Environment variables that I usually use:
 export PROJECT_ID=$(gcloud config get-value project)
 export ZONE=$(gcloud config get-value compute/zone)
 export REGION="${ZONE%-*}"
-```
+export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
 
-Alternative:
+...
 
-```
 export PROJECT_ID=$DEVSHELL_PROJECT_ID
 ```
 
@@ -133,4 +132,72 @@ Connect to Cloud SQL instance:
 
 ```
 gcloud sql connect <INSTANCE_NAME> --user=root
+```
+
+Create dataproc cluster:
+
+```
+gcloud dataproc clusters create <CLUSTER_NAME> \
+  --region $REGION \
+  --worker-boot-disk-size 500 \
+  --worker-machine-type=e2-standard-4 \
+  --master-machine-type=e2-standard-4
+```
+
+Create dataproc job:
+
+```
+gcloud dataproc jobs submit pyspark --cluster <CLUSTER_NAME> \
+  --region $REGION \
+  --py-files gs://<BUCKET_NAME>/<FILE>.py gs://<BUCKET_NAME>/<FILE>.py
+
+...
+
+gcloud dataproc jobs submit spark --cluster <CLUSTER_NAME> \
+  --region $REGION \
+  --class org.apache.spark.examples.SparkPi \
+  --jars file:///<FILE>.jar -- 1000
+```
+
+Enable services in the project:
+
+```
+gcloud services enable <SERVICE_NAME>
+```
+
+Services needed to Vertex AI with Jupyter Notebooks:
+
+```
+gcloud services enable \
+  compute.googleapis.com \
+  iam.googleapis.com \
+  iamcredentials.googleapis.com \
+  monitoring.googleapis.com \
+  logging.googleapis.com \
+  notebooks.googleapis.com \
+  aiplatform.googleapis.com \
+  bigquery.googleapis.com \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  container.googleapis.com
+```
+
+Create a specific VM in gcloud for labs:
+
+```
+gcloud compute instances create www1 \
+    --zone=$ZONE \
+    --tags=network-lb-tag \
+    --machine-type=e2-small \
+    --image-family=debian-11 \
+    --image-project=debian-cloud \
+    --metadata=startup-script='#!/bin/bash
+      apt-get update
+      apt-get install apache2 -y
+      service apache2 restart
+      echo "
+<h3>Web Server: www1</h3>" | tee /var/www/html/index.html'
+
+gcloud compute firewall-rules create www-firewall-network-lb \
+    --target-tags network-lb-tag --allow tcp:80
 ```
