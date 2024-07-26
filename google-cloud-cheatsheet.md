@@ -80,6 +80,12 @@ Connect to VM using SSH:
 gcloud compute ssh <VM_NAME> --zone $ZONE
 ```
 
+Connect to VM using SSH on their internal IP:
+
+```
+gcloud compute ssh <VM_NAME> --zone $ZONE --internal-ip
+```
+
 Create GKE cluster:
 
 ```
