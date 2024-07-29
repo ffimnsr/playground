@@ -1,0 +1,5 @@
+streamlit
+python-dotenv
+langchain-core
+langchain-google-genai
+langchain-text-splitters
