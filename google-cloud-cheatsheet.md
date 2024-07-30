@@ -207,3 +207,15 @@ gcloud compute instances create www1 \
 gcloud compute firewall-rules create www-firewall-network-lb \
     --target-tags network-lb-tag --allow tcp:80
 ```
+
+Create new persistent disk:
+
+```
+gcloud compute disks create <DISK_NAME> --size=<SIZE_IN_GB_EG_200GB> --zone=$ZONE
+```
+
+Attach disk to VM:
+
+```
+gcloud compute instances attach-disk <VM_NAME> --disk=<DISK_NAME> --zone=$ZONE
+```
