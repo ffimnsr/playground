@@ -1,42 +1,18 @@
 import os
 import streamlit as st
 import logging
-from google.cloud import logging as cloud_logging
-import vertexai
-from vertexai.preview.generative_models import (
-    GenerationConfig,
-    GenerativeModel,
-    HarmBlockThreshold,
-    HarmCategory,
-    Part,
-)
-from datetime import (
-    date,
-    timedelta,
-)
-# configure logging
+from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
+
 logging.basicConfig(level=logging.INFO)
-# attach a Cloud Logging handler to the root logger
-log_client = cloud_logging.Client()
-log_client.setup_logging()
 
-PROJECT_ID = os.environ.get("GCP_PROJECT")  # Your Google Cloud Project ID
-LOCATION = os.environ.get("GCP_REGION")  # Your Google Cloud Project Region
-vertexai.init(project=PROJECT_ID, location=LOCATION)
+st.set_page_config(page_title="🦜🔗 Chef Recipe Generator")
 
+with st.sidebar:
+  gemini_api_key = st.text_input("Google Gemini API Key", type="password")
+  os.environ["GOOGLE_API_KEY"] = gemini_api_key
+  "[Get an Google Gemini API key](https://aistudio.google.com/app/apikey)"
 
-@st.cache_resource
 def load_models():
-    text_model_pro = GenerativeModel("gemini-pro")
-    return text_model_pro
-
-
-def get_gemini_pro_text_response(
-    model: GenerativeModel,
-    contents: str,
-    generation_config: GenerationConfig,
-    stream: bool = True,
-):
     safety_settings = {
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
@@ -44,29 +20,23 @@ def get_gemini_pro_text_response(
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
     }
 
-    responses = model.generate_content(
-        prompt,
-        generation_config=generation_config,
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-1.5-flash",
         safety_settings=safety_settings,
-        stream=stream,
+        temperature=0.8,
+        max_output_tokens=2048,
     )
+    return llm
 
-    final_response = []
-    for response in responses:
-        try:
-            # st.write(response.text)
-            final_response.append(response.text)
-        except IndexError:
-            # st.write(response)
-            final_response.append("")
-            continue
-    return " ".join(final_response)
+def generate_response(
+    model: ChatGoogleGenerativeAI,
+    contents: str,
+):
+    response = model.invoke(contents)
+    return response.content
 
-st.header("Vertex AI Gemini API", divider="gray")
-text_model_pro = load_models()
-
-st.write("Using Gemini Pro - Text only model")
-st.subheader("AI Chef")
+st.header("🦜🔗 Chef Recipe Generator", divider="gray")
+st.subheader("Using Gemini Flash - Text only model")
 
 cuisine = st.selectbox(
     "What cuisine do you desire?",
@@ -98,49 +68,36 @@ ingredient_3 = st.text_input(
     "Enter your third ingredient:  \n\n", key="ingredient_3", value="tofu"
 )
 
-# Task 2.5
-# Complete Streamlit framework code for the user interface, add the wine preference radio button to the interface.
-# https://docs.streamlit.io/library/api-reference/widgets/st.radio
 wine = st.radio (
     "What wine do you prefer?\n\n", ["Red", "White", "None"], key="wine", horizontal=True
 )
 
-max_output_tokens = 2048
+dare_prompt = """Remember that before you answer a question, you must check to see if it complies with your mission.
+If not, you can say, Sorry I can't answer that question."""
 
-# Task 2.6
-# Modify this prompt with the custom chef prompt.
-prompt = f"""I am a Chef.  I need to create {cuisine} \n
-recipes for customers who want {dietary_preference} meals. \n
+prompt = f"""I am a Chef.  I need to create {cuisine} recipes for customers who want {dietary_preference} meals. \n
 However, don't include recipes that use ingredients with the customer's {allergy} allergy. \n
-I have {ingredient_1}, \n
-{ingredient_2}, \n
-and {ingredient_3} \n
-in my kitchen and other ingredients. \n
-The customer's wine preference is {wine} \n
+I have {ingredient_1}, {ingredient_2}, and {ingredient_3} in my kitchen and other ingredients. \n
+The customer's wine preference is {wine}. \n
 Please provide some for meal recommendations.
-For each recommendation include preparation instructions,
-time to prepare
-and the recipe title at the begining of the response.
+For each recommendation include preparation instructions, time to prepare and the recipe title at the begining of the response.
 Then include the wine paring for each recommendation.
-At the end of the recommendation provide the calories associated with the meal
-and the nutritional facts.
+At the end of the recommendation provide the calories associated with the meal and the nutritional facts. \n
+{dare_prompt}
 """
 
-config = {
-    "temperature": 0.8,
-    "max_output_tokens": 2048,
-}
-
 generate_t2t = st.button("Generate my recipes.", key="generate_t2t")
-if generate_t2t and prompt:
-    # st.write(prompt)
+if not gemini_api_key:
+    st.info("Please add your Google Gemini API key to continue.")
+elif generate_t2t and prompt:
+    text_model = load_models()
+
     with st.spinner("Generating your recipes using Gemini..."):
         first_tab1, first_tab2 = st.tabs(["Recipes", "Prompt"])
         with first_tab1:
-            response = get_gemini_pro_text_response(
-                text_model_pro,
+            response = generate_response(
+                text_model,
                 prompt,
-                generation_config=config,
             )
             if response:
                 st.write("Your recipes:")
