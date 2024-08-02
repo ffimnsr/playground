@@ -219,3 +219,11 @@ Attach disk to VM:
 ```
 gcloud compute instances attach-disk <VM_NAME> --disk=<DISK_NAME> --zone=$ZONE
 ```
+
+Sample creating clusters for different stages:
+
+```
+gcloud container clusters create test --node-locations=us-east4-b --num-nodes=1  --async
+gcloud container clusters create staging --node-locations=us-east4-b --num-nodes=1  --async
+gcloud container clusters create prod --node-locations=us-east4-b --num-nodes=1  --async
+```
