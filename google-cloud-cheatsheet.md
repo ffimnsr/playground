@@ -8,6 +8,7 @@ export PROJECT_ID=$(gcloud config get-value project)
 export ZONE=$(gcloud config get-value compute/zone)
 export REGION="${ZONE%-*}"
 export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+export USER=$(gcloud config get-value account 2> /dev/null)
 
 ...
 
