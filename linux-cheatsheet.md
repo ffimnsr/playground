@@ -15,3 +15,9 @@ Print a range of lines of the file to terminal (lines 5 to 10):
 ```bash
 sed -n 5,10p <FILE>
 ```
+
+Image to base64 (single-line) bash variable:
+
+```bash
+IMAGE_B64=$(base64 -w 0 <IMAGE>)
+```
