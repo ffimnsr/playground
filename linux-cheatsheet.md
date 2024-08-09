@@ -21,3 +21,9 @@ Image to base64 (single-line) bash variable:
 ```bash
 IMAGE_B64=$(base64 -w 0 <IMAGE>)
 ```
+
+Create virtual env in python:
+
+```bash
+python3 -m venv <ENV_NAME>
+```
