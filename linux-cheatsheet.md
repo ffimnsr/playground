@@ -31,6 +31,15 @@ python3 -m venv <ENV_NAME>
 Format disk to btrfs:
 
 ```bash
+# Use gdisk for GPT type partition table and if they're larger than 2TB
+sudo gdisk /dev/<DISK>
+
+# Use fdisk for MBR or GPT type partition table and if they're smaller than 2TB
 sudo fdisk /dev/<DISK>
+
+# As an alternative, you can use parted
+sudo parted /dev/<DISK>
+
+# Format the disk to btrfs
 sudo mkfs.btrfs -f -L <LABEL> /dev/<DISK>
 ```
