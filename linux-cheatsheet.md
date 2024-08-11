@@ -27,3 +27,10 @@ Create virtual env in python:
 ```bash
 python3 -m venv <ENV_NAME>
 ```
+
+Format disk to btrfs:
+
+```bash
+sudo fdisk /dev/<DISK>
+sudo mkfs.btrfs -f -L <LABEL> /dev/<DISK>
+```
