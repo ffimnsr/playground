@@ -1,0 +1,10 @@
+- Alacritty - `alacritty`
+- Firefox - `firefox`
+- KeepassXC - `keepassxc`
+- Microsoft Edge - `microsoft-edge`
+- Obsidian - `obsidian`
+- Skype - `skype`
+- Thunderbird - `thunderbird`
+- Visual Studio Code - `visual-studio-code`
+- Yubico Authenticator - `yubico-authenticator`
+- Zoom Workplace - `zoom`

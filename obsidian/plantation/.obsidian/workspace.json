@@ -11,11 +11,28 @@
             "id": "28d889348b111062",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Plantation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "852028d346ae4984",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Plantation.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -34,7 +51,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "byCreatedTimeReverse"
               }
             }
           },
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Plantation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Plantation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.canvas"
+                "file": "Plantation.md"
               }
             }
           }
@@ -140,10 +159,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9b755031fdd9380e",
+  "active": "852028d346ae4984",
   "lastOpenFiles": [
-    "2024-08-12.md",
+    "Homebrew Casks.md",
+    "Plantation.md",
     "Untitled.canvas",
-    "Plantation.md"
+    "2024-08-13.md",
+    "2024-08-12.md"
   ]
 }
