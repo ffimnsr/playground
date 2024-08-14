@@ -1,0 +1,9 @@
+- https://gemini.google.com/app
+- https://aistudio.google.com/app/prompts/new_chat - Google AI Studio
+- https://colab.research.google.com/
+- https://github.com/marketplace/models - GitHub Models
+- https://fireworks.ai/
+- https://ai.azure.com - Azure AI Studio
+- https://labs.ovhcloud.com/en/ai-endpoints/
+- https://developers.cloudflare.com/workers-ai/models/
+- https://civitai.com/

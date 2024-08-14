@@ -1,0 +1,11 @@
+- https://startup.ovhcloud.com/en/
+- https://aws.amazon.com/startups#technical-resources
+- https://startup.google.com/cloud/#next-step
+- https://foundershub.startups.microsoft.com/signup
+- https://www.cloudflare.com/forstartups/
+- https://github.com/enterprise/startups/#join-partners
+- https://www.digitalocean.com/hatch
+- https://www.quicknode.com/startup
+- https://www.alchemy.com/startup-program
+- https://www.linode.com/linode-for-startups/
+- https://www.mongodb.com/solutions/startups
