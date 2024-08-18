@@ -1,5 +1,4 @@
 streamlit
 python-dotenv
-langchain-core
+langchain
 langchain-google-genai
-langchain-text-splitters
