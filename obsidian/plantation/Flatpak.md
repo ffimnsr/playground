@@ -1,0 +1,34 @@
+- Podman Desktop - `io.podman_desktop.PodmanDesktop`
+- Obsidian - `md.obsidian.Obsidian`
+- Discord - `com.discordapp.Discord`
+- Flatseal - `com.github.tchx84.Flatseal`
+- EasyEffects - `com.github.wwmm.easyeffects`
+- Extension Manager (Gnome) - `com.mattjakeman.ExtensionManager`
+- Bottles - `com.usebottles.bottles`
+- Steam - `com.valvesoftware.Steam`
+- Yubico Authenticator - `com.yubico.yubioath`
+- Fluffy Chat - `im.fluffychat.Fluffychat`
+- PeaZip - `io.github.peazip.PeaZip`
+- Neovim - `io.neovim.nvim`
+- Gear Lever - `it.mijorus.gearlever`
+- Lutris - `net.lutris.Lutris`
+- Showtime - `org.gnome.Showtime`
+- Pika Backup - `org.gnome.World.PikaBackup`
+- GNU Emacs - `org.gnu.emacs`
+- RetroArch - `org.libretro.RetroArch`
+- Thunderbird - `org.mozilla.Thunderbird`
+- Telegram - `org.telegram.desktop`
+- Zulip - `org.zulip.Zulip`
+- Zoom - `us.zoom.Zoom`
+- Kodi - `tv.kodi.Kodi`
+- Warpinator - `org.x.Warpinator`
+- Firefox - `org.mozilla.firefox`
+- LibreWolf - `io.gitlab.librewolf-community`
+- qBittorrent - `org.qbittorrent.qBittorrent`
+- OBS Studio - `com.obsproject.Studio`
+- Visual Studio Code - `com.visualstudio.code`
+- Microsoft Edge - `com.microsoft.Edge`
+- Skype - `com.skype.Client`
+- VSCodium - `com.vscodium.codium`
+- Redis Insight - `com.redis.RedisInsight`
+- 
