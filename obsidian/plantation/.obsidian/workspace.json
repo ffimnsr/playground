@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plantation.md",
+                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Plantation.md",
+                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Plantation.md",
+                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Plantation.md"
+                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md"
               }
             }
           }
@@ -161,10 +161,11 @@
   },
   "active": "4c5a71f4d46b1abe",
   "lastOpenFiles": [
-    "Flatpak.md",
+    "Tips/Changing Thunderbird's default folder sort.md",
+    "Tips/Sort Gnome 40+ app grid alphabetically.md",
     "Homebrew Casks.md",
     "Plantation.md",
-    "Tips/Changing Thunderbird's default folder sort.md",
+    "Flatpak.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",
     "StartUp/Startup Grants.md",
