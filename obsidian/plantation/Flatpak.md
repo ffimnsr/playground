@@ -31,4 +31,6 @@
 - Skype - `com.skype.Client`
 - VSCodium - `com.vscodium.codium`
 - Redis Insight - `com.redis.RedisInsight`
-- 
+- Upscayl - `org.upscayl.Upscayl`
+- WezTerm - `org.wezfurlong.wezterm`
+- Firmware - `org.gnome.Firmware`

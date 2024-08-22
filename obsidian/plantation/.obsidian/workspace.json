@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md",
+                "file": "Flatpak.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md",
+                "file": "Flatpak.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md",
+                "file": "Flatpak.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Sort Gnome 40+ app grid alphabetically.md"
+                "file": "Flatpak.md"
               }
             }
           }
@@ -161,8 +161,8 @@
   },
   "active": "4c5a71f4d46b1abe",
   "lastOpenFiles": [
-    "Tips/Changing Thunderbird's default folder sort.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
+    "Tips/Changing Thunderbird's default folder sort.md",
     "Homebrew Casks.md",
     "Plantation.md",
     "Flatpak.md",
