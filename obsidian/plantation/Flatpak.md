@@ -2,12 +2,12 @@
 - Obsidian - `md.obsidian.Obsidian`
 - Discord - `com.discordapp.Discord`
 - Flatseal - `com.github.tchx84.Flatseal`
+- Fractal - `org.gnome.Fractal`
 - EasyEffects - `com.github.wwmm.easyeffects`
 - Extension Manager (Gnome) - `com.mattjakeman.ExtensionManager`
 - Bottles - `com.usebottles.bottles`
 - Steam - `com.valvesoftware.Steam`
 - Yubico Authenticator - `com.yubico.yubioath`
-- Fluffy Chat - `im.fluffychat.Fluffychat`
 - PeaZip - `io.github.peazip.PeaZip`
 - Neovim - `io.neovim.nvim`
 - Gear Lever - `it.mijorus.gearlever`
@@ -34,3 +34,4 @@
 - Upscayl - `org.upscayl.Upscayl`
 - WezTerm - `org.wezfurlong.wezterm`
 - Firmware - `org.gnome.Firmware`
+- Kleopatra - `org.kde.kleopatra`
