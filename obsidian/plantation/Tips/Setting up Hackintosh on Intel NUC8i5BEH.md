@@ -1,0 +1,35 @@
+### Kexts
+- Lilu
+	- A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC, an many other kexts.
+	- https://github.com/acidanthera/Lilu/releases
+- VirtualSMC
+	- Emulates the SMC chip found on real macs, without this macOS will not boot.
+	- https://github.com/acidanthera/VirtualSMC/releases
+	- VirtualSMC plugins:
+		- SMCProcessor
+			- Used for monitoring Intel CPU temperature
+		- SMCSuperIO
+			- Used for monitoring fan speed
+- WhateverGreen
+	- Used for graphics patching, DRM fixes, board ID checks, framebuffer fixes, etc.
+	- https://github.com/acidanthera/WhateverGreen/releases
+- AppleALC
+	- Used for AppleHDA patching, allowing support for the majority of on-board sound controllers.
+	- https://github.com/acidanthera/AppleALC/releases
+- Itlwm
+	- Adds support for a large variety of Intel wireless cards.
+	- Requires Heliport
+		- https://github.com/OpenIntelWireless/HeliPort/releases
+	- https://github.com/OpenIntelWireless/itlwm/releases
+- IntelMausi
+	- Required for the majority of Intel NICs.
+	- https://github.com/acidanthera/IntelMausi/releases
+- BlueToolFixup
+	- Patches the macOS 12+ Bluetooth stack to support third party cards.
+	- Included in the BrcmPatchRAM
+		- https://github.com/acidanthera/BrcmPatchRAM/releases
+- NVMEFix
+	- Used for fixing power management and initialization on Non-Apple NVMe.
+	- https://github.com/acidanthera/NVMeFix/releases
+
+### Tools
