@@ -24,6 +24,12 @@
 - IntelMausi
 	- Required for the majority of Intel NICs.
 	- https://github.com/acidanthera/IntelMausi/releases
+- IntelBluetoothFirmware
+	- Provides native bluetooth using Intel cards.
+	- https://github.com/OpenIntelWireless/IntelBluetoothFirmware
+- IntelBTPatcher
+	- Adds workarounds for using Intel cards a combo of IntelBluetoothFirmware.
+	- Same repo as IntelBluetoothFirmware.
 - BlueToolFixup
 	- Patches the macOS 12+ Bluetooth stack to support third party cards.
 	- Included in the BrcmPatchRAM
@@ -32,4 +38,8 @@
 	- Used for fixing power management and initialization on Non-Apple NVMe.
 	- https://github.com/acidanthera/NVMeFix/releases
 
-### Tools
+#### To make bluetooth work on macOS Monterey and newer
+1. Install IntelBTPatcher.kext (depends on Lilu)
+2. Install IntelBluetoothFirmware.kext from same bundle.
+3. Install BlueToolFixup.kext.
+
