@@ -1,4 +1,4 @@
-### Kexts
+### Important kexts
 - Lilu
 	- A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC, an many other kexts.
 	- https://github.com/acidanthera/Lilu/releases
@@ -11,7 +11,7 @@
 		- SMCSuperIO
 			- Used for monitoring fan speed
 - WhateverGreen
-	- Used for graphics patching, DRM fixes, board ID checks, framebuffer fixes, etc.
+	- Used for graphics patching, DRM fixes, board ID checks, frame buffer fixes, etc.
 	- https://github.com/acidanthera/WhateverGreen/releases
 - AppleALC
 	- Used for AppleHDA patching, allowing support for the majority of on-board sound controllers.
@@ -37,9 +37,28 @@
 - NVMEFix
 	- Used for fixing power management and initialization on Non-Apple NVMe.
 	- https://github.com/acidanthera/NVMeFix/releases
+- CPUFriend
+	- For dynamic power management.
+	- https://github.com/acidanthera/CPUFriend/releases
+- RealtekCardReader
+	- Add Realtek USB-based SD card reader driver.
+	- https://github.com/0xFireWolf/RealtekCardReader/releases
+- RealtekCardReaderFirend
+	- Plugin to recognize Realtek as native one.
+	- https://github.com/0xFireWolf/RealtekCardReaderFriend/releases
+- RestrictEvents
+	- Block unwanted processes causing compatibility issues on different hardware.
+	- https://github.com/acidanthera/RestrictEvents/releases
+- USBInjectAll
+	- Deprecated but still good for allowing more USB ports.
+	- https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/
 
-#### To make bluetooth work on macOS Monterey and newer
-1. Install IntelBTPatcher.kext (depends on Lilu)
-2. Install IntelBluetoothFirmware.kext from same bundle.
-3. Install BlueToolFixup.kext.
-
+#### To make Bluetooth work on macOS Monterey and newer
+1. Install *IntelBTPatcher.kext* (depends on **Lilu**).
+2. From the same bundle add *IntelBluetoothFirmware.kext*.
+3. Lastly, add *BlueToolFixup.kext*.
+#### Fix reboot loop on macOS Sonoma 14.6+ second phase installation
+1. Edit `config.plist`.
+2. Go to `Misc -> Security` and set `SecureBootModel` to `Disabled`.
+3. Restart system and it is recommended to ***Reset NVRAM***.
+4. On the app store find ***Install Sonoma*** and click install.
