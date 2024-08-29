@@ -25,14 +25,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Create WinPE image using Debian.md",
+                "file": "Plantation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4f4777a3e2b4e3d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Journald Debugging.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4e5b75f949f97567",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tips/Managing SELinux.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -98,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Create WinPE image using Debian.md",
+                "file": "Tips/Managing SELinux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Create WinPE image using Debian.md",
+                "file": "Tips/Managing SELinux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Create WinPE image using Debian.md"
+                "file": "Tips/Managing SELinux.md"
               }
             }
           }
@@ -159,15 +183,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5f36bb7245e020ba",
+  "active": "4e5b75f949f97567",
   "lastOpenFiles": [
-    "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+    "Journald Debugging.md",
+    "Tips/Managing SELinux.md",
+    "Plantation.md",
     "Tips/Create WinPE image using Debian.md",
+    "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
     "Homebrew Casks.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
     "Flatpak.md",
     "Tips/Changing Thunderbird's default folder sort.md",
-    "Plantation.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",
     "StartUp/Startup Grants.md",
