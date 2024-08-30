@@ -4,5 +4,5 @@
 	- [[Artificial Intelligence]]
 	- [[Startup Grants]]
 - Tips
-	- [[Changing Thunderbird's default folder sort]]
+	- [[Change Thunderbird's default folder sort]]
 

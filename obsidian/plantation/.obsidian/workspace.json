@@ -4,59 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "8aa81981bec19f86",
+        "id": "72b91047a245b3e0",
         "type": "tabs",
         "children": [
           {
-            "id": "98b1d5dc32adeaaa",
+            "id": "f2b2f877047619a7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5f36bb7245e020ba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Plantation.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4f4777a3e2b4e3d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Journald Debugging.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4e5b75f949f97567",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Managing SELinux.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Managing SELinux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Managing SELinux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -161,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Tips/Managing SELinux.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -183,20 +138,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4e5b75f949f97567",
+  "active": "f2b2f877047619a7",
   "lastOpenFiles": [
+    "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+    "Plantation.md",
+    "Tips/Resize logical volume.md",
+    "Tips/Change Thunderbird's default folder sort.md",
+    "Journald Debugging.md",
+    "Tips/Manage SELinux.md",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments",
     "Tips/Create WinPE image using Debian.md",
-    "Journald Debugging.md",
-    "Tips/Managing SELinux.md",
-    "Plantation.md",
     "Tips/Create WinPE image using Debian.md",
-    "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
     "Homebrew Casks.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
     "Flatpak.md",
-    "Tips/Changing Thunderbird's default folder sort.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",
     "StartUp/Startup Grants.md",
