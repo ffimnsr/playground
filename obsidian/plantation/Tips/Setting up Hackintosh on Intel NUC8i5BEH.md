@@ -18,8 +18,9 @@
 	- https://github.com/acidanthera/AppleALC/releases
 - Itlwm
 	- Adds support for a large variety of Intel wireless cards.
-	- Requires Heliport
+	- Requires Heliport tool:
 		- https://github.com/OpenIntelWireless/HeliPort/releases
+	- Alternative kext AirportItlwm using IO8211 library can be found on same repository.
 	- https://github.com/OpenIntelWireless/itlwm/releases
 - IntelMausi
 	- Required for the majority of Intel NICs.
@@ -52,6 +53,12 @@
 - USBInjectAll
 	- Deprecated but still good for allowing more USB ports.
 	- https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/
+- USBToolBox
+	- Modern implementation of mapping USB ports.
+	- Requires mapping using this tool:
+		- https://github.com/USBToolBox/tool
+	- https://github.com/USBToolBox/kext
+
 
 #### To make Bluetooth work on macOS Monterey and newer
 1. Install *IntelBTPatcher.kext* (depends on **Lilu**).
@@ -62,3 +69,14 @@
 2. Go to `Misc -> Security` and set `SecureBootModel` to `Disabled`.
 3. Restart system and it is recommended to ***Reset NVRAM***.
 4. On the app store find ***Install Sonoma*** and click install.
+#### OpenCore guides
+- https://dortania.github.io/OpenCore-Install-Guide/
+- https://dortania.github.io/Getting-Started-With-ACPI/
+- https://dortania.github.io/OpenCore-Post-Install/
+- https://dortania.github.io/OpenCore-Multiboot/
+- https://github.com/zearp/Nucintosh
+- https://github.com/Jiangmenghao/NUC8i5BEH
+- https://github.com/Lorys89/Intel-NUC8-Hackintosh
+#### SSDTs desktop
+This chart shows SSDTs that are needed per platform.
+![[Pasted image 20240828224706.png]]
