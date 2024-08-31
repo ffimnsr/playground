@@ -1,0 +1,25 @@
+- [fd](https://github.com/sharkdp/fd) - A simple, fast and user-friendly alternative to 'find'.
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - A line-oriented search tool that recursively searches your current directory for a regex pattern.
+- [skim](https://github.com/lotabout/skim) - Fuzzy finder built in rust.
+- [dust](https://github.com/bootandy/dust) - A more intuitive version of `du` in rust.
+- [broot](https://github.com/Canop/broot) - A new way to see and navigate directory trees.
+- [lsd](https://github.com/Peltoche/lsd) - The next gen ls command.
+- [zoxide](https://github.com/ajeetdsouza/zoxide) - A smarter cd and jump command.
+- [bat](https://github.com/sharkdp/bat) - A `cat(1)` clone with wings.
+- [hexyl](https://github.com/sharkdp/hexyl) - A command-line hex viewer.
+- [intermodal](https://github.com/casey/intermodal) - A command-line utility for BitTorrent torrent file creation, verification, and more.
+- [bandwich](https://github.com/imsnif/bandwhich) - Terminal bandwidth utilization tool.
+- [bottom](https://github.com/ClementTsang/bottom) - A customizable cross-platform graphical process/system monitor for the terminal.
+- [bpftop](https://github.com/Netflix/bpftop) - Provides a dynamic real-time view of running eBPF programs.
+- [procs](https://github.com/dalance/procs) - A **procs** is a replacement for `ps` written in rust.
+- [nushell](https://github.com/nushell/nushell) - A modern shell written in rust.
+- [sd](https://github.com/chmln/sd) - Intuitive find & replace CLI (sed alternative).
+- [starship](https://github.com/starship/starship) - Minimal, blazing-fast, and infinitely customizable prompt for any shell.
+- [zellij](https://github.com/zellij-org/zellij) - A terminal workspace with batteries included.
+- [hyperfine](https://github.com/sharkdp/hyperfine) - A command-line benchmarking tool.
+- [delta](https://github.com/dandavison/delta) - A syntax-highlighting pager for git, diff, and grep output.
+- [grex](https://github.com/pemistahl/grex) - A command-line tool and library for generating regular expressions from user-provided test cases.
+- [hurl](https://github.com/Orange-OpenSource/hurl) - Hurl, run and test HTTP requests with plain text.
+- [sccache](https://github.com/mozilla/sccache) - A [ccache](https://ccache.dev/)-like compiler caching tool.
+- [tealdeer](https://github.com/dbrgn/tealdeer) - A very fast implementation of tldr in rust.
+- [difftastic](https://github.com/Wilfred/difftastic) - A structural diff that understands syntax.

@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "72b91047a245b3e0",
+        "id": "1c83aa2bc6ec43cc",
         "type": "tabs",
         "children": [
           {
-            "id": "f2b2f877047619a7",
+            "id": "7bb2ee77c65176d5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Rust Built Tools.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Rust Built Tools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Rust Built Tools.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Rust Built Tools.md"
+              }
             }
           }
         ]
@@ -138,11 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f2b2f877047619a7",
+  "active": "7bb2ee77c65176d5",
   "lastOpenFiles": [
-    "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+    "Rust Built Tools.md",
     "Plantation.md",
     "Tips/Resize logical volume.md",
+    "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
+    "Flatpak.md",
     "Tips/Change Thunderbird's default folder sort.md",
     "Journald Debugging.md",
     "Tips/Manage SELinux.md",
@@ -152,7 +162,6 @@
     "Tips/Create WinPE image using Debian.md",
     "Homebrew Casks.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
-    "Flatpak.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",
     "StartUp/Startup Grants.md",
