@@ -8,7 +8,7 @@
 - [bat](https://github.com/sharkdp/bat) - A `cat(1)` clone with wings.
 - [hexyl](https://github.com/sharkdp/hexyl) - A command-line hex viewer.
 - [intermodal](https://github.com/casey/intermodal) - A command-line utility for BitTorrent torrent file creation, verification, and more.
-- [bandwich](https://github.com/imsnif/bandwhich) - Terminal bandwidth utilization tool.
+- [bandwhich](https://github.com/imsnif/bandwhich) - Terminal bandwidth utilization tool.
 - [bottom](https://github.com/ClementTsang/bottom) - A customizable cross-platform graphical process/system monitor for the terminal.
 - [bpftop](https://github.com/Netflix/bpftop) - Provides a dynamic real-time view of running eBPF programs.
 - [procs](https://github.com/dalance/procs) - A **procs** is a replacement for `ps` written in rust.
@@ -23,3 +23,6 @@
 - [sccache](https://github.com/mozilla/sccache) - A [ccache](https://ccache.dev/)-like compiler caching tool.
 - [tealdeer](https://github.com/dbrgn/tealdeer) - A very fast implementation of tldr in rust.
 - [difftastic](https://github.com/Wilfred/difftastic) - A structural diff that understands syntax.
+- [oha](https://github.com/hatoo/oha) - HTTP load generator.
+- [drill](https://github.com/fcsonline/drill) - HTTP load testing application written in rust.
+- [xh](https://github.com/ducaale/xh) - Yet another [HTTPie](https://httpie.org/) clone, written in rust.
