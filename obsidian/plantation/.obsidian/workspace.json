@@ -11,8 +11,12 @@
             "id": "97c52f1f089c8d63",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Plantation.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Plantation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Plantation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Plantation.md"
+              }
             }
           }
         ]
@@ -140,20 +148,20 @@
   },
   "active": "97c52f1f089c8d63",
   "lastOpenFiles": [
+    "Homebrew Casks.md",
+    "Flatpak.md",
+    "Journald Debugging.md",
     "Rust Built Tools.md",
     "DevOps Tools.md",
     "Plantation.md",
     "Tips/Resize logical volume.md",
     "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
-    "Flatpak.md",
     "Tips/Change Thunderbird's default folder sort.md",
-    "Journald Debugging.md",
     "Tips/Manage SELinux.md",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments",
     "Tips/Create WinPE image using Debian.md",
     "Tips/Create WinPE image using Debian.md",
-    "Homebrew Casks.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",

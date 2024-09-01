@@ -1,6 +1,8 @@
 - [[Homebrew Casks]] - contains my most often used homebrew casks in Mac OS.
 - [[Flatpak]]
 - [[Journald Debugging]]
+- [[Rust Built Tools]]
+- [[DevOps Tools]]
 - Startup
 	- [[Artificial Intelligence]]
 	- [[Startup Grants]]
