@@ -8,3 +8,4 @@
 - Visual Studio Code - `visual-studio-code`
 - Yubico Authenticator - `yubico-authenticator`
 - Zoom Workplace - `zoom`
+- Emacs - `emacs`

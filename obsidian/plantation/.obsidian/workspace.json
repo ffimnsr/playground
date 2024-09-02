@@ -4,40 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1f2036f863fce169",
+        "id": "195155e3bc28d426",
         "type": "tabs",
         "children": [
           {
-            "id": "97c52f1f089c8d63",
+            "id": "22fc0be14ec27d2d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plantation.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4f4777a3e2b4e3d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Journald Debugging.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4e5b75f949f97567",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+                "file": "Tips/List open ports on macOS.md",
                 "mode": "source",
                 "source": false
               }
@@ -109,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+                "file": "Tips/List open ports on macOS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+                "file": "Tips/List open ports on macOS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md"
+                "file": "Tips/List open ports on macOS.md"
               }
             }
           }
@@ -170,12 +146,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "97c52f1f089c8d63",
+  "active": "22fc0be14ec27d2d",
   "lastOpenFiles": [
+    "Rust Built Tools.md",
+    "Tips/List open ports on macOS.md",
+    "Homebrew Casks.md",
+    "Flatpak.md",
+    "Plantation.md",
     "Tips/Changing Thunderbird's default folder sort.md",
     "Tips/Managing SELinux.md",
     "Journald Debugging.md",
-    "Plantation.md",
     "Tips/Resize logical volume.md",
     "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
     "Tips/Change Thunderbird's default folder sort.md",
@@ -185,7 +165,6 @@
     "Tips/Create WinPE image using Debian.md",
     "Tips/Create WinPE image using Debian.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
-    "Flatpak.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",
     "StartUp/Startup Grants.md",
