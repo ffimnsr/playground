@@ -69,6 +69,9 @@
 2. Go to `Misc -> Security` and set `SecureBootModel` to `Disabled`.
 3. Restart system and it is recommended to ***Reset NVRAM***.
 4. On the app store find ***Install Sonoma*** and click install.
+#### Fix ROM
+1. Use real MAC address on the field `PlatformInfo -> Generic -> ROM`. Edit the file **ProperTree**.
+2. This would be useful in enabling iServices.
 #### OpenCore guides
 - https://dortania.github.io/OpenCore-Install-Guide/
 - https://dortania.github.io/Getting-Started-With-ACPI/

@@ -18,6 +18,30 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "4f4777a3e2b4e3d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Journald Debugging.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4e5b75f949f97567",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -85,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Plantation.md",
+                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Plantation.md",
+                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Plantation.md"
+                "file": "Tips/Setting up Hackintosh on Intel NUC8i5BEH.md"
               }
             }
           }
@@ -148,11 +172,9 @@
   },
   "active": "97c52f1f089c8d63",
   "lastOpenFiles": [
-    "Homebrew Casks.md",
-    "Flatpak.md",
+    "Tips/Changing Thunderbird's default folder sort.md",
+    "Tips/Managing SELinux.md",
     "Journald Debugging.md",
-    "Rust Built Tools.md",
-    "DevOps Tools.md",
     "Plantation.md",
     "Tips/Resize logical volume.md",
     "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
@@ -163,6 +185,7 @@
     "Tips/Create WinPE image using Debian.md",
     "Tips/Create WinPE image using Debian.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
+    "Flatpak.md",
     "Tips",
     "StartUp/Artificial Intelligence.md",
     "StartUp/Startup Grants.md",
