@@ -1,0 +1,91 @@
+- tar - an archiving utility
+- pv - monitor the progress of data through a pipe
+- progress - feed input to a command, displaying a progress bar (works on cp and many other tools like rsync)
+- cat - concatenate files and print on the standard output
+- dd - convert and copy a file
+- tac - concatenate and print files in reverse
+- chmod - change file mode bits
+- grep - print lines that match patterns
+- diff - compare files line by line
+- sed - stream editor for filtering and transforming text
+- ar - create, modify, and extract from archives
+- man - an interface to the system reference manuals
+- fsck - check and repair a Linux filesystem
+- seq - print a sequence of numbers
+- pandoc - general markup converter
+- awk - pattern scanning and processing language
+- join - join lines of two files on a common field
+- fold - wrap each input line to fit in specified width
+- uniq - report or omit repeated lines
+- tail - output the last part of files
+- stat - display file or file system status
+- ls - list directory contents
+- echo - display a line of text
+- less - opposite of more
+- chgrp - change group ownership
+- chown - change file owner and group
+- rev - reverse lines of a file or files
+- look - display lines beginning with a given string
+- strings - print the strings of printable characters in files
+- file - determine file type
+- install - copy files and set attributes
+- fdisk - partition table manipulator for Linux
+- mkfs - build a Linux file system
+- rm - remove files or directories
+- rmdir - remove empty directories
+- rsync - a fast, versatile, remote (and local) file-copying tool
+- df - report file system disk space usage
+- gpg - encryption and signing tool
+- mkdir - make directories
+- du - estimate file space usage
+- ln - make links between files
+- patch - apply a diff file to an original
+- shred - overwrite a file to hide its contents, and optionally delete it
+- scp - secure copy (remote file copy program)
+- chattr - change file attributes on a Linux file system
+- cut - remove sections from each line of files
+- find - search for files in a directory hierarchy
+- wc - print newline, word, and byte counts for each file
+- tr - translate or delete characters
+- whoami - print effective userid
+- w - show who is logged on and what they are doing
+- who - show who is logged on
+- pinky - lightweight finger
+- screen - screen manager with VT100/ANSI terminal emulation
+- top - display Linux tasks
+- nice - run a program with modified scheduling priority
+- renice - alter priority of running processes
+- strace - trace system calls and signals
+- chsh - change your login shell
+- at, batch, atq, atrm - queue, examine or delete jobs for later execution
+- free - display amount of free and used memory in the system
+- which - shows the full path of (shell) commands
+- dmesg - print or control the kernel ring buffer
+- chfn - change your finger information
+- usermod - modify a user account
+- ps - report a snapshot of the current processes
+- chroot - run command or interactive shell with special root directory
+- xargs - build and execute command lines from standard input
+- tty - print the file name of the terminal connected to standard input
+- lsof - list open files
+- vmstat - report virtual memory statistics
+- timeout - run a command with a time limit
+- wall - send a message to everybody's terminal
+- yes - output a string repeatedly until killed
+- kill - terminate a process
+- sleep - delay for a specified amount of time
+- sudo - execute a command as another user
+- su - run a shell with substitute user and group IDs
+- time - time a simple command or give resource usage
+- groupadd - create a new group
+- groups - print the groups a user is in
+- lshw - list hardware
+- shutdown - bring the system down
+- reboot, halt, poweroff - reboot or stop the system
+- passwd - update user's authentication
+- lscpu - display information about the CPU architecture
+- crontab - maintain crontab files for individual users
+- date - print or set the system date and time
+- pidof - find the process ID of a running program
+- nohup - run a command immune to hangups, with output to a non-tty
+- pmap - report memory map of a process
