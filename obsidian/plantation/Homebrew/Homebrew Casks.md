@@ -7,5 +7,12 @@
 - Thunderbird - `thunderbird`
 - Visual Studio Code - `visual-studio-code`
 - Yubico Authenticator - `yubico-authenticator`
+- Yubico Yubikey Manager - `yubico-yubikey-manager`
 - Zoom Workplace - `zoom`
 - Emacs - `emacs`
+- Docker - `docker`
+- FiraCode - `font-fira-code-nerd-font`
+- Hack - `font-hack-nerd-font`
+- Keka - `keka`
+- OBS - `obs`
+- Telegram - `telegram`

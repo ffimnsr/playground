@@ -1,4 +1,5 @@
 - [[Homebrew Casks]] - contains my most often used homebrew casks in Mac OS.
+- [[Homebrew Formulae]]
 - [[Flatpak]]
 - [[Journald Debugging]]
 - [[Rust Built Tools]]

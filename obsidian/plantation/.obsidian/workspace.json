@@ -4,22 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "5660668c089f9ed4",
+        "id": "195155e3bc28d426",
         "type": "tabs",
         "children": [
           {
-            "id": "5cbe24b0281db295",
+            "id": "22fc0be14ec27d2d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Stable Diffusion prompt tips.md",
+                "file": "Homebrew/Homebrew Casks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e81696822515dd68",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Rust Built Tools.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "bcb8d331e97ced1a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ZSH History Expansion.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Stable Diffusion prompt tips.md",
+                "file": "ZSH History Expansion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Stable Diffusion prompt tips.md",
+                "file": "ZSH History Expansion.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Stable Diffusion prompt tips.md"
+                "file": "ZSH History Expansion.md"
               }
             }
           }
@@ -146,18 +171,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9b755031fdd9380e",
+  "active": "bcb8d331e97ced1a",
   "lastOpenFiles": [
-    "Tips/Stable Diffusion prompt tips.md",
-    "Tips/List open ports on macOS.md",
-    "Linux CLI Tools.md",
     "Rust Built Tools.md",
-    "Homebrew Casks.md",
+    "ZSH History Expansion.md",
+    "DevOps Tools.md",
     "Flatpak.md",
+    "Homebrew/Homebrew Formulae.md",
     "Plantation.md",
+    "Homebrew/Homebrew Casks.md",
+    "Journald Debugging.md",
+    "Homebrew",
+    "Tips/List open ports on macOS.md",
     "Tips/Changing Thunderbird's default folder sort.md",
     "Tips/Managing SELinux.md",
-    "Journald Debugging.md",
     "Tips/Resize logical volume.md",
     "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
     "Tips/Change Thunderbird's default folder sort.md",
