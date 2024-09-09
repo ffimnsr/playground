@@ -13,38 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Homebrew/Homebrew Casks.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e81696822515dd68",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust Built Tools.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "bcb8d331e97ced1a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Allow docker to access host volume on SELinux systems.md",
+                "file": "Tips/Rust lifetimes concepts.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 334.5
   },
   "right": {
     "id": "7514d5cb7db04640",
@@ -110,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Allow docker to access host volume on SELinux systems.md",
+                "file": "Tips/Rust lifetimes concepts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Allow docker to access host volume on SELinux systems.md",
+                "file": "Tips/Rust lifetimes concepts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Allow docker to access host volume on SELinux systems.md"
+                "file": "Tips/Rust lifetimes concepts.md"
               }
             }
           }
@@ -171,10 +146,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bcb8d331e97ced1a",
+  "active": "22fc0be14ec27d2d",
   "lastOpenFiles": [
-    "Tips/Manage SELinux systems.md",
+    "Tips/Rust fixing ownership errors concepts.md",
+    "Tips/Rust lifetimes concepts.md",
+    "Tips/attachments/Pasted image 20240909233236.png",
+    "Tips/attachments/Pasted image 20240909233107.png",
+    "Tips/attachments/Pasted image 20240909233028.png",
+    "Tips/attachments/Pasted image 20240909232810.png",
+    "Tips/attachments/Pasted image 20240909232353.png",
+    "Tips/attachments/Pasted image 20240909232328.png",
+    "Tips/Rust reference and borrowing concepts.md",
+    "Tips/Rust ownership concepts.md",
+    "Tips/attachments/Pasted image 20240909231458.png",
+    "Tips/attachments/Pasted image 20240909231315.png",
+    "Tips/attachments/Pasted image 20240909231209.png",
+    "Tips/attachments/Pasted image 20240909231105.png",
+    "Rust Built Tools.md",
+    "Tips/Rust shadowing concepts.md",
     "Tips/Allow docker to access host volume on SELinux systems.md",
+    "Knowledgebase/Rust",
+    "Knowledgebase",
+    "Tips/Manage SELinux systems.md",
     "Tips/Resize logical volume.md",
     "Plantation.md",
     "Linux CLI Tools.md",
@@ -183,7 +176,6 @@
     "Journald Debugging.md",
     "Tips/List open ports on macOS.md",
     "ZSH History Expansion.md",
-    "Rust Built Tools.md",
     "Flatpak.md",
     "Homebrew/Homebrew Formulae.md",
     "Homebrew/Homebrew Casks.md",
@@ -192,17 +184,12 @@
     "Tips/Managing SELinux.md",
     "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
     "Tips/Change Thunderbird's default folder sort.md",
-    "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments",
     "Tips/Create WinPE image using Debian.md",
     "Tips/Create WinPE image using Debian.md",
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
     "Tips",
-    "StartUp/Artificial Intelligence.md",
-    "StartUp/Startup Grants.md",
     "StartUp",
-    "Untitled.canvas",
-    "2024-08-13.md",
-    "2024-08-12.md"
+    "Untitled.canvas"
   ]
 }
