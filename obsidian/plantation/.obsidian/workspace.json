@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ZSH History Expansion.md",
+                "file": "Tips/Allow docker to access host volume on SELinux systems.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ZSH History Expansion.md",
+                "file": "Tips/Allow docker to access host volume on SELinux systems.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ZSH History Expansion.md",
+                "file": "Tips/Allow docker to access host volume on SELinux systems.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ZSH History Expansion.md"
+                "file": "Tips/Allow docker to access host volume on SELinux systems.md"
               }
             }
           }
@@ -173,22 +173,25 @@
   },
   "active": "bcb8d331e97ced1a",
   "lastOpenFiles": [
-    "Rust Built Tools.md",
-    "ZSH History Expansion.md",
+    "Tips/Manage SELinux systems.md",
+    "Tips/Allow docker to access host volume on SELinux systems.md",
+    "Tips/Resize logical volume.md",
+    "Plantation.md",
+    "Linux CLI Tools.md",
     "DevOps Tools.md",
+    "Tips/GitHub authenticated container pull.md",
+    "Journald Debugging.md",
+    "Tips/List open ports on macOS.md",
+    "ZSH History Expansion.md",
+    "Rust Built Tools.md",
     "Flatpak.md",
     "Homebrew/Homebrew Formulae.md",
-    "Plantation.md",
     "Homebrew/Homebrew Casks.md",
-    "Journald Debugging.md",
     "Homebrew",
-    "Tips/List open ports on macOS.md",
     "Tips/Changing Thunderbird's default folder sort.md",
     "Tips/Managing SELinux.md",
-    "Tips/Resize logical volume.md",
     "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
     "Tips/Change Thunderbird's default folder sort.md",
-    "Tips/Manage SELinux.md",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments",
     "Tips/Create WinPE image using Debian.md",

@@ -11,7 +11,7 @@
 	- [[Change Thunderbird's default folder sort]]
 	- [[Sort Gnome 40+ app grid alphabetically]]
 	- [[Create WinPE image using Debian]]
-	- [[Manage SELinux]]
+	- [[Manage SELinux systems]]
 	- [[Setup Hackintosh on Intel NUC8i5BEH]]
 	- [[Resize logical volume]]
 	
