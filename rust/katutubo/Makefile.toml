@@ -1,0 +1,29 @@
+[config]
+skip_core_tasks = true
+min_version = "0.33.0"
+
+[tasks.clean]
+script = [
+    "cd katutubo-app",
+    "cargo clean"
+]
+
+[tasks.build]
+script = [
+    "cd katutubo-app",
+    "wasm-pack build --target web --out-name wasm --out-dir dist"
+]
+
+[tasks.deploy]
+dependencies = ["build"]
+script_runner = "@shell"
+script = [
+    "cd katutubo-app",
+    "cp -r static dist"
+]
+
+[tasks.serve]
+script = [
+    "cd katutubo-app",
+    "miniserve -p 8008 --index index.html dist"
+]

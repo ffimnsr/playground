@@ -1,0 +1,17 @@
+{
+  "name": "katutubo",
+  "version": "0.1.1",
+  "main": "index.js",
+  "author": "ffimnsr",
+  "license": "MIT",
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.0-beta.1",
+    "@tauri-apps/cli": "^1.0.0-beta.2"
+  },
+  "scripts": {
+    "build": "cd katutubo-app && wasm-pack build --target web --out-name wasm --out-dir dist && shx cp -r static/* dist"
+  },
+  "devDependencies": {
+    "shx": "^0.3.3"
+  }
+}

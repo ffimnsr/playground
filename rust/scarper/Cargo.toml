@@ -1,0 +1,48 @@
+[package]
+name = "scarper"
+version = "0.3.0"
+authors = ["Edward Fitz Abucay gh:@ffimnsr"]
+edition = "2018"
+readme = "README.md"
+description = "A pluggable package / executable version checker for the command line."
+categories = ["command-line-utilities", "development-tools", "embedded"]
+homepage = "https://github.com/ffimnsr/scarper-rs"
+repository = "https://github.com/ffimnsr/scarper-rs"
+license = "MIT OR Apache-2.0"
+keywords = ["cli", "version", "checker", "pluggable"]
+exclude = [".gitignore"]
+
+[[bin]]
+name = "scarper"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["string"] }
+dotenv = "0.15"
+tracing = "0.1"
+tracing-subscriber = { version = "0.2", features = ["tracing-log"] }
+tracing-attributes = "0.1"
+tracing-futures = "0.2"
+log = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.5"
+reqwest = { version = "0.10", features = ["json"] }
+tokio = { version = "0.2", features = ["full"] }
+prettytable-rs = "0.8"
+libloading = "0.5"
+walkdir = "2.3"
+openssl = { version = "0.10", features = ["vendored"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+[package.metadata.deb]
+name = "scarper"
+maintainer = "Edward Fitz Abucay gh:@ffimnsr"
+section = "utility"
+assets = [
+  ["target/release/scarper", "usr/bin/", "755"],
+  ["COPYRIGHT", "usr/share/doc/scarper/", "644"],
+  ["LICENSE-MIT", "usr/share/doc/scarper/", "644"],
+  ["LICENSE-APACHE", "usr/share/doc/scarper/", "644"],
+  ["README.md", "usr/share/doc/scarper/README", "644"],
+]

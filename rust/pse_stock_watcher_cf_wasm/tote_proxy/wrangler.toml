@@ -1,0 +1,6 @@
+name = "tote_proxy"
+type = "javascript"
+account_id = "90b6d3f831cf81b305a59eae21daf6dc"
+workers_dev = true
+route = ""
+zone_id = "0b9bd3177b8e054a0a8da1dbc0afce24"

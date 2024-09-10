@@ -212,5 +212,88 @@ s.push('!');
 println!("{s}");
 assert!(v.len() == 0);
 ```
+#### Safe program: mutating different tuple fields
+Rust may also reject safe programs. One common issue is that Rust tries to track permissions at a fine-grained level. However, Rust may conflate two different paths as the same path.
 
+Let’s first look at an example of fine-grained permission tracking that passes the borrow checker. This program shows how you can borrow one field of a tuple, and write to a different field of the same tuple:
+
+![[Pasted image 20240910104315.png]]
+
+The statement `let first = &name.0` borrows `name.0`. This borrow removes WO permissions from `name.0`. It also removes WO permissions from `name`. (For example, one could not pass `name` to a function that takes as input a value of type `(String, String)`.) But `name.1` still retains the W permission, so doing `name.1.push_str(...)` is a valid operation.
+
+However, Rust can lose track of exactly which paths are borrowed. For example, let’s say we refactor the expression `&name.0` into a function `get_first`. Notice how after calling `get_first(&name)`, Rust now removes the W permission on `name.1`:
+
+![[Pasted image 20240910104431.png]]
+
+Now we can’t do `name.1.push_str(..)`! Rust will return this error:
+
+```text
+error[E0502]: cannot borrow `name.1` as mutable because it is also borrowed as immutable
+  --> test.rs:11:5
+   |
+10 |     let first = get_first(&name);
+   |                           ----- immutable borrow occurs here
+11 |     name.1.push_str(", Esq.");
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ mutable borrow occurs here
+12 |     println!("{first} {}", name.1);
+   |                ----- immutable borrow later used here
+```
+
+That’s strange, since the program was safe before we edited it. The edit we made doesn’t meaningfully change the runtime behavior. So why does it matter that we put `&name.0` into a function?
+
+The problem is that Rust doesn’t look at the implementation of `get_first` when deciding what `get_first(&name)` should borrow. Rust only looks at the type signature, which just says “some `String` in the input gets borrowed”. Rust conservatively decides then that both `name.0` and `name.1` get borrowed, and eliminates write and own permissions on both.
+
+Remember, the key idea is that **the program above is safe.** It has no undefined behavior! A future version of Rust may be smart enough to let it compile, but for today, it gets rejected. So how should we work around the borrow checker today? One possibility is to inline the expression `&name.0`, like in the original program. Another possibility is to defer borrow checking to runtime with [cells](https://doc.rust-lang.org/std/cell/index.html), which we will discuss in future chapters.
+#### Safe program: mutating different array elements
+A similar kind of problem arises when we borrow elements of an array. For example, observe what paths are borrowed when we take a mutable reference to an array:
+
+![[Pasted image 20240910104711.png]]
+
+Rust’s borrow checker does not contain different paths for `a[0]`, `a[1]`, and so on. It uses a single path `a[_]` that represents _all_ indexes of `a`. Rust does this because it cannot always determine the value of an index. For example, imagine a more complex scenario like this:
+
+```rust
+let idx = a_complex_function();
+let x = &mut a[idx];
+```
+
+What is the value of `idx`? Rust isn’t going to guess, so it assumes `idx` could be anything. For example, let’s say we try to read from one array index while writing to a different one:
+
+![[Pasted image 20240910104743.png]]
+
+However, Rust will reject this program because `a` gave its read permission to `x`. The compiler’s error message says the same thing:
+
+```text
+error[E0502]: cannot borrow `a[_]` as immutable because it is also borrowed as mutable
+ --> test.rs:4:9
+  |
+3 | let x = &mut a[1];
+  |         --------- mutable borrow occurs here
+4 | let y = &a[2];
+  |         ^^^^^ immutable borrow occurs here
+5 | *x += *y;
+  | -------- mutable borrow later used here
+```
+
+Again, **this program is safe.** For cases like these, Rust often provides a function in the standard library that can work around the borrow checker. For example, we could use [`slice::split_at_mut`](https://doc.rust-lang.org/std/primitive.slice.html#method.split_at_mut):
+
+```rust
+let mut a = [0, 1, 2, 3];
+let (a_l, a_r) = a.split_at_mut(2);
+let x = &mut a_l[1];
+let y = &a_r[0];
+*x += *y;
+```
+
+You might wonder, but how is `split_at_mut` implemented? In some Rust libraries, especially core types like `Vec` or `slice`, you will often find **`unsafe` blocks**. `unsafe` blocks allow the use of “raw” pointers, which are not checked for safety by the borrow checker. For example, we could use an unsafe block to accomplish our task:
+
+```rust
+let mut a = [0, 1, 2, 3];
+let x = &mut a[1] as *mut i32;
+let y = &a[2] as *const i32;
+unsafe { *x += *y; } // DO NOT DO THIS unless you know what you're doing!
+```
+
+Unsafe code is sometimes necessary to work around the limitations of the borrow checker. As a general strategy, let’s say the borrow checker rejects a program you think is actually safe. Then you should look for standard library functions (like `split_at_mut`) that contain `unsafe` blocks which solve your problem.
+#### Summary
+When fixing an ownership error, you should ask yourself: is my program actually unsafe? If yes, then you need to understand the root cause of the unsafety. If no, then you need to understand the limitations of the borrow checker to work around them.
 

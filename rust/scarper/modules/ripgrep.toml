@@ -1,0 +1,4 @@
+[[packages]]
+name = "ripgrep"
+location = "github:BurntSushi/ripgrep"
+binary = "rg"

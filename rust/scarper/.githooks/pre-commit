@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+echo "Linting files..."
+cargo clippy -- -D warnings

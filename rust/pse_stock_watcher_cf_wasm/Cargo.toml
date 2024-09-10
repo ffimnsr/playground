@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "tote",
+    "tote_worker"
+]
+default-members = ["tote"]
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"

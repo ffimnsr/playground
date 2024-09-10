@@ -1,0 +1,4 @@
+[alias]
+t = "test -- --nocapture"
+b = "build --offline"
+c = "check --offline"

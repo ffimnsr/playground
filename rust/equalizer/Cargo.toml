@@ -1,0 +1,10 @@
+[package]
+name = "equalizer"
+version = "0.1.0"
+authors = ["ffimnsr <ffimnsr@outlook.com>"]
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+rlibc = "1.0"
