@@ -22,11 +22,8 @@ Manage your `.local\bin` without sweat.
 Here is a sample command line usage of `scarper`.
 
 ```bash
-$ scarper
+$ scarper install ripgrep
 ```
-
-Create a `scarper_watch.toml` and put your package to be version check.
-See [scarper_watch.toml](scarper_watch.toml) for an example.
 
 ## Installation
 

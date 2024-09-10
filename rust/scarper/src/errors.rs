@@ -1,1 +1,3 @@
-pub(crate) type GenericError = Box<dyn std::error::Error + Send + Sync>;
+use std::error::Error;
+
+pub(crate) type GenericError = Box<dyn Error + Send + Sync>;

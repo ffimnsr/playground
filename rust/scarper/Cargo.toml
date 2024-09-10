@@ -30,10 +30,10 @@ toml = "0.5"
 reqwest = { version = "0.10", features = ["json"] }
 tokio = { version = "0.2", features = ["full"] }
 prettytable-rs = "0.8"
-libloading = "0.5"
 walkdir = "2.3"
 openssl = { version = "0.10", features = ["vendored"] }
 rusqlite = { version = "0.32", features = ["bundled"] }
+indoc = "2"
 
 [package.metadata.deb]
 name = "scarper"
