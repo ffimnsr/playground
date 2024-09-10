@@ -1,0 +1,56 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Country {
+  id: ID!
+  name: String!
+  alpha2: String!
+  alpha3: String!
+  phoneCode: String!
+  currencyCode: String!
+}
+
+type Region {
+  id: ID!
+  psgcCode: String!
+  name: String!
+  regionCode: String!
+}
+
+type Province {
+  id: ID!
+  psgcCode: String!
+  name: String!
+  regionCode: String!
+  provinceCode: String!
+}
+
+type CityMunicipality {
+  id: ID!
+  psgcCode: String!
+  name: String!
+  regionCode: String!
+  provinceCode: String!
+  cityMunicipalityCode: String!
+}
+
+type GlobalRole {
+  id: ID!
+  name: String!
+  description: String!
+}
+
+type Query {
+  countries: [Country!]!
+  regions: [Region!]!
+  provinces: [Province!]!
+  cityMunicipalities: [CityMunicipality!]!
+  globalRoles: [GlobalRole!]!
+
+  country(id: ID!): Country!
+  region(id: ID!): Region!
+  province(id: ID!): Province!
+  cityMunicipality(id: ID!): CityMunicipality!
+  globalRole(id: ID!): GlobalRole!
+}

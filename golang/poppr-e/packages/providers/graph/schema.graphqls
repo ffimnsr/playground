@@ -1,0 +1,56 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+scalar Upload
+scalar Time
+
+type Provider {
+  id: ID!
+  userId: ID!
+}
+
+type Service {
+  id: ID!
+  providerId: ID!
+  name: String!
+  description: String!
+  prices: [Price!]!
+  images: [ServiceImage!]!
+}
+
+type ServiceImage {
+  id: ID!
+  serviceId: ID!
+  url: String!
+  alt: String!
+  order: Int!
+}
+
+type Price {
+  id: ID!
+  serviceId: ID!
+  price: Float!
+  currency: String!
+}
+
+type Content {
+  id: ID!
+  providerId: ID!
+  title: String!
+  body: String!
+}
+
+type Query {
+  providers: [Provider!]!
+  services: [Service!]!
+}
+
+input NewProvider {
+  userId: String!
+}
+
+type Mutation {
+  createProvider(input: NewProvider!): Provider!
+
+}

@@ -1,0 +1,19 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Order {
+  id: ID!
+  providerId: ID!
+  buyerUserId: ID!
+  done: Boolean!
+}
+
+type OrderHistory {
+  id: ID!
+  orderId: ID!
+  providerId: ID!
+  buyerUserId: ID!
+  done: Boolean!
+  user: User!
+}

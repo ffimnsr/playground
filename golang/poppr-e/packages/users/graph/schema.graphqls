@@ -1,0 +1,194 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+scalar Upload
+scalar Time
+
+directive @goModel(
+    model: String
+    models: [String!]
+) on OBJECT | INPUT_OBJECT | SCALAR | ENUM | INTERFACE | UNION
+
+directive @goEnum(
+    value: String
+) on ENUM_VALUE
+
+enum BirthGender @goModel(model: "github.com/ffimnsr/poppr-users/graph/model.BirthGender") {
+    MALE @goEnum(value: "github.com/ffimnsr/poppr-users/graph/model.Male")
+    FEMALE @goEnum(value: "github.com/ffimnsr/poppr-users/graph/model.Female")
+}
+
+type User {
+  id: ID!
+  zitadelId: String!
+  username: String!
+  primaryEmail: String!
+  displayName: String!
+  avatarUrl: String!
+  info: UserInfo!
+  kyc: UserKyc!
+}
+
+type UserInfo {
+  id: ID!
+  userId: ID!
+  emails: [EmailAddress!]!
+  phoneNumbers: [PhoneNumber!]!
+  addresses: [Address!]!
+  birthDate: Time!
+  birthGender: BirthGender!
+}
+
+type EmailAddress {
+  id: ID!
+  userId: ID!
+  emailAddress: String!
+  primary: Boolean!
+  verifiedAt: Time
+}
+
+type PhoneNumber {
+  id: ID!
+  userId: ID!
+  phoneNumber: String!
+  primary: Boolean!
+  verifiedAt: Time
+}
+
+type UserKyc {
+  id: ID!
+  userId: ID!
+  firstName: String!
+  lastName: String!
+  middleName: String!
+  verifiedAt: Time
+}
+
+type Address {
+  id: ID!
+  userId: ID!
+  streetAddress: String!
+  locality: String!
+  region: String!
+  postalCode: String!
+  country: String!
+  primary: Boolean!
+}
+
+type Query {
+  users: [User!]!
+  verifiedUsers: [User!]!
+  deletedUsers: [User!]!
+  user(id: ID!): User!
+  userAddress(id: ID!): Address!
+  isUserVerified(id: ID!): Boolean!
+}
+
+input NewUser {
+  zitadelId: String!
+  username: String!
+  primaryEmail: String!
+  displayName: String!
+}
+
+input NewUserFull {
+  zitadelId: String!
+  username: String!
+  primaryEmail: String!
+  displayName: String!
+  birthDate: Time!
+  birthGender: BirthGender!
+  firstName: String!
+  lastName: String!
+  middleName: String!
+}
+
+input NewUserInfo {
+  userId: ID!
+  birthDate: Time!
+  birthGender: BirthGender!
+}
+
+input NewUserProfile {
+  userId: ID!
+  displayName: String!
+  firstName: String!
+  lastName: String!
+  middleName: String!
+  birthDate: Time!
+  birthGender: BirthGender!
+}
+
+input NewEmailAddress {
+  userId: ID!
+  emailAddress: String!
+}
+
+input NewPhoneNumber {
+  userId: ID!
+  phoneNumber: String!
+}
+
+input NewAddress {
+  userId: ID!
+  streetAddress: String!
+  locality: String!
+  region: String!
+  postalCode: String!
+  country: String!
+}
+
+input NewUploadAvatar {
+  userId: ID!
+  imageFile: Upload!
+}
+
+input ChangeUserInfo {
+  userId: ID!
+  birthDate: Time!
+  birthGender: BirthGender!
+}
+
+input ChangeUserKyc {
+  userId: ID!
+  firstName: String!
+  lastName: String!
+  middleName: String!
+}
+
+input LinkEmailAddress {
+  userId: ID!
+  emailAddressId: ID!
+}
+
+input LinkPhoneNumber {
+  userId: ID!
+  phoneNumberId: ID!
+}
+
+input LinkAddress {
+  userId: ID!
+  addressId: ID!
+}
+
+type Mutation {
+  createUserMinimal(input: NewUser!): User!
+  createUserFull(input: NewUserFull!): User!
+  createUserProfile(input: NewUserProfile!): User!
+  createEmailAddress(input: NewEmailAddress!): EmailAddress!
+  createPhoneNumber(input: NewPhoneNumber!): PhoneNumber!
+  createAddress(input: NewAddress!): Address!
+  uploadAvatar(input: NewUploadAvatar!): User!
+  updateUserInfo(input: ChangeUserInfo!): Boolean!
+  updateUserKyc(input: ChangeUserKyc!): Boolean!
+  setPrimaryEmailAddress(input: LinkEmailAddress!): Boolean!
+  setPrimaryPhoneNumber(input: LinkPhoneNumber!): Boolean!
+  setPrimaryAddress(input: LinkAddress!): Boolean!
+  deleteEmailAddress(input: LinkEmailAddress!): Boolean!
+  deletePhoneNumber(input: LinkPhoneNumber!): Boolean!
+  deleteAddress(input: LinkAddress!): Boolean!
+  verifyUserKyc(id: ID!): Boolean!
+  verifyEmailAddress(input: LinkEmailAddress!): Boolean!
+  verifyPhoneNumber(input: LinkPhoneNumber!): Boolean!
+}
