@@ -4,7 +4,7 @@ version = "0.3.0"
 authors = ["Edward Fitz Abucay gh:@ffimnsr"]
 edition = "2018"
 readme = "README.md"
-description = "A pluggable package / executable version checker for the command line."
+description = "Manage your local binaries with ease."
 categories = ["command-line-utilities", "development-tools", "embedded"]
 homepage = "https://github.com/ffimnsr/scarper-rs"
 repository = "https://github.com/ffimnsr/scarper-rs"
@@ -17,23 +17,23 @@ name = "scarper"
 path = "src/main.rs"
 
 [dependencies]
-clap = { version = "4.5", features = ["string"] }
-dotenv = "0.15"
-tracing = "0.1"
-tracing-subscriber = { version = "0.2", features = ["tracing-log"] }
-tracing-attributes = "0.1"
-tracing-futures = "0.2"
-log = "0.4"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-toml = "0.5"
-reqwest = { version = "0.10", features = ["json"] }
-tokio = { version = "0.2", features = ["full"] }
-prettytable-rs = "0.8"
-walkdir = "2.3"
-openssl = { version = "0.10", features = ["vendored"] }
-rusqlite = { version = "0.32", features = ["bundled"] }
-indoc = "2"
+clap = { version = "~4.5", features = ["string"] }
+dotenv = "~0.15"
+tracing = "~0.1"
+tracing-subscriber = { version = "~0.3", features = ["tracing-log", "env-filter"] }
+tracing-attributes = "~0.1"
+tracing-futures = "~0.2"
+log = "~0.4"
+serde = { version = "~1", features = ["derive"] }
+serde_json = "~1"
+toml = "~0.5"
+reqwest = { version = "~0.10", features = ["json"] }
+tokio = { version = "~0.2", features = ["full"] }
+prettytable-rs = "~0.8"
+walkdir = "~2.3"
+openssl = { version = "~0.10", features = ["vendored"] }
+rusqlite = { version = "~0.32", features = ["bundled"] }
+indoc = "~2"
 
 [package.metadata.deb]
 name = "scarper"

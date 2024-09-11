@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "12a2641b73915793",
+        "id": "913fa95e2b340bd8",
         "type": "tabs",
         "children": [
           {
-            "id": "def31423f8e08f5e",
+            "id": "d380aa54d9e2ab4a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Rust closure concepts.md",
+                "file": "Plantation.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Rust closure concepts.md",
+                "file": "Plantation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Rust closure concepts.md",
+                "file": "Plantation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Rust closure concepts.md"
+                "file": "Plantation.md"
               }
             }
           }
@@ -146,13 +146,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "def31423f8e08f5e",
+  "active": "d380aa54d9e2ab4a",
   "lastOpenFiles": [
+    "Linux CLI Tools.md",
+    "Tips/Interview techniques.md",
+    "Canvas/Local VMs Network Setup.canvas",
+    "Tips/Rust closure concepts.md",
+    "Tips/Rust sync and send traits concepts.md",
+    "Tips/List open ports on macOS.md",
+    "Tips/Manage SELinux systems.md",
+    "Flatpak.md",
+    "DevOps Tools.md",
+    "Rust Built Tools.md",
+    "Plantation.md",
+    "Untitled.canvas",
+    "Canvas",
+    "Untitled 1.canvas",
     "Tips/attachments/Pasted image 20240910132920.png",
     "Tips/attachments/Pasted image 20240910132820.png",
     "Tips/Rust deref concepts.md",
-    "Tips/Rust sync and send traits concepts.md",
-    "Tips/Rust closure concepts.md",
     "Tips/Rust box, rc, and refcell.md",
     "Tips/Rust slice type concept.md",
     "Tips/Rust lifetimes concepts.md",
@@ -165,31 +177,21 @@
     "Tips/attachments/Pasted image 20240910102826.png",
     "Tips/attachments/Pasted image 20240910102734.png",
     "Tips/attachments/Pasted image 20240910102444.png",
-    "Tips/attachments/Pasted image 20240909233236.png",
     "Tips/Rust reference and borrowing concepts.md",
     "Tips/Rust ownership concepts.md",
-    "Rust Built Tools.md",
     "Tips/Rust shadowing concepts.md",
     "Tips/Allow docker to access host volume on SELinux systems.md",
     "Knowledgebase/Rust",
     "Knowledgebase",
-    "Tips/Manage SELinux systems.md",
     "Tips/Resize logical volume.md",
-    "Plantation.md",
-    "Linux CLI Tools.md",
-    "DevOps Tools.md",
     "Tips/GitHub authenticated container pull.md",
     "Journald Debugging.md",
-    "Tips/List open ports on macOS.md",
     "ZSH History Expansion.md",
-    "Flatpak.md",
     "Homebrew/Homebrew Formulae.md",
     "Homebrew/Homebrew Casks.md",
     "Homebrew",
-    "Tips/Changing Thunderbird's default folder sort.md",
     "Tips/attachments",
     "Tips",
-    "StartUp",
-    "Untitled.canvas"
+    "StartUp"
   ]
 }

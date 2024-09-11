@@ -4,6 +4,8 @@
 - [[Journald Debugging]]
 - [[Rust Built Tools]]
 - [[DevOps Tools]]
+- [[Linux CLI Tools]]
+- [[ZSH History Expansion]]
 - Startup
 	- [[Artificial Intelligence]]
 	- [[Startup Grants]]
@@ -14,4 +16,3 @@
 	- [[Manage SELinux systems]]
 	- [[Setup Hackintosh on Intel NUC8i5BEH]]
 	- [[Resize logical volume]]
-	

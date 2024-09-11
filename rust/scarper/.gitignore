@@ -1,3 +1,4 @@
 /target
 /plugins/*
+/data.db3
 !/plugins/.gitkeep

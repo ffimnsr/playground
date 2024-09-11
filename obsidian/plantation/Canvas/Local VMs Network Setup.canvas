@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"8e3695f4e79a6a88","type":"text","text":"**Node:** zzz-wp1\n**Services:**\n- wireguard\n\t- internal (wg0)\n\t- external (wg1)\n- cf-tun\n- ghost-cms\n- traefik\n- mariadb\n- redis\n- ostree-caddy\n- cert-caddy\n\n**Firewall:**\n- Block all ingress and egress\n","x":-980,"y":-700,"width":240,"height":440,"color":"3"},
+		{"id":"8886b9118a3a7c61","x":-700,"y":-700,"width":240,"height":340,"type":"text","text":"**Node:** zzz-dc1\n**Services:**\n- wireguard\n\t- internal (wg0)\n- cf-tun\n- cockroachdb\n- zitadel\n- traefik\n\n**Firewall:**\n- Block all ingress and egress"},
+		{"id":"f846074786181e0f","x":-420,"y":-700,"width":240,"height":420,"type":"text","text":"**Node:** zzz-sb1\n**Services:**\n- wireguard\n\t- internal (wg0)\n- cf-tun\n- traefik\n- postgres\n- mailhog\n- lldap\n- memos\n- jmail\n\n**Firewall:**\n- Block all ingress and egress"},
+		{"id":"8c9b7eb2f170b0c4","x":-700,"y":-320,"width":240,"height":275,"type":"text","text":"**Node:** zzz-dc2\n**Services:**\n- wireguard\n\t- internal (wg0)\n- cf-tun\n\n**Firewall:**\n- Block all ingress and egress\n"},
+		{"id":"545ed361d89134c0","x":-140,"y":-700,"width":240,"height":290,"type":"text","text":"**Node:** zzz-sb2\n**Services:**\n- wireguard\n\t- internal (wg0)\n- cf-tun\n\n**Firewall:**\n- Block all ingress and egress"}
+	],
+	"edges":[]
+}

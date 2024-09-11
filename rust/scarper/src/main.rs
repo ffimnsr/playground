@@ -8,6 +8,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::time::Instant;
 use walkdir::{DirEntry, WalkDir};
+use tracing_subscriber::EnvFilter;
 
 mod errors;
 mod plugin;
@@ -35,11 +36,12 @@ async fn main() -> Result<(), errors::GenericError> {
         .ok();
 
     if env::var("RUST_LOG").is_err() {
-        env::set_var("RUST_LOG", "scarper=info");
+        env::set_var("RUST_LOG", "scarper=debug");
+        env::set_var("RUST_BACKTRACE", "1");
     }
 
     tracing_subscriber::fmt()
-        .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
+        .with_env_filter(EnvFilter::from_default_env())
         .init();
 
     let cli_app = Command::new("scarper")
@@ -58,19 +60,22 @@ async fn main() -> Result<(), errors::GenericError> {
     let matches = cli_app.get_matches();
 
     let start = Instant::now();
-    match matches.subcommand_name() {
-        Some("status") => todo!(),
-        Some("update") => todo!(),
-        Some("install") => todo!(),
-        Some("uninstall") => todo!(),
-        _ => {
-            error!("Invalid subcommand");
-            // std::process::exit(1);
-        }
-    }
+
+    // match matches.subcommand_name() {
+    //     Some("status") => todo!(),
+    //     Some("update") => todo!(),
+    //     Some("install") => todo!(),
+    //     Some("uninstall") => todo!(),
+    //     _ => {
+    //         error!("Invalid subcommand");
+    //         // std::process::exit(1);
+    //     }
+    // }
 
     let client = reqwest::Client::builder()
-        .user_agent("scarper/0.1")
+        .user_agent(
+            format!("scarper/{PKG_VERSION}").as_str()
+        )
         .build()?;
 
     // let config = parse("scarper_watch.toml");
@@ -96,6 +101,8 @@ async fn main() -> Result<(), errors::GenericError> {
         pm.load_plugin(filename)
             .expect(&format!("Failed to load plugin {filename:?}"));
     }
+
+    pm.get_plugin_info("ripgrep").unwrap();
 
     // for package in config.packages {
     //     let location = package.location.unwrap_or_else(|| "unknown".to_string());

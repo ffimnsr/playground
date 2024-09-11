@@ -1,7 +1,8 @@
 use indoc::formatdoc;
-use log::debug;
+use log::{debug, error};
 use rusqlite::Connection;
 use serde::Deserialize;
+use tracing_subscriber::field::debug;
 use std::error::Error;
 use std::ffi::OsStr;
 use std::fs::File;
@@ -48,6 +49,7 @@ fn parse(path: &str) -> Plugin {
     file.read_to_string(&mut config)
         .unwrap_or_else(|err| panic!("Error while reading config: [{:#?}]", err));
 
+    debug!("Parsing config: [{:#?}]", config);
     match toml::from_str(&config) {
         Ok(t) => t,
         Err(err) => panic!("Error while deserializing config: [{:#?}]", err),
@@ -56,20 +58,20 @@ fn parse(path: &str) -> Plugin {
 
 impl PluginManager {
     pub fn new() -> Self {
-        let conn = Connection::open_in_memory().ok();
+        let conn = Connection::open("./data.db3").ok();
         conn.as_ref()
             .expect("Failed to open connection")
             .execute(
                 formatdoc!(
                     "
-                CREATE TABLE plugins (
-                    id INTEGER PRIMARY KEY,
-                    name VARCHAR (128) NOT NULL,
-                    alias TEXT NOT NULL,
-                    location TEXT NOT NULL,
-                    binary TEXT
-                )
-            "
+                    CREATE TABLE IF NOT EXISTS plugins (
+                        id INTEGER PRIMARY KEY,
+                        name VARCHAR (128) NOT NULL UNIQUE,
+                        alias STRING NOT NULL,
+                        location TEXT NOT NULL,
+                        binary TEXT
+                    )
+                    "
                 )
                 .as_str(),
                 (),
@@ -94,6 +96,9 @@ impl PluginManager {
                 .ok_or("Failed to convert path to string")?,
         );
 
+        debug!("Plugin content: {plugin_content:?}");
+        debug!("Check {}", &plugin_content.location.as_str());
+
         self.conn
             .as_ref()
             .ok_or("Failed to open connection")?
@@ -115,15 +120,30 @@ impl PluginManager {
         Ok(())
     }
 
-    pub fn get_package_version(&mut self, plugin: &str) -> &str {
-        debug!("Getting package version");
+    pub fn get_plugin_info<P>(&mut self, plugin_name: P) -> Result<(), Box<dyn Error>>
+    where
+        P: AsRef<OsStr>,
+    {
+        debug!("Getting plugin info");
 
-        // let plugin_name = format!("plug_{}", plugin);
-        // match self.plugins.iter().find(|p| p.name() == plugin_name) {
-        //     Some(p) => p.get_package_version(),
-        //     None => "None",
-        // }
-        todo!()
+        let plugin = self.conn
+            .as_ref()
+            .ok_or("Failed to open connection")?
+            .query_row(
+                "SELECT name, alias, location, binary FROM plugins WHERE name = ?1",
+                [plugin_name.as_ref().to_str().unwrap()],
+                |row| {
+                    Ok(Plugin {
+                        name: row.get(0)?,
+                        alias: row.get::<usize, String>(1)?.split(",").map(|s| s.to_string()).collect(),
+                        location: row.get::<usize, String>(2)?,
+                        binary: row.get(3)?,
+                    })
+                },
+            )?;
+
+        debug!("Plugins {plugin:?}");
+        Ok(())
     }
 
     pub fn unload(&mut self) {
