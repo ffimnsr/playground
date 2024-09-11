@@ -2,10 +2,10 @@
 	path = fedora-pkgs
 	url = git@github.com:ffimnsr/launchpad-fedora-pkgs.git
 [submodule "rust/nft-scraper"]
-	path = rust/nft-scraper
+	path = rust/nft-scraper-rs-v1
 	url = git@github.com:ffimnsr-archive/nft-scraper.git
 [submodule "rust/ea-rs"]
-	path = rust/ea-rs
+	path = rust/ea-rs-v1
 	url = git@github.com:ffimnsr-archive/ea-rs.git
 [submodule "rust/indexer-rs-v1"]
 	path = rust/indexer-rs-v1
