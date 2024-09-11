@@ -34,3 +34,6 @@
 [submodule "rust/firefly-tg-bot-rs"]
 	path = rust/firefly-tg-bot-rs
 	url = git@github.com:ffimnsr/firefly-tg-bot-rs.git
+[submodule "rust/midas-rs"]
+	path = rust/midas-rs
+	url = git@github.com:ffimnsr/midas-rs.git
