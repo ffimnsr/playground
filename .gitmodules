@@ -19,3 +19,18 @@
 [submodule "rust/passport-rs-v1"]
 	path = rust/passport-rs-v1
 	url = git@github.com:ffimnsr-archive/passport.git
+[submodule "github/ffimnsr.github.io"]
+	path = github/ffimnsr.github.io
+	url = git@github.com:ffimnsr/ffimnsr.github.io.git
+[submodule "github/ffimnsr"]
+	path = github/ffimnsr
+	url = git@github.com:ffimnsr/ffimnsr.git
+[submodule "github/curriculum-vitae"]
+	path = github/curriculum-vitae
+	url = git@github.com:ffimnsr/curriculum-vitae.git
+[submodule "rust/solana-e-rs"]
+	path = rust/solana-e-rs
+	url = git@github.com:ffimnsr/solana-e-rs.git
+[submodule "rust/firefly-tg-bot-rs"]
+	path = rust/firefly-tg-bot-rs
+	url = git@github.com:ffimnsr/firefly-tg-bot-rs.git
