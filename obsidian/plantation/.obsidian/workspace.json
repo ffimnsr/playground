@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Creating patch using diff command.md",
+                "file": "Tips/Creating patch using diff command.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4da524f3d208f1c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tips/Rebasing on git.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Creating patch using diff command.md",
+                "file": "Tips/Rebasing on git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Creating patch using diff command.md",
+                "file": "Tips/Rebasing on git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Creating patch using diff command.md"
+                "file": "Tips/Rebasing on git.md"
               }
             }
           }
@@ -159,10 +171,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "56619ad72fe1cc9c",
+  "active": "4da524f3d208f1c9",
   "lastOpenFiles": [
+    "Tips/Creating patch using diff command.md",
+    "Tips/Rebasing on git.md",
     "Rust Built Tools.md",
-    "Creating patch using diff command.md",
     "DevOps Tools.md",
     "Linux CLI Tools.md",
     "Tips/Manage SELinux systems.md",
@@ -192,7 +205,6 @@
     "Tips/attachments/Pasted image 20240910132920.png",
     "Tips/attachments/Pasted image 20240910132820.png",
     "Tips/Rust deref concepts.md",
-    "Tips/Rust box, rc, and refcell.md",
     "Tips/attachments/Pasted image 20240910104743.png",
     "Tips/attachments/Pasted image 20240910104711.png",
     "Tips/attachments/Pasted image 20240910104431.png",
