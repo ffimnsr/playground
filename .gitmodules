@@ -40,3 +40,21 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = git@github.com:ffimnsr/dotfiles.git
+[submodule "typescript/stock-oracle-ts"]
+	path = typescript/stock-oracle-ts
+	url = git@github.com:ffimnsr/stock-oracle-ts.git
+[submodule "typescript/qrscp-js"]
+	path = typescript/qrscp-js
+	url = git@github.com:ffimnsr/qrscp-js.git
+[submodule "rust/haya-rs"]
+	path = rust/haya-rs
+	url = git@github.com:ffimnsr/haya-rs.git
+[submodule "containers/worker-bee"]
+	path = containers/worker-bee
+	url = git@github.com:ffimnsr/worker-bee.git
+[submodule "containers/jmail"]
+	path = containers/jmail
+	url = git@github.com:ffimnsr/jmail.git
+[submodule "launchpad"]
+	path = launchpad
+	url = git@github.com:ffimnsr/launchpad.git
