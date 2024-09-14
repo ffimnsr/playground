@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Install ms-edge and code on Fedora using package manger.md",
+                "file": "Rust Built Tools.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "56619ad72fe1cc9c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Creating patch using diff command.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Install ms-edge and code on Fedora using package manger.md",
+                "file": "Creating patch using diff command.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Install ms-edge and code on Fedora using package manger.md",
+                "file": "Creating patch using diff command.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Install ms-edge and code on Fedora using package manger.md"
+                "file": "Creating patch using diff command.md"
               }
             }
           }
@@ -146,24 +159,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e822da110bc027d2",
+  "active": "56619ad72fe1cc9c",
   "lastOpenFiles": [
-    "Linux CLI Tools.md",
     "Rust Built Tools.md",
+    "Creating patch using diff command.md",
+    "DevOps Tools.md",
+    "Linux CLI Tools.md",
+    "Tips/Manage SELinux systems.md",
+    "Tips/GitHub authenticated container pull.md",
+    "Tips/Allow docker to access host volume on SELinux systems.md",
+    "Tips/Stable Diffusion prompt tips.md",
+    "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
+    "Tips/List open ports on macOS.md",
+    "Tips/Resize logical volume.md",
+    "Tips/Sort Gnome 40+ app grid alphabetically.md",
+    "Tips/Create WinPE image using Debian.md",
+    "Tips/Change Thunderbird's default folder sort.md",
+    "ZSH History Expansion.md",
+    "Plantation.md",
+    "Tips/Install ms-edge and code on Fedora using package manger.md",
     "Journald Debugging.md",
     "Flatpak.md",
     "Tips/Rust Pin and Unpin concepts.md",
-    "Tips/Manage SELinux systems.md",
     "Tips/Interview techniques.md",
-    "Tips/Allow docker to access host volume on SELinux systems.md",
-    "Tips/Install ms-edge and code on Fedora using package manger.md",
     "Tips/Rust fixing ownership errors concepts.md",
-    "Plantation.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Tips/Rust closure concepts.md",
     "Tips/Rust sync and send traits concepts.md",
-    "Tips/List open ports on macOS.md",
-    "DevOps Tools.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
@@ -171,8 +193,6 @@
     "Tips/attachments/Pasted image 20240910132820.png",
     "Tips/Rust deref concepts.md",
     "Tips/Rust box, rc, and refcell.md",
-    "Tips/Rust slice type concept.md",
-    "Tips/Rust lifetimes concepts.md",
     "Tips/attachments/Pasted image 20240910104743.png",
     "Tips/attachments/Pasted image 20240910104711.png",
     "Tips/attachments/Pasted image 20240910104431.png",
@@ -181,15 +201,8 @@
     "Tips/attachments/Pasted image 20240910102826.png",
     "Tips/attachments/Pasted image 20240910102734.png",
     "Tips/attachments/Pasted image 20240910102444.png",
-    "Tips/Rust reference and borrowing concepts.md",
-    "Tips/Rust ownership concepts.md",
-    "Tips/Rust shadowing concepts.md",
     "Knowledgebase/Rust",
     "Knowledgebase",
-    "Tips/Resize logical volume.md",
-    "Tips/GitHub authenticated container pull.md",
-    "ZSH History Expansion.md",
-    "Homebrew/Homebrew Formulae.md",
     "Homebrew",
     "Tips/attachments",
     "Tips",
