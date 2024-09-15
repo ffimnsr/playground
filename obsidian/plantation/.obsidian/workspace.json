@@ -11,8 +11,12 @@
             "id": "6504bc3a20c615d0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Tips/Splitting subfolder out into a new repository.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Tips/Splitting subfolder out into a new repository.md"
+              }
             }
           }
         ]
@@ -140,6 +148,9 @@
   },
   "active": "6504bc3a20c615d0",
   "lastOpenFiles": [
+    "Tips/Rust fixing ownership errors concepts.md",
+    "Tips/Splitting subfolder out into a new repository.md",
+    "Tips/Rust reference and borrowing concepts.md",
     "Rust Built Tools.md",
     "Tips/Creating patch using diff command.md",
     "Tips/OpenSSH with FIDO2 or PKCS11.md",
@@ -163,9 +174,6 @@
     "Tips/Install ms-edge and code on Fedora using package manger.md",
     "Journald Debugging.md",
     "Flatpak.md",
-    "Tips/Rust Pin and Unpin concepts.md",
-    "Tips/Interview techniques.md",
-    "Tips/Rust fixing ownership errors concepts.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Untitled.canvas",
     "Canvas",
