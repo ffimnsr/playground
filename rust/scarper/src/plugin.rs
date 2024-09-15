@@ -2,7 +2,6 @@ use indoc::formatdoc;
 use log::{debug, error};
 use rusqlite::Connection;
 use serde::Deserialize;
-use tracing_subscriber::field::debug;
 use std::error::Error;
 use std::ffi::OsStr;
 use std::fs::File;
@@ -23,7 +22,12 @@ macro_rules! declare_plugin {
     };
 }
 
-#[derive(Debug, Deserialize, Default)]
+#[derive(Deserialize)]
+struct PluginContainer {
+    plugin: Plugin,
+}
+
+#[derive(Debug, Deserialize, Clone, Default)]
 pub struct Plugin {
     name: String,
     alias: Vec<String>,
@@ -31,29 +35,51 @@ pub struct Plugin {
     binary: Option<String>,
 }
 
+impl Plugin {
+    pub fn new(name: &str, alias: &[&str], location: &str, binary: Option<&str>) -> Self {
+        Self {
+            name: name.to_string(),
+            alias: alias.to_vec().iter().map(|s| s.to_string()).collect(),
+            location: location.to_string(),
+            binary: None,
+        }
+    }
+
+    pub fn new_with_binary(name: &str, alias: &[&str], location: &str, binary: &str) -> Self {
+        Self {
+            name: name.to_string(),
+            alias: alias.to_vec().iter().map(|s| s.to_string()).collect(),
+            location: location.to_string(),
+            binary: Some(binary.to_string()),
+        }
+    }
+
+    pub fn name(&self) -> &str {
+        &self.name
+    }
+
+    pub fn alias(&self) -> &Vec<String> {
+        &self.alias
+    }
+}
+
+pub trait PluginManagerBase {
+    fn load_plugin<P>(&mut self, filename: P) -> Result<(), Box<dyn Error>>
+    where
+        P: AsRef<OsStr>;
+
+    fn get_plugin_info<P>(&mut self, plugin_name: P) -> Result<Box<Plugin>, Box<dyn Error>>
+    where
+        P: AsRef<OsStr>;
+
+    fn unload(&mut self);
+    fn count(&self) -> usize;
+}
+
 #[derive(Default)]
 pub struct PluginManager {
     plugins: Vec<Plugin>,
     conn: Option<Connection>,
-}
-
-fn parse(path: &str) -> Plugin {
-    let mut config = String::new();
-    let mut file = match File::open(&path) {
-        Ok(file) => file,
-        Err(_) => {
-            return Plugin::default();
-        }
-    };
-
-    file.read_to_string(&mut config)
-        .unwrap_or_else(|err| panic!("Error while reading config: [{:#?}]", err));
-
-    debug!("Parsing config: [{:#?}]", config);
-    match toml::from_str(&config) {
-        Ok(t) => t,
-        Err(err) => panic!("Error while deserializing config: [{:#?}]", err),
-    }
 }
 
 impl PluginManager {
@@ -83,8 +109,10 @@ impl PluginManager {
             conn,
         }
     }
+}
 
-    pub fn load_plugin<P>(&mut self, filename: P) -> Result<(), Box<dyn Error>>
+impl PluginManagerBase for PluginManager {
+    fn load_plugin<P>(&mut self, filename: P) -> Result<(), Box<dyn Error>>
     where
         P: AsRef<OsStr>,
     {
@@ -120,13 +148,13 @@ impl PluginManager {
         Ok(())
     }
 
-    pub fn get_plugin_info<P>(&mut self, plugin_name: P) -> Result<(), Box<dyn Error>>
+    fn get_plugin_info<P>(&mut self, plugin_name: P) -> Result<Box<Plugin>, Box<dyn Error>>
     where
         P: AsRef<OsStr>,
     {
         debug!("Getting plugin info");
-
-        let plugin = self.conn
+        let plugin = self
+            .conn
             .as_ref()
             .ok_or("Failed to open connection")?
             .query_row(
@@ -135,37 +163,60 @@ impl PluginManager {
                 |row| {
                     Ok(Plugin {
                         name: row.get(0)?,
-                        alias: row.get::<usize, String>(1)?.split(",").map(|s| s.to_string()).collect(),
+                        alias: row
+                            .get::<usize, String>(1)?
+                            .split(",")
+                            .map(|s| s.to_string())
+                            .collect(),
                         location: row.get::<usize, String>(2)?,
                         binary: row.get(3)?,
                     })
                 },
             )?;
 
-        debug!("Plugins {plugin:?}");
-        Ok(())
+        debug!("Plugin {plugin:?}");
+        Ok(Box::from(plugin))
     }
 
-    pub fn unload(&mut self) {
+    fn unload(&mut self) {
         debug!("Unloading plugins");
+        self.plugins.clear();
+    }
 
-        // for plugin in self.plugins.drain(..) {
-        //     trace!("Running clean up for {:?}", plugin.name());
-        //     plugin.on_plugin_unload();
-        // }
-
-        // for lib in self.loaded_libraries.drain(..) {
-        //     drop(lib);
-        // }
-
-        todo!()
+    fn count(&self)  -> usize {
+        self.plugins.len()
     }
 }
 
-// impl Drop for PluginManager {
-//     fn drop(&mut self) {
-//         if !self.plugins.is_empty() || !self.loaded_libraries.is_empty() {
-//             self.unload();
-//         }
-//     }
-// }
+pub fn parse(path: &str) -> Plugin {
+    let mut config = String::new();
+    let mut file = match File::open(&path) {
+        Ok(file) => file,
+        Err(_) => {
+            return Plugin::default();
+        }
+    };
+
+    file.read_to_string(&mut config)
+        .unwrap_or_else(|err| panic!("Error while reading config: [{:#?}]", err));
+
+    debug!("Parsing config: [{config:#?}]");
+    match toml::from_str::<PluginContainer>(&config) {
+        Ok(t) => t.plugin,
+        Err(err) => panic!("Error while deserializing config: [{:#?}]", err),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse() {
+        let plugin = parse("plugins/ripgrep.toml");
+        assert_eq!(plugin.name, "ripgrep");
+        assert_eq!(plugin.alias, vec!["rg", "ripgrep"]);
+        assert_eq!(plugin.location, "github:BurntSushi/ripgrep");
+        assert_eq!(plugin.binary, Some("rg".to_string()));
+    }
+}

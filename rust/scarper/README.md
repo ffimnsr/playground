@@ -37,6 +37,14 @@ $ cargo install scarper
 
 Binary format for different OS distribution can be downloaded [here](https://github.com/ffimnsr/scarper-rs/releases).
 
+## Developing
+
+On Fedora this packages are needed as per openssl documentation to build the `openssl-sys` crate.
+
+```bash
+sudo dnf install pkgconf perl-FindBin perl-IPC-Cmd openssl-devel
+```
+
 ## What's in the Roadmap
 
 - [ ] Add custom path for the watch config file.

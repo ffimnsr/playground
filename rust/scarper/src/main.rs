@@ -1,14 +1,14 @@
 use clap::Command;
 use log::{debug, error};
-use plugin::{Plugin, PluginManager};
+use plugin::{Plugin, PluginManager, PluginManagerBase};
 use prettytable::{cell, color, format::consts, row, Attr, Cell, Row, Table};
 use serde::Deserialize;
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 use std::time::Instant;
-use walkdir::{DirEntry, WalkDir};
 use tracing_subscriber::EnvFilter;
+use walkdir::{DirEntry, WalkDir};
 
 mod errors;
 mod plugin;
@@ -27,6 +27,25 @@ fn is_not_hidden(entry: &DirEntry) -> bool {
         .to_str()
         .map(|s| entry.depth() == 0 || !s.starts_with('.'))
         .unwrap_or(false)
+}
+
+fn walk_plugins_dir(pm: &mut impl PluginManagerBase) {
+    for entry in WalkDir::new("plugins")
+        .max_depth(2)
+        .into_iter()
+        .filter_entry(|e| is_not_hidden(e))
+        .filter_map(|e| e.ok())
+        .filter(|e| !e.file_type().is_dir())
+    {
+        let filename = entry
+            .path()
+            .to_str()
+            .expect("Failed to convert path to string");
+
+        debug!("Loading plugin: {filename:?}");
+        pm.load_plugin(filename)
+            .expect(&format!("Failed to load plugin {filename:?}"));
+    }
 }
 
 #[tokio::main]
@@ -58,7 +77,6 @@ async fn main() -> Result<(), errors::GenericError> {
         .subcommand(Command::new("uninstall").about("Uninstall a package."));
 
     let matches = cli_app.get_matches();
-
     let start = Instant::now();
 
     // match matches.subcommand_name() {
@@ -73,36 +91,18 @@ async fn main() -> Result<(), errors::GenericError> {
     // }
 
     let client = reqwest::Client::builder()
-        .user_agent(
-            format!("scarper/{PKG_VERSION}").as_str()
-        )
+        .user_agent(format!("scarper/{PKG_VERSION}").as_str())
         .build()?;
+
+    let mut pm = PluginManager::new();
+
+    walk_plugins_dir(&mut pm);
+    pm.get_plugin_info("ripgrep").unwrap();
 
     // let config = parse("scarper_watch.toml");
     // let mut table = Table::new();
     // table.set_titles(row!["Package Name", "Status"]);
     // table.set_format(*consts::FORMAT_NO_LINESEP_WITH_TITLE);
-
-    let mut pm = PluginManager::new();
-
-    for entry in WalkDir::new("plugins")
-        .max_depth(2)
-        .into_iter()
-        .filter_entry(|e| is_not_hidden(e))
-        .filter_map(|e| e.ok())
-        .filter(|e| !e.file_type().is_dir())
-    {
-        let filename = entry
-            .path()
-            .to_str()
-            .expect("Failed to convert path to string");
-
-        debug!("Loading plugin: {filename:?}");
-        pm.load_plugin(filename)
-            .expect(&format!("Failed to load plugin {filename:?}"));
-    }
-
-    pm.get_plugin_info("ripgrep").unwrap();
 
     // for package in config.packages {
     //     let location = package.location.unwrap_or_else(|| "unknown".to_string());
@@ -180,4 +180,63 @@ async fn main() -> Result<(), errors::GenericError> {
     }
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use std::{error::Error, ffi::OsStr};
+    use super::*;
+
+    #[derive(Default)]
+    pub struct TestPluginManager {
+        plugins: Vec<Plugin>,
+    }
+
+    impl PluginManagerBase for TestPluginManager {
+        fn load_plugin<P>(&mut self, _: P) -> Result<(), Box<dyn Error>>
+        where
+            P: AsRef<OsStr>,
+        {
+            let plugin = Plugin::new_with_binary(
+                "ripgrep",
+                &["rg", "ripgrep"],
+                "github:BurntSushi/ripgrep",
+                "rg",
+            );
+            self.plugins.push(plugin);
+            Ok(())
+        }
+
+        fn get_plugin_info<P>(&mut self, plugin_name: P) -> Result<Box<Plugin>, Box<dyn Error>>
+        where
+            P: AsRef<OsStr>,
+        {
+            let plugin_name = plugin_name.as_ref().to_str().unwrap();
+            let plugin = self
+                .plugins
+                .iter()
+                .find(|p| p.name() == plugin_name || p.alias().contains(&plugin_name.to_string()))
+                .expect("Plugin not found");
+
+            Ok(Box::from(plugin.clone()))
+        }
+
+        fn unload(&mut self) {
+            self.plugins.clear();
+        }
+
+        fn count(&self) -> usize {
+            self.plugins.len()
+        }
+    }
+
+    #[tokio::test]
+    async fn test_walk_plugins_dir_with_one_plugin() {
+        let mut pm = TestPluginManager::default();
+        walk_plugins_dir(&mut pm);
+        let t = pm.get_plugin_info("ripgrep").unwrap();
+        assert_eq!(pm.count(), 1);
+        assert_eq!(t.name(), "ripgrep");
+        assert_eq!(t.alias(), &vec!["rg".to_string(), "ripgrep".to_string()]);
+    }
 }

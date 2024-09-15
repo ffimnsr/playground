@@ -1,0 +1,5 @@
+[plugin]
+name = "ripgrep"
+alias = ["rg", "ripgrep"]
+location = "github:BurntSushi/ripgrep"
+binary = "rg"
