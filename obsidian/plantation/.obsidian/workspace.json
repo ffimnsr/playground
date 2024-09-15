@@ -4,47 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "0d8a8d8e276264f6",
+        "id": "55acaa3320dd2b6b",
         "type": "tabs",
         "children": [
           {
-            "id": "e822da110bc027d2",
+            "id": "6504bc3a20c615d0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust Built Tools.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "56619ad72fe1cc9c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Creating patch using diff command.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4da524f3d208f1c9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Rebasing on git.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Rebasing on git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Rebasing on git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Tips/Rebasing on git.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -171,11 +138,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4da524f3d208f1c9",
+  "active": "6504bc3a20c615d0",
   "lastOpenFiles": [
-    "Tips/Creating patch using diff command.md",
-    "Tips/Rebasing on git.md",
     "Rust Built Tools.md",
+    "Tips/Creating patch using diff command.md",
+    "Tips/OpenSSH with FIDO2 or PKCS11.md",
+    "Tips/Smart card U2F authentication in Fedora.md",
+    "Tips/Smart card authentication in Fedora.md",
+    "Tips/Rebasing on git.md",
     "DevOps Tools.md",
     "Linux CLI Tools.md",
     "Tips/Manage SELinux systems.md",
@@ -197,14 +167,11 @@
     "Tips/Interview techniques.md",
     "Tips/Rust fixing ownership errors concepts.md",
     "Canvas/Local VMs Network Setup.canvas",
-    "Tips/Rust closure concepts.md",
-    "Tips/Rust sync and send traits concepts.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
     "Tips/attachments/Pasted image 20240910132920.png",
     "Tips/attachments/Pasted image 20240910132820.png",
-    "Tips/Rust deref concepts.md",
     "Tips/attachments/Pasted image 20240910104743.png",
     "Tips/attachments/Pasted image 20240910104711.png",
     "Tips/attachments/Pasted image 20240910104431.png",
