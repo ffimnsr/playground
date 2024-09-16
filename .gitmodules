@@ -17,8 +17,8 @@
 	path = rust/random-cloud-worker-rs-v1
 	url = git@github.com:ffimnsr-archive/random-cloud-worker-rs.git
 [submodule "rust/passport-rs-v1"]
-	path = rust/passport-rs-v1
-	url = git@github.com:ffimnsr-archive/passport.git
+	path = rust/passport-rs
+	url = git@github.com:ffimnsr/passport-rs.git
 [submodule "github/ffimnsr.github.io"]
 	path = github/ffimnsr.github.io
 	url = git@github.com:ffimnsr/ffimnsr.github.io.git
