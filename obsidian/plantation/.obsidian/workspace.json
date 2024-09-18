@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "55acaa3320dd2b6b",
+        "id": "5295622ecb6757ad",
         "type": "tabs",
         "children": [
           {
-            "id": "6504bc3a20c615d0",
+            "id": "55c97e50aee728ff",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Splitting subfolder out into a new repository.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Tips/Splitting subfolder out into a new repository.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,12 +138,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6504bc3a20c615d0",
+  "active": "55c97e50aee728ff",
   "lastOpenFiles": [
-    "Tips/Rust fixing ownership errors concepts.md",
-    "Tips/Splitting subfolder out into a new repository.md",
-    "Tips/Rust reference and borrowing concepts.md",
     "Rust Built Tools.md",
+    "Flatpak.md",
+    "Journald Debugging.md",
+    "Tips/Splitting subfolder out into a new repository.md",
+    "Tips/Rust fixing ownership errors concepts.md",
+    "Tips/Rust reference and borrowing concepts.md",
     "Tips/Creating patch using diff command.md",
     "Tips/OpenSSH with FIDO2 or PKCS11.md",
     "Tips/Smart card U2F authentication in Fedora.md",
@@ -172,8 +166,6 @@
     "ZSH History Expansion.md",
     "Plantation.md",
     "Tips/Install ms-edge and code on Fedora using package manger.md",
-    "Journald Debugging.md",
-    "Flatpak.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Untitled.canvas",
     "Canvas",
