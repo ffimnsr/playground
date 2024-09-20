@@ -11,8 +11,12 @@
             "id": "55c97e50aee728ff",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Tips/Git hooks.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Tips/Git hooks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Tips/Git hooks.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Tips/Git hooks.md"
+              }
             }
           }
         ]
@@ -140,6 +148,7 @@
   },
   "active": "55c97e50aee728ff",
   "lastOpenFiles": [
+    "Tips/Git hooks.md",
     "Rust Built Tools.md",
     "Flatpak.md",
     "Journald Debugging.md",
@@ -165,7 +174,6 @@
     "Tips/Change Thunderbird's default folder sort.md",
     "ZSH History Expansion.md",
     "Plantation.md",
-    "Tips/Install ms-edge and code on Fedora using package manger.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Untitled.canvas",
     "Canvas",

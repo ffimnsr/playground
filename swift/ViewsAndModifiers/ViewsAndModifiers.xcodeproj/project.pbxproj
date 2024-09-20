@@ -3,28 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		2C98E0682C9D53A200E4BC27 /* FlagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98E0672C9D539B00E4BC27 /* FlagImage.swift */; };
-		2C9FD7182C9C4B420024E345 /* GuessTheFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FD7172C9C4B420024E345 /* GuessTheFlagApp.swift */; };
-		2C9FD71A2C9C4B420024E345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FD7192C9C4B420024E345 /* ContentView.swift */; };
-		2C9FD71C2C9C4B440024E345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FD71B2C9C4B440024E345 /* Assets.xcassets */; };
-		2C9FD71F2C9C4B440024E345 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FD71E2C9C4B440024E345 /* Preview Assets.xcassets */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		2C98E0672C9D539B00E4BC27 /* FlagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImage.swift; sourceTree = "<group>"; };
-		2C9FD7142C9C4B420024E345 /* GuessTheFlag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheFlag.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C9FD7172C9C4B420024E345 /* GuessTheFlagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagApp.swift; sourceTree = "<group>"; };
-		2C9FD7192C9C4B420024E345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2C9FD71B2C9C4B440024E345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2C9FD71E2C9C4B440024E345 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2CA74EA42C9D3BBA0056A1CF /* ViewsAndModifiers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewsAndModifiers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2CA74EA62C9D3BBA0056A1CF /* ViewsAndModifiers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewsAndModifiers;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		2C9FD7112C9C4B420024E345 /* Frameworks */ = {
+		2CA74EA12C9D3BBA0056A1CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,122 +29,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C9FD70B2C9C4B420024E345 = {
+		2CA74E9B2C9D3BBA0056A1CF = {
 			isa = PBXGroup;
 			children = (
-				2C9FD7162C9C4B420024E345 /* GuessTheFlag */,
-				2C9FD7152C9C4B420024E345 /* Products */,
+				2CA74EA62C9D3BBA0056A1CF /* ViewsAndModifiers */,
+				2CA74EA52C9D3BBA0056A1CF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2C9FD7152C9C4B420024E345 /* Products */ = {
+		2CA74EA52C9D3BBA0056A1CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C9FD7142C9C4B420024E345 /* GuessTheFlag.app */,
+				2CA74EA42C9D3BBA0056A1CF /* ViewsAndModifiers.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2C9FD7162C9C4B420024E345 /* GuessTheFlag */ = {
-			isa = PBXGroup;
-			children = (
-				2C98E0672C9D539B00E4BC27 /* FlagImage.swift */,
-				2C9FD7172C9C4B420024E345 /* GuessTheFlagApp.swift */,
-				2C9FD7192C9C4B420024E345 /* ContentView.swift */,
-				2C9FD71B2C9C4B440024E345 /* Assets.xcassets */,
-				2C9FD71D2C9C4B440024E345 /* Preview Content */,
-			);
-			path = GuessTheFlag;
-			sourceTree = "<group>";
-		};
-		2C9FD71D2C9C4B440024E345 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2C9FD71E2C9C4B440024E345 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C9FD7132C9C4B420024E345 /* GuessTheFlag */ = {
+		2CA74EA32C9D3BBA0056A1CF /* ViewsAndModifiers */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C9FD7222C9C4B440024E345 /* Build configuration list for PBXNativeTarget "GuessTheFlag" */;
+			buildConfigurationList = 2CA74EB22C9D3BBC0056A1CF /* Build configuration list for PBXNativeTarget "ViewsAndModifiers" */;
 			buildPhases = (
-				2C9FD7102C9C4B420024E345 /* Sources */,
-				2C9FD7112C9C4B420024E345 /* Frameworks */,
-				2C9FD7122C9C4B420024E345 /* Resources */,
+				2CA74EA02C9D3BBA0056A1CF /* Sources */,
+				2CA74EA12C9D3BBA0056A1CF /* Frameworks */,
+				2CA74EA22C9D3BBA0056A1CF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GuessTheFlag;
-			productName = GuessTheFlag;
-			productReference = 2C9FD7142C9C4B420024E345 /* GuessTheFlag.app */;
+			fileSystemSynchronizedGroups = (
+				2CA74EA62C9D3BBA0056A1CF /* ViewsAndModifiers */,
+			);
+			name = ViewsAndModifiers;
+			packageProductDependencies = (
+			);
+			productName = ViewsAndModifiers;
+			productReference = 2CA74EA42C9D3BBA0056A1CF /* ViewsAndModifiers.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2C9FD70C2C9C4B420024E345 /* Project object */ = {
+		2CA74E9C2C9D3BBA0056A1CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					2C9FD7132C9C4B420024E345 = {
-						CreatedOnToolsVersion = 15.4;
+					2CA74EA32C9D3BBA0056A1CF = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = 2C9FD70F2C9C4B420024E345 /* Build configuration list for PBXProject "GuessTheFlag" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = 2CA74E9F2C9D3BBA0056A1CF /* Build configuration list for PBXProject "ViewsAndModifiers" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 2C9FD70B2C9C4B420024E345;
-			productRefGroup = 2C9FD7152C9C4B420024E345 /* Products */;
+			mainGroup = 2CA74E9B2C9D3BBA0056A1CF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2CA74EA52C9D3BBA0056A1CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C9FD7132C9C4B420024E345 /* GuessTheFlag */,
+				2CA74EA32C9D3BBA0056A1CF /* ViewsAndModifiers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2C9FD7122C9C4B420024E345 /* Resources */ = {
+		2CA74EA22C9D3BBA0056A1CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C9FD71F2C9C4B440024E345 /* Preview Assets.xcassets in Resources */,
-				2C9FD71C2C9C4B440024E345 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2C9FD7102C9C4B420024E345 /* Sources */ = {
+		2CA74EA02C9D3BBA0056A1CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C9FD71A2C9C4B420024E345 /* ContentView.swift in Sources */,
-				2C98E0682C9D53A200E4BC27 /* FlagImage.swift in Sources */,
-				2C9FD7182C9C4B420024E345 /* GuessTheFlagApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		2C9FD7202C9C4B440024E345 /* Debug */ = {
+		2CA74EB02C9D3BBC0056A1CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -201,7 +177,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -212,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		2C9FD7212C9C4B440024E345 /* Release */ = {
+		2CA74EB12C9D3BBC0056A1CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -258,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -268,14 +244,14 @@
 			};
 			name = Release;
 		};
-		2C9FD7232C9C4B440024E345 /* Debug */ = {
+		2CA74EB32C9D3BBC0056A1CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GuessTheFlag/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ViewsAndModifiers/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -288,7 +264,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.vastorigins.app.GuessTheFlag;
+				PRODUCT_BUNDLE_IDENTIFIER = org.vastorigins.app.ViewsAndModifiers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -296,14 +272,14 @@
 			};
 			name = Debug;
 		};
-		2C9FD7242C9C4B440024E345 /* Release */ = {
+		2CA74EB42C9D3BBC0056A1CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GuessTheFlag/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ViewsAndModifiers/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -316,7 +292,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.vastorigins.app.GuessTheFlag;
+				PRODUCT_BUNDLE_IDENTIFIER = org.vastorigins.app.ViewsAndModifiers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -327,25 +303,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C9FD70F2C9C4B420024E345 /* Build configuration list for PBXProject "GuessTheFlag" */ = {
+		2CA74E9F2C9D3BBA0056A1CF /* Build configuration list for PBXProject "ViewsAndModifiers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2C9FD7202C9C4B440024E345 /* Debug */,
-				2C9FD7212C9C4B440024E345 /* Release */,
+				2CA74EB02C9D3BBC0056A1CF /* Debug */,
+				2CA74EB12C9D3BBC0056A1CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C9FD7222C9C4B440024E345 /* Build configuration list for PBXNativeTarget "GuessTheFlag" */ = {
+		2CA74EB22C9D3BBC0056A1CF /* Build configuration list for PBXNativeTarget "ViewsAndModifiers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2C9FD7232C9C4B440024E345 /* Debug */,
-				2C9FD7242C9C4B440024E345 /* Release */,
+				2CA74EB32C9D3BBC0056A1CF /* Debug */,
+				2CA74EB42C9D3BBC0056A1CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2C9FD70C2C9C4B420024E345 /* Project object */;
+	rootObject = 2CA74E9C2C9D3BBA0056A1CF /* Project object */;
 }
