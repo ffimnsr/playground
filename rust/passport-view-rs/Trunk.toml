@@ -1,0 +1,8 @@
+[serve]
+address = "127.0.0.1"
+port = 8000
+
+[[hooks]]
+stage = "pre_build"
+command = "/Users/eabucay/.local/bin/tailwindcss"
+command_arguments = ["-i", "input.css", "-o", "app.css"]
