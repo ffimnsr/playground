@@ -1,0 +1,42 @@
+[tasks.install-target-wasm]
+command = "rustup"
+args = ["target", "add", "wasm32-unknown-unknown"]
+
+[tasks.install-trunk]
+install_crate = "trunk"
+
+[tasks.install-wasm-bindgen-cli]
+install_crate = "wasm-bindgen-cli"
+
+[tasks.install-tailwindcss-cli-arm64]
+condition_script = [
+    "test $(uname -m) = 'arm64'"
+]
+command = "curl"
+args = ["-sSL", "--create-dirs", "-o", "~/.local/bin/tailwindcss", "https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.13/tailwindcss-macos-arm64"]
+
+[tasks.install-tailwindcss-cli-x64]
+condition_script = [
+    "test $(uname -m) = 'x86_64'"
+]
+command = "curl"
+args = ["-sSL", "--create-dirs", "-o", "~/.local/bin/tailwindcss", "https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.13/tailwindcss-macos-x64"]
+
+[tasks.install-tailwindcss-cli]
+condition_script = [
+    "! test -e ~/.local/bin/tailwindcss"
+]
+dependencies = [
+    "install-tailwindcss-cli-x64",
+    "install-tailwindcss-cli-arm64",
+]
+
+[tasks.serve]
+command = "trunk"
+args = ["serve"]
+dependencies = [
+    "install-target-wasm", 
+    "install-trunk", 
+    "install-wasm-bindgen-cli", 
+    "install-tailwindcss-cli",
+]
