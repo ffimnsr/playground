@@ -59,3 +59,7 @@
 [submodule "launchpad"]
 	path = launchpad
 	url = git@github.com:ffimnsr/launchpad.git
+[submodule "machine-configs/nuc8-efi-ht-config"]
+	path = machine-configs/nuc8-efi-ht-config
+	url = git@github.com:ffimnsr/nuc8-efi-ht-config.git
+	branch = master
