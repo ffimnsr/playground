@@ -1,4 +1,3 @@
-use yew::prelude::*;
 use serde::Deserialize;
 
 #[derive(Clone, PartialEq, Deserialize)]
@@ -16,16 +15,4 @@ pub struct Job {
     pub status: Option<String>,
     pub created_at: String,
     pub updated_at: String,
-}
-
-#[derive(PartialEq, Properties)]
-pub struct JobsListProps {
-    pub jobs: Vec<Job>,
-}
-
-#[function_component(JobsList)]
-pub fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
-    jobs.iter().map(|job| html! {
-        <p key={job.id}>{format!("{}: {}", job.title, job.description)}</p>
-    }).collect()
 }

@@ -9,27 +9,18 @@ install_crate = "trunk"
 install_crate = "wasm-bindgen-cli"
 
 [tasks.install-tailwindcss-cli-arm64]
-condition_script = [
-    "test $(uname -m) = 'arm64'"
-]
+condition_script = ["test $(uname -m) = 'arm64'"]
 command = "curl"
-args = ["-sSL", "--create-dirs", "-o", "~/.local/bin/tailwindcss", "https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.13/tailwindcss-macos-arm64"]
+args = ["-sSL", "--create-dirs", "-o", "${HOME}/.local/bin/tailwindcss", "https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.13/tailwindcss-macos-arm64"]
 
 [tasks.install-tailwindcss-cli-x64]
-condition_script = [
-    "test $(uname -m) = 'x86_64'"
-]
+condition_script = ["test $(uname -m) = 'x86_64'"]
 command = "curl"
-args = ["-sSL", "--create-dirs", "-o", "~/.local/bin/tailwindcss", "https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.13/tailwindcss-macos-x64"]
+args = ["-sSL", "--create-dirs", "-o", "${HOME}/.local/bin/tailwindcss", "https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.13/tailwindcss-macos-x64"]
 
 [tasks.install-tailwindcss-cli]
-condition_script = [
-    "! test -e ~/.local/bin/tailwindcss"
-]
-dependencies = [
-    "install-tailwindcss-cli-x64",
-    "install-tailwindcss-cli-arm64",
-]
+condition_script = ["test ! -e ${HOME}/.local/bin/tailwindcss"]
+run_task = { name = ["install-tailwindcss-cli-x64", "install-tailwindcss-cli-arm64"], condition = { platforms = ["mac"] }, parallel = true }
 
 [tasks.serve]
 command = "trunk"

@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "5295622ecb6757ad",
+        "id": "3cdc51d5fbca9278",
         "type": "tabs",
         "children": [
           {
-            "id": "55c97e50aee728ff",
+            "id": "7a7935178a504bbd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tips/Git hooks.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Git hooks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Git hooks.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Tips/Git hooks.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,8 +138,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "55c97e50aee728ff",
+  "active": "7a7935178a504bbd",
   "lastOpenFiles": [
+    "Tips/Git hooks.md",
     "Flatpak.md",
     "ZSH History Expansion.md",
     "Plantation.md",
@@ -168,7 +161,6 @@
     "Tips/OpenSSH with FIDO2 or PKCS11.md",
     "Tips/Rebasing on git.md",
     "Tips/Smart card U2F authentication in Fedora.md",
-    "Tips/Git hooks.md",
     "Tips/Splitting subfolder out into a new repository.md",
     "Tips/Rust fixing ownership errors concepts.md",
     "Tips/Rust reference and borrowing concepts.md",
