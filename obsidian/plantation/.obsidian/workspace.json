@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3cdc51d5fbca9278",
+        "id": "6783356898cf3cf2",
         "type": "tabs",
         "children": [
           {
-            "id": "7a7935178a504bbd",
+            "id": "9d417e0b6b0d91a8",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -138,8 +138,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7a7935178a504bbd",
+  "active": "9d417e0b6b0d91a8",
   "lastOpenFiles": [
+    "Notes/IBC Protocol.md",
+    "Notes/attachments/Pasted image 20240928223900.png",
+    "Notes/attachments",
+    "Notes",
     "Tips/Git hooks.md",
     "Flatpak.md",
     "ZSH History Expansion.md",
@@ -164,8 +168,6 @@
     "Tips/Splitting subfolder out into a new repository.md",
     "Tips/Rust fixing ownership errors concepts.md",
     "Tips/Rust reference and borrowing concepts.md",
-    "Tips/Smart card authentication in Fedora.md",
-    "DevOps Tools.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Untitled.canvas",
     "Canvas",
@@ -179,7 +181,6 @@
     "Tips/attachments/Pasted image 20240910103007.png",
     "Tips/attachments/Pasted image 20240910102826.png",
     "Tips/attachments/Pasted image 20240910102734.png",
-    "Tips/attachments/Pasted image 20240910102444.png",
     "Knowledgebase/Rust",
     "Knowledgebase",
     "Homebrew",
