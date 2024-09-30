@@ -1,4 +1,16 @@
 {
+    "New Yew function component with no args": {
+        "prefix": "yewfc0",
+        "body": [
+            "#[function_component]",
+            "pub fn $1() -> Html {",
+            "    html! {",
+            "        <${2:div}>$0</${2}>",
+            "    }",
+            "}"
+        ],
+        "description": "Create a minimal Yew function component with no arguments"
+    },    
     "New Yew function component": {
         "prefix": "yewfc",
         "body": [

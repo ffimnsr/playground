@@ -693,6 +693,7 @@ name = "passport-view-rs"
 version = "0.1.0"
 dependencies = [
  "gloo-net 0.2.6",
+ "gloo-storage 0.3.0",
  "serde",
  "serde_json",
  "wasm-bindgen-futures",
