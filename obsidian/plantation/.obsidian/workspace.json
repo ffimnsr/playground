@@ -11,8 +11,12 @@
             "id": "9d417e0b6b0d91a8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Tips/Big O - the time complexity chart.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Tips/Big O - the time complexity chart.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Tips/Big O - the time complexity chart.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Tips/Big O - the time complexity chart.md"
+              }
             }
           }
         ]
@@ -140,6 +148,14 @@
   },
   "active": "9d417e0b6b0d91a8",
   "lastOpenFiles": [
+    "Tips/attachments/Pasted image 20240828224706.png",
+    "Tips/attachments/Pasted image 20240909222126.png",
+    "Tips/attachments/Pasted image 20240930203549.png",
+    "Tips/attachments/Pasted image 20240930203405.png",
+    "Tips/attachments/Pasted image 20240930203241.png",
+    "Tips/attachments/Pasted image 20240910132920.png",
+    "Tips/Big O - the time complexity chart.md",
+    "Tips/attachments/Pasted image 20240930203123.png",
     "Notes/IBC Protocol.md",
     "Notes/attachments/Pasted image 20240928223900.png",
     "Notes/attachments",
@@ -167,20 +183,13 @@
     "Tips/Smart card U2F authentication in Fedora.md",
     "Tips/Splitting subfolder out into a new repository.md",
     "Tips/Rust fixing ownership errors concepts.md",
-    "Tips/Rust reference and borrowing concepts.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
-    "Tips/attachments/Pasted image 20240910132920.png",
     "Tips/attachments/Pasted image 20240910132820.png",
     "Tips/attachments/Pasted image 20240910104743.png",
     "Tips/attachments/Pasted image 20240910104711.png",
-    "Tips/attachments/Pasted image 20240910104431.png",
-    "Tips/attachments/Pasted image 20240910104315.png",
-    "Tips/attachments/Pasted image 20240910103007.png",
-    "Tips/attachments/Pasted image 20240910102826.png",
-    "Tips/attachments/Pasted image 20240910102734.png",
     "Knowledgebase/Rust",
     "Knowledgebase",
     "Homebrew",
