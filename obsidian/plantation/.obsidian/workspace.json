@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/All about git hooks.md",
+                "file": "Tips/Zero-knowledge proofs (ZKP).md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/All about git hooks.md",
+                "file": "Tips/Zero-knowledge proofs (ZKP).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/All about git hooks.md",
+                "file": "Tips/Zero-knowledge proofs (ZKP).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/All about git hooks.md"
+                "file": "Tips/Zero-knowledge proofs (ZKP).md"
               }
             }
           }
@@ -148,6 +148,10 @@
   },
   "active": "d94985d5c85275fd",
   "lastOpenFiles": [
+    "Tips/Rebasing on git.md",
+    "Tips/Zero-knowledge proofs (ZKP).md",
+    "Tips/Implementing blockchain-based voting system.md",
+    "Tips/All about git hooks.md",
     "Tips/Big O - the time complexity chart.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Tips/attachments/Pasted image 20240828224706.png",
@@ -161,7 +165,6 @@
     "Notes/attachments/Pasted image 20240928223900.png",
     "Notes/attachments",
     "Notes",
-    "Tips/All about git hooks.md",
     "Flatpak.md",
     "ZSH History Expansion.md",
     "Plantation.md",
@@ -180,10 +183,8 @@
     "Tips/Creating patch using diff command.md",
     "Tips/Install ms-edge and code on Fedora using package manger.md",
     "Tips/OpenSSH with FIDO2 or PKCS11.md",
-    "Tips/Rebasing on git.md",
     "Tips/Smart card U2F authentication in Fedora.md",
     "Tips/Splitting subfolder out into a new repository.md",
-    "Tips/Rust fixing ownership errors concepts.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
