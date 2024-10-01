@@ -1,0 +1,6 @@
+[package]
+name = "block_the_fire"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
