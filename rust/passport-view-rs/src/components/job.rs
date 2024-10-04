@@ -4,6 +4,8 @@ use gloo_net::http::Request;
 use crate::model::Job;
 use crate::route::JobsRoute;
 
+const BACKEND: Option<&str> = option_env!("BACKEND");
+
 fn title_case(input: &str) -> String {
     input.split_whitespace()
         .map(|word| {
@@ -86,7 +88,9 @@ pub fn jobs_view_heading() -> Html {
 #[function_component(JobsView)]
 pub fn jobs_view() -> HtmlResult {
     let jobs = use_future(|| async {
-        Request::get("http://localhost:5000/jobs")
+        let base_url = BACKEND.expect("BACKEND environment variable not set");
+        let url: String = format!("{base_url}/jobs",);
+        Request::get(&url)
             .send()
             .await?
             .json::<Vec<Job>>()
@@ -143,7 +147,8 @@ pub struct JobDetailViewProps {
 pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
     let job_id = props.job_id;
     let jobs = use_future(move || async move {
-        let url = format!("http://localhost:5000/jobs/{}", &job_id);
+        let base_url = BACKEND.expect("BACKEND environment variable not set");
+        let url: String = format!("{}/jobs/{}", base_url, &job_id);
         Request::get(&url)
             .send()
             .await?

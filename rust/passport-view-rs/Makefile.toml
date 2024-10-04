@@ -1,3 +1,9 @@
+env_files = [
+    { path = "./.env", profile = "development" },
+    { path = "./.env.staging", profile = "staging" },
+    { path = "./.env.production", profile = "production" },
+]
+
 [tasks.install-target-wasm]
 command = "rustup"
 args = ["target", "add", "wasm32-unknown-unknown"]

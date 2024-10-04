@@ -58,8 +58,13 @@
 	- Requires mapping using this tool:
 		- https://github.com/USBToolBox/tool
 	- https://github.com/USBToolBox/kext
-
-
+- To download latest rolling release for all kexts:
+	- https://dortania.github.io/builds
+#### Installing macOS 15 Sequoia
+1. (Optional) I didn't do this but setting SMBIOS to iMac19,1 then revert to old SMBIOS.
+2. Download latest RestrictEvents.kext and use it with the boot argument `revpatch=sbvmm`.
+3. Disable BluetoolFixup.kext while updating.
+4. This is what works for me, running this command to check and install latest OS update: `sudo softwareupdate -i -a -R`.
 #### To make Bluetooth work on macOS Monterey and newer
 1. Install *IntelBTPatcher.kext* (depends on **Lilu**).
 2. From the same bundle add *IntelBluetoothFirmware.kext*.
