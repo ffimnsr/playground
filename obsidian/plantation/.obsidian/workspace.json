@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "ee34d1582bea4c4e",
+        "id": "9f5893f25d98ef36",
         "type": "tabs",
         "children": [
           {
-            "id": "d94985d5c85275fd",
+            "id": "06f2fdda0fa12de1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Zero-knowledge proofs (ZKP).md",
+                "file": "ZSH History Expansion.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Zero-knowledge proofs (ZKP).md",
+                "file": "ZSH History Expansion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Zero-knowledge proofs (ZKP).md",
+                "file": "ZSH History Expansion.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Zero-knowledge proofs (ZKP).md"
+                "file": "ZSH History Expansion.md"
               }
             }
           }
@@ -146,10 +146,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d94985d5c85275fd",
+  "active": "06f2fdda0fa12de1",
   "lastOpenFiles": [
-    "Tips/Rebasing on git.md",
+    "ZSH History Expansion.md",
     "Tips/Zero-knowledge proofs (ZKP).md",
+    "Tips/Rebasing on git.md",
     "Tips/Implementing blockchain-based voting system.md",
     "Tips/All about git hooks.md",
     "Tips/Big O - the time complexity chart.md",
@@ -166,7 +167,6 @@
     "Notes/attachments",
     "Notes",
     "Flatpak.md",
-    "ZSH History Expansion.md",
     "Plantation.md",
     "Linux CLI Tools.md",
     "Rust Built Tools.md",
