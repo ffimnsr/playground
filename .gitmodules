@@ -1,6 +1,7 @@
 [submodule "fedora-pkgs"]
 	path = fedora-pkgs
 	url = git@github.com:ffimnsr/launchpad-fedora-pkgs.git
+	branch = main
 [submodule "rust/nft-scraper"]
 	path = rust/nft-scraper-rs-v1
 	url = git@github.com:ffimnsr-archive/nft-scraper.git
@@ -23,42 +24,55 @@
 [submodule "github/ffimnsr.github.io"]
 	path = github/ffimnsr.github.io
 	url = git@github.com:ffimnsr/ffimnsr.github.io.git
+	branch = main
 [submodule "github/ffimnsr"]
 	path = github/ffimnsr
 	url = git@github.com:ffimnsr/ffimnsr.git
+	branch = main
 [submodule "github/curriculum-vitae"]
 	path = github/curriculum-vitae
 	url = git@github.com:ffimnsr/curriculum-vitae.git
+	branch = main
 [submodule "rust/solana-e-rs"]
 	path = rust/solana-e-rs
 	url = git@github.com:ffimnsr/solana-e-rs.git
+	branch = master
 [submodule "rust/firefly-tg-bot-rs"]
 	path = rust/firefly-tg-bot-rs
 	url = git@github.com:ffimnsr/firefly-tg-bot-rs.git
+	branch = master
 [submodule "rust/midas-rs"]
 	path = rust/midas-rs
 	url = git@github.com:ffimnsr/midas-rs.git
+	branch = master
 [submodule "dotfiles"]
 	path = dotfiles
 	url = git@github.com:ffimnsr/dotfiles.git
+	branch = main
 [submodule "typescript/stock-oracle-ts"]
 	path = typescript/stock-oracle-ts
 	url = git@github.com:ffimnsr/stock-oracle-ts.git
+	branch = master
 [submodule "typescript/qrscp-js"]
 	path = typescript/qrscp-js
 	url = git@github.com:ffimnsr/qrscp-js.git
+	branch = master
 [submodule "rust/haya-rs"]
 	path = rust/haya-rs
 	url = git@github.com:ffimnsr/haya-rs.git
+	branch = master
 [submodule "containers/worker-bee"]
 	path = containers/worker-bee
 	url = git@github.com:ffimnsr/worker-bee.git
+	branch = main
 [submodule "containers/jmail"]
 	path = containers/jmail
 	url = git@github.com:ffimnsr/jmail.git
+	branch = main
 [submodule "launchpad"]
 	path = launchpad
 	url = git@github.com:ffimnsr/launchpad.git
+	branch = main
 [submodule "machine-configs/nuc8-efi-ht-config"]
 	path = machine-configs/nuc8-efi-ht-config
 	url = git@github.com:ffimnsr/nuc8-efi-ht-config.git
