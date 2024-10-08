@@ -8,8 +8,10 @@ yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
 yew-router = { git = "https://github.com/yewstack/yew.git" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
 gloo-net = "0.2"
 gloo-storage = "0.3"
+gloo-utils = "0.2"
 wasm-bindgen-futures = "0.4"
 
 [profile.release]

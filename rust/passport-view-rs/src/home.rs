@@ -18,6 +18,7 @@ pub fn home() -> Html {
     let fallback = html! {<JobsViewLoading />};
     html! {
         <div class={classes!("flex", "flex-col", "min-h-screen", dark_mode_active_class)}>
+            <div id="modal_host"></div>
             <Header is_dark={dark_mode_active} onclick_dark_mode_button={toggle_dark_mode} />
             <div class="bg-gray-100 dark:invert flex-grow">
                 <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">

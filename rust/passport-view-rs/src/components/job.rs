@@ -1,13 +1,17 @@
-use yew_router::prelude::*;
-use yew::{prelude::*, suspense::use_future};
-use gloo_net::http::Request;
 use crate::model::Job;
 use crate::route::JobsRoute;
+use chrono::DateTime;
+use gloo_net::http::Request;
+use serde::Deserialize;
+use yew::{prelude::*, suspense::use_future};
+use yew_router::prelude::*;
+use super::Modal;
 
 const BACKEND: Option<&str> = option_env!("BACKEND");
 
 fn title_case(input: &str) -> String {
-    input.split_whitespace()
+    input
+        .split_whitespace()
         .map(|word| {
             let mut chars = word.chars();
             match chars.next() {
@@ -19,6 +23,11 @@ fn title_case(input: &str) -> String {
         .join(" ")
 }
 
+#[derive(Clone, PartialEq, Deserialize)]
+pub struct JobContainer {
+    pub jobs: Vec<Job>,
+}
+
 #[derive(PartialEq, Properties)]
 struct JobsListProps {
     pub jobs: Vec<Job>,
@@ -26,6 +35,7 @@ struct JobsListProps {
 
 #[function_component(JobsList)]
 fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
+    let jobs_len = jobs.len();
     let posts = jobs.iter().map(|job| html! {
         <li key={job.id}>
             <Link<JobsRoute> to={JobsRoute::JobDetail { job_id: job.id }}>
@@ -58,27 +68,101 @@ fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
     }).collect::<Vec<_>>();
 
     html! {
-        <ul role="list" class="divide-y divide-gray-200">
-            {for posts}
-        </ul>
+        if jobs_len > 0 {
+            <ul role="list" class="divide-y divide-gray-200">
+                {for posts}
+            </ul>
+        } else {
+            <div class="p-10 text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-gray-900">{"No jobs found"}</h3>
+                <p class="mt-1 text-sm text-gray-500">{"Get started by creating a new job post."}</p>
+                <div class="mt-6">
+                    <a href="https://t.me/osslocal"
+                        type="button"
+                        class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                            data-slot="icon">
+                            <path
+                                d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                        </svg>
+                        {"New Job Post"}
+                    </a>
+                </div>
+            </div>
+        }
+    }
+}
+
+#[derive(Debug, PartialEq, Properties)]
+pub struct JobsSearchModalProps {
+    pub onclick_modal_show_button: Callback<MouseEvent>,
+}
+
+#[function_component(JobsSearchModal)]
+pub fn jobs_search_modal(props: &JobsSearchModalProps) -> Html {
+    html! {
+        <Modal>
+            <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <div class="fixed inset-0 z-10 w-screen overflow-y-auto dark:invert">
+                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                            <div>
+                                <label for="search" class="block text-sm font-medium leading-6 text-gray-900">{"Quick search"}</label>
+                                <div class="relative mt-2 flex items-center">
+                                    <input
+                                        type="text"
+                                        name="search" 
+                                        id="search"
+                                        class="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                    <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                        <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-400">{"⌘K"}</kbd>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+                                <button onclick={props.onclick_modal_show_button.clone()} type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 sm:col-start-2">
+                                    {"Search"}
+                                </button>
+                                <button onclick={props.onclick_modal_show_button.clone()} type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0">
+                                    {"Cancel"}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Modal>
     }
 }
 
 #[function_component(JobsViewHeading)]
 pub fn jobs_view_heading() -> Html {
+    let modal_show = use_state(|| false);
+    let toggle_modal_show = {
+        let modal_show = modal_show.clone();
+        Callback::from(move |_: MouseEvent| modal_show.set(!*modal_show))
+    };
+
     html! {
         <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
             <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
                 <div class="ml-4 mt-4">
                     <h3 class="text-base font-semibold leading-6 text-gray-900">{"Job Postings"}</h3>
                     <p class="mt-1 text-sm text-gray-500">
-                        {"Find your next career opportunity with us!"}
+                        {"Find your next remote career opportunity with us!"}
                     </p>
                 </div>
                 <div class="ml-4 mt-4 flex-shrink-0">
-                    <button type="button" class="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    <button onclick={toggle_modal_show.clone()} type="button" class="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         {"Search Job"}
                     </button>
+                    if *modal_show {
+                        <JobsSearchModal onclick_modal_show_button={toggle_modal_show} />
+                    }
                 </div>
             </div>
         </div>
@@ -93,16 +177,20 @@ pub fn jobs_view() -> HtmlResult {
         Request::get(&url)
             .send()
             .await?
-            .json::<Vec<Job>>()
+            .json::<JobContainer>()
             .await
     })?;
 
-    let jobs = jobs.as_ref().unwrap();
+    let jobs = jobs.as_ref().ok();
+    let jobs = jobs
+        .unwrap_or(&JobContainer { jobs: vec![] })
+        .jobs
+        .clone();
 
     Ok(html! {
         <div class="overflow-hidden bg-white sm:rounded-lg sm:shadow">
             <JobsViewHeading />
-            <JobsList jobs={(*jobs).clone()} />
+            <JobsList jobs={jobs} />
         </div>
     })
 }
@@ -149,11 +237,7 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
     let jobs = use_future(move || async move {
         let base_url = BACKEND.expect("BACKEND environment variable not set");
         let url: String = format!("{}/jobs/{}", base_url, &job_id);
-        Request::get(&url)
-            .send()
-            .await?
-            .json::<Job>()
-            .await
+        Request::get(&url).send().await?.json::<Job>().await
     })?;
 
     let job = jobs.as_ref().unwrap();
@@ -171,6 +255,9 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
         // updated_at,
         ..
     } = job.clone();
+    let dt = DateTime::parse_from_rfc3339(&created_at).unwrap();
+    let created_at = dt.format("%Y-%m-%d").to_string();
+
     let experience_level = match experience_level {
         Some(experience_level) => html! {
             <span class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
@@ -194,7 +281,7 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
                 {work_type.to_uppercase()}
             </span>
         },
-        _ => html!{
+        _ => html! {
             {"Not Specified"}
         },
     };
