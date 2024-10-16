@@ -1,5 +1,6 @@
 use crate::model::Job;
-use crate::route::JobsRoute;
+use crate::markdown;
+use crate::route::{Route, JobsRoute};
 use chrono::DateTime;
 use gloo_net::http::Request;
 use serde::Deserialize;
@@ -37,8 +38,8 @@ struct JobsListProps {
 fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
     let jobs_len = jobs.len();
     let posts = jobs.iter().map(|job| html! {
-        <li key={job.id}>
-            <Link<JobsRoute> to={JobsRoute::JobDetail { job_id: job.id }}>
+        <li key={job.id.clone()}>
+            <Link<JobsRoute> to={JobsRoute::JobDetail { job_id: job.id.clone() }}>
                 <div class="px-4 py-4 sm:px-6">
                     <div class="flex items-center justify-between">
                         <div class="truncate text-sm font-medium text-indigo-600">{title_case(&job.title.clone())}</div>
@@ -228,37 +229,38 @@ pub fn jobs_view_loading() -> Html {
 
 #[derive(PartialEq, Properties)]
 pub struct JobDetailViewProps {
-    pub job_id: i32,
+    pub job_id: String,
 }
 
 #[function_component(JobDetailView)]
 pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
-    let job_id = props.job_id;
+    let job_id = props.job_id.clone();
     let jobs = use_future(move || async move {
         let base_url = BACKEND.expect("BACKEND environment variable not set");
         let url: String = format!("{}/jobs/{}", base_url, &job_id);
         Request::get(&url).send().await?.json::<Job>().await
     })?;
 
-    let job = jobs.as_ref().unwrap();
+    let job = jobs.as_ref();
+    if job.is_err() {
+        return Ok(html! {
+            <Redirect<Route> to={Route::NotFound} />
+        });
+    }
+    let job = job.unwrap();
     let Job {
         title,
         description,
-        experience_level,
-        // salary_upper_limit,
-        // salary_lower_limit,
-        // salary_currency,
-        // salary_timeframe,
-        work_type,
+        work_experience_level,
+        work_contract_type,
         has_timetracker,
         created_at,
-        // updated_at,
         ..
     } = job.clone();
     let dt = DateTime::parse_from_rfc3339(&created_at).unwrap();
     let created_at = dt.format("%Y-%m-%d").to_string();
 
-    let experience_level = match experience_level {
+    let experience_level = match work_experience_level {
         Some(experience_level) => html! {
             <span class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
                 <svg class="h-1.5 w-1.5 fill-gray-400" viewBox="0 0 6 6" aria-hidden="true">
@@ -272,7 +274,7 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
         },
     };
 
-    let work_type = match work_type {
+    let work_type = match work_contract_type {
         Some(work_type) => html! {
             <span class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
                 <svg class="h-1.5 w-1.5 fill-gray-400" viewBox="0 0 6 6" aria-hidden="true">
@@ -285,8 +287,9 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
             {"Not Specified"}
         },
     };
+
     let has_timetracker = match has_timetracker {
-        Some(true) => html! {
+        true => html! {
             <span class="inline-flex items-center gap-x-1.5 rounded-md dark:invert dark:text-white bg-green-400 px-2 py-1 text-xs font-medium text-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                     <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
@@ -294,7 +297,7 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
                 {" YES"}
             </span>
         },
-        _ => html! {
+        false => html! {
             <span class="inline-flex items-center gap-x-1.5 rounded-md dark:invert dark:text-white bg-red-400 px-2 py-1 text-xs font-medium text-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                     <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
@@ -304,55 +307,97 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
         },
     };
 
+    // let description = description.as_str();
+    let markdown_input = concat!(
+        "# My Heading\n",
+        "\n",
+        "My paragraph.\n",
+        "\n",
+        "* a\n",
+        "* b\n",
+        "* c\n",
+        "\n",
+        "1. d\n",
+        "2. e\n",
+        "3. f\n",
+        "\n",
+        "> my block quote\n",
+        "\n",
+        "```\n",
+        "my code block\n",
+        "```\n",
+        "\n",
+        "*emphasis*\n",
+        "**strong**\n",
+        "~~strikethrough~~\n",
+        "[My Link](http://example.com)\n",
+        "![My Image](http://example.com/image.jpg)\n",
+        "\n",
+        "| a | b |\n",
+        "| - | - |\n",
+        "| c | d |\n",
+        "\n",
+        "hello[^1]\n",
+        "[^1]: my footnote\n",
+    );
+
+    let description = html! {
+        markdown::render_markdown(markdown_input)
+    };
+
     Ok(html! {
-        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-            <div class="px-4 py-6 sm:px-6">
-                <h3 class="text-base font-semibold leading-7 text-gray-900">{"Job Information"}</h3>
-                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">{"Job description and role information."}</p>
+        <>
+            <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+                <div class="px-4 py-6 sm:px-6">
+                    <h3 class="text-base font-semibold leading-7 text-gray-900">{"Job Information"}</h3>
+                    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">{"Job description and role information."}</p>
+                </div>
+                <div class="border-t border-gray-100">
+                    <dl class="divide-y divide-gray-100">
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Job title"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{title_case(&title)}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Company name"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{"Margot Foster"}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Experience level"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{experience_level}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Work type"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{work_type}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Salary range"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{"USD 120,000 - 140,000"}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Uses timetracker?"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{has_timetracker}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Resource person"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{"margotfoster@example.com"}</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">{"Post date"}</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{created_at}</dd>
+                        </div>
+                    </dl>
+                </div>
             </div>
-            <div class="border-t border-gray-100">
-                <dl class="divide-y divide-gray-100">
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Job title"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{title_case(&title)}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Company name"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{"Margot Foster"}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Experience level"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{experience_level}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Work type"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{work_type}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Salary range"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{"USD 120,000 - 140,000"}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Description"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            {description}
-                        </dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Uses timetracker?"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{has_timetracker}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Resource person"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{"margotfoster@example.com"}</dd>
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-900">{"Post date"}</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{created_at}</dd>
-                    </div>
-                </dl>
+            <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow mt-4">
+                <div class="px-4 py-6 sm:px-6">
+                    <h3 class="text-base font-semibold leading-7 text-gray-900">{"Job Description"}</h3>
+                </div>
+                <div class="px-4 py-6 sm:p-6">
+                    {description}
+                </div>
             </div>
-        </div>
+        </>
     })
 }
 

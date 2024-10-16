@@ -18,7 +18,7 @@ pub enum Route {
 #[derive(Clone, Routable, PartialEq)]
 pub enum JobsRoute {
     #[at("/jobs/:job_id")]
-    JobDetail { job_id: i32 },
+    JobDetail { job_id: String },
     #[not_found]
     #[at("/jobs/404")]
     NotFound,    

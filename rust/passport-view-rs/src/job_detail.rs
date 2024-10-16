@@ -4,7 +4,7 @@ use crate::theme::{Theme, ThemeContext};
 
 #[derive(Debug, PartialEq, Properties)]
 pub struct JobDetailProps {
-    pub job_id: i32,
+    pub job_id: String,
 }
 
 #[function_component(JobDetail)]
@@ -20,7 +20,7 @@ pub fn job_detail(props: &JobDetailProps) -> Html {
         })
     };
 
-    let job_id = props.job_id;
+    let job_id = props.job_id.clone();
     let fallback = html! {<JobDetailViewLoading />};
 
     html! {

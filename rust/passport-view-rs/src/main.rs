@@ -7,6 +7,7 @@ mod components;
 mod home;
 mod job_detail;
 mod model;
+mod markdown;
 mod not_found;
 mod route;
 mod theme;

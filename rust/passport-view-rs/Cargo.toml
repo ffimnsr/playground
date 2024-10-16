@@ -13,6 +13,8 @@ gloo-net = "0.2"
 gloo-storage = "0.3"
 gloo-utils = "0.2"
 wasm-bindgen-futures = "0.4"
+pulldown-cmark = { version = "0.12", default-features = false }
+gloo-console = "0.3"
 
 [profile.release]
 # less code to include into binary
