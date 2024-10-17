@@ -1,6 +1,6 @@
 /// Original author of this code is [Nathan Ringo](https://github.com/remexre)
 /// Source: https://github.com/acmumn/mentoring/blob/master/web-client/src/view/markdown.rs
-use pulldown_cmark::{Alignment, CodeBlockKind, Event, Options, Parser, Tag, TagEnd};
+use pulldown_cmark::{Alignment, CodeBlockKind, Event, HeadingLevel, Options, Parser, Tag, TagEnd};
 use yew::virtual_dom::{VNode, VTag, VText};
 use yew::Html;
 
@@ -71,15 +71,26 @@ impl TagWriter {
 
     fn start_tag(&mut self, tag: Tag) {
         let wrapper = match tag {
-            Tag::Paragraph => VTag::new("p"),
+            Tag::Paragraph => {
+                let mut el = VTag::new("p");
+                el.add_attribute("class", "mb-2");
+                el
+            }
             Tag::Heading { level, .. } => {
                 let mut el = VTag::new(level.to_string());
-                el.add_attribute("class", "text-3xl");
+                match level {
+                    HeadingLevel::H1 => el.add_attribute("class", "mb-4 text-5xl font-extrabold"),
+                    HeadingLevel::H2 => el.add_attribute("class", "mb-4 text-4xl font-bold"),
+                    HeadingLevel::H3 => el.add_attribute("class", "mb-4 text-3xl font-bold"),
+                    HeadingLevel::H4 => el.add_attribute("class", "mb-4 text-2xl font-bold"),
+                    HeadingLevel::H5 => el.add_attribute("class", "mb-2 text-xl font-bold"),
+                    HeadingLevel::H6 => el.add_attribute("class", "mb-2 text-lg font-bold"),
+                }
                 el
             },
             Tag::BlockQuote(_) => {
                 let mut el = VTag::new("blockquote");
-                el.add_attribute("class", "blockquote");
+                el.add_attribute("class", "p-4 my-4 border-s-4 border-gray-300 bg-gray-50");
                 el
             }
             Tag::CodeBlock(code_block_kind) => {
@@ -102,10 +113,19 @@ impl TagWriter {
 
                 el
             }
-            Tag::List(None) => VTag::new("ul"),
-            Tag::List(Some(1)) => VTag::new("ol"),
+            Tag::List(None) => {
+                let mut el = VTag::new("ul");
+                el.add_attribute("class", "list-inside list-disc");
+                el
+            }
+            Tag::List(Some(1)) => {
+                let mut el = VTag::new("ol");
+                el.add_attribute("class", "list-inside list-decimal");
+                el
+            }
             Tag::List(Some(ref start)) => {
                 let mut el = VTag::new("ol");
+                el.add_attribute("class", "list-inside list-decimal");
                 el.add_attribute("start", start.to_string());
                 el
             }
@@ -113,14 +133,16 @@ impl TagWriter {
             Tag::Table(alignment) => {
                 self.open_table_ctx(alignment);
                 let mut el = VTag::new("table");
-                el.add_attribute("class", "table");
+                el.add_attribute("class", "w-full my-4 text-sm text-left text-gray-500");
                 el
             }
             Tag::TableHead => {
                 let ctx = self.get_table_ctx();
                 ctx.next_cell_index = 0;
                 ctx.in_head = true;
-                self.spine.push(VTag::new("thead"));
+                let mut th = VTag::new("thead");
+                th.add_attribute("class", "text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-200 dark:text-gray-400");
+                self.spine.push(th);
                 VTag::new("tr")
             }
             Tag::TableRow => {
@@ -130,7 +152,9 @@ impl TagWriter {
                     ctx.has_body = true;
                     self.spine.push(VTag::new("tbody"));
                 }
-                VTag::new("tr")
+                let mut tr = VTag::new("tr");
+                tr.add_attribute("class", "bg-white border-b dark:bg-gray-300 dark:border-gray-200");
+                tr
             }
             Tag::TableCell => {
                 let ctx = self.get_table_ctx();
@@ -139,10 +163,13 @@ impl TagWriter {
 
                 let mut tag = if ctx.in_head {
                     let mut th = VTag::new("th");
+                    th.add_attribute("class", "px-6 py-3");
                     th.add_attribute("scope", "col");
                     th
                 } else {
-                    VTag::new("td")
+                    let mut td = VTag::new("td");
+                    td.add_attribute("class", "px-6 py-4");
+                    td
                 };
                 match &ctx.alignment[idx] {
                     Alignment::None => {}
@@ -174,8 +201,9 @@ impl TagWriter {
                 link_type: _,
                 id: _,
             } => {
-                let mut el = VTag::new("a");
+                let mut el = VTag::new("span");
                 el.add_attribute("href", dest_url.to_string());
+                el.add_attribute("class", "font-medium text-blue-600 dark:text-blue-500 hover:underline");
                 let title = title.clone().into_string();
                 if !title.is_empty() {
                     el.add_attribute("title", title);
@@ -190,6 +218,7 @@ impl TagWriter {
             } => {
                 let mut el = VTag::new("img");
                 el.add_attribute("src", dest_url.to_string());
+                el.add_attribute("class", "h-auto my-4 max-w-full rounded-lg");
                 let title = title.clone().into_string();
                 if !title.is_empty() {
                     el.add_attribute("title", title);
@@ -237,10 +266,14 @@ impl TagWriter {
             Event::Start(tag) => self.start_tag(tag),
             Event::End(tag) => self.end_tag(tag),
             Event::Text(text) => self.add_child(VText::new(text.to_string()).into()),
-            Event::Rule => self.add_child(VTag::new("hr").into()),
+            Event::Rule => {
+                let mut hr = VTag::new("hr");
+                hr.add_attribute("class", "w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-200");
+                self.add_child(hr.into())
+            }
             Event::SoftBreak => self.add_child(VText::new("\n").into()),
             Event::HardBreak => self.add_child(VTag::new("br").into()),
-            _ => gloo_console::log!(format!("Unhandled event: {ev:#?}")),
+            _ => {},
         };
     }
 }
@@ -259,4 +292,53 @@ pub fn render_markdown(src: &str) -> Html {
     }
 
     writer.finish()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_render_markdown() {
+        let markdown_input = concat!(
+            "# My Heading\n",
+            "## My Heading\n",
+            "### My Heading\n",
+            "\n",
+            "My paragraph.\n",
+            "\n",
+            "* a\n",
+            "* b\n",
+            "* c\n",
+            "\n",
+            "1. d\n",
+            "2. e\n",
+            "3. f\n",
+            "\n",
+            "> my block quote\n",
+            "\n",
+            "```\n",
+            "my code block\n",
+            "```\n",
+            "\n",
+            "*emphasis*\n",
+            "**strong**\n",
+            "~~strikethrough~~\n",
+            "[My Link](http://example.com)\n",
+            "![My Image](https://flowbite.com/docs/images/examples/image-1@2x.jpg)\n",
+            "\n",
+            "| a | b |\n",
+            "| - | - |\n",
+            "| c | d |\n",
+            "| c | d |\n",
+            "| c | d |\n",
+            "| c | d |\n",
+            "\n",
+            "hello[^1]\n",
+            "[^1]: my footnote\n",
+        );
+
+        let _ = render_markdown(&markdown_input);
+        // TODO: Add assertions
+    }
 }

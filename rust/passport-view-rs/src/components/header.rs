@@ -29,6 +29,7 @@ pub fn header(props: &HeaderProps) -> Html {
                 <div class="flex flex-1">
                     <div class="hidden lg:flex lg:gap-x-12 text-gray-900">
                         <Link<Route> to={Route::Home} classes="text-sm font-semibold leading-6">{"Job Postings"}</Link<Route>>
+                        <Link<Route> to={Route::Home} classes="text-sm font-semibold leading-6">{"Gigs"}</Link<Route>>
                     </div>
                     <div class="flex lg:hidden">
                         <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">

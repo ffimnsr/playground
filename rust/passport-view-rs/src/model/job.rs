@@ -2,10 +2,10 @@ use serde::Deserialize;
 
 #[derive(Clone, PartialEq, Deserialize)]
 pub struct SalaryDetail {
-    upper_limit: String,
-    lower_limit: String,
-    currency: String,
-    timeframe: String,
+    upper_limit: Option<String>,
+    lower_limit: Option<String>,
+    currency: Option<String>,
+    timeframe: Option<String>,
 }
 
 
@@ -19,11 +19,7 @@ pub struct Job {
     pub organization_id: i64,
     pub work_experience_level: Option<String>,
     pub work_contract_type: Option<String>,
-    pub salary_upper_limit: Option<String>,
-    pub salary_lower_limit: Option<String>,
-    pub salary_currency: Option<String>,
-    pub salary_timeframe: Option<String>,
-    pub work_type: Option<String>,
+    pub salary: Option<SalaryDetail>,
     pub has_timetracker: bool,
     pub is_remote: bool,
     pub is_featured: bool,
