@@ -1,11 +1,13 @@
-use crate::model::Job;
-use crate::markdown;
-use crate::route::{Route, JobsRoute};
 use chrono::DateTime;
 use gloo_net::http::Request;
 use serde::Deserialize;
 use yew::{prelude::*, suspense::use_future};
 use yew_router::prelude::*;
+use bounce::prelude::*;
+use crate::model::*;
+use crate::markdown;
+use crate::route::{Route, JobsRoute};
+use crate::state::State;
 use super::Modal;
 
 const BACKEND: Option<&str> = option_env!("BACKEND");
@@ -57,18 +59,29 @@ fn realize_date(date: &str) -> String {
     dt.format("%Y-%m-%d").to_string()
 }
 
+#[derive(Debug, Default, Clone, PartialEq, Deserialize)]
+struct WorkFunctionsContainer {
+    pub work_functions: WorkFunctions,
+}
+
+#[derive(Debug, Default, Clone, PartialEq, Deserialize)]
+struct WorkIndustriesContainer {
+    pub work_industries: WorkIndustries,
+}
+
 #[derive(Clone, PartialEq, Deserialize)]
 pub struct JobContainer {
-    pub jobs: Vec<Job>,
+    pub jobs: Jobs,
 }
 
 #[derive(PartialEq, Properties)]
 struct JobsListProps {
-    pub jobs: Vec<Job>,
+    pub jobs: Jobs,
 }
 
 #[function_component(JobsList)]
 fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
+    let state = use_atom_value::<State>();
     let jobs_len = jobs.len();
     let posts = jobs.iter().map(|job| html! {
         <li key={job.id.clone()}>
@@ -88,7 +101,7 @@ fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
                                 <svg class="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path d="M7 8a3 3 0 100-6 3 3 0 000 6zM14.5 9a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM1.615 16.428a1.224 1.224 0 01-.569-1.175 6.002 6.002 0 0111.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 017 18a9.953 9.953 0 01-5.385-1.572zM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 00-1.588-3.755 4.502 4.502 0 015.874 2.636.818.818 0 01-.36.98A7.465 7.465 0 0114.5 16z"></path>
                                 </svg>
-                                {job.industry_id}
+                                {state.get_industry_by_id(job.industry_id)}
                             </div>
                         </div>
                         <div class="ml-2 flex items-center text-sm text-gray-500">
@@ -207,6 +220,8 @@ pub fn jobs_view_heading() -> Html {
 
 #[function_component(JobsView)]
 pub fn jobs_view() -> HtmlResult {
+    let gstate = use_atom::<State>();
+    
     let jobs = use_future(|| async {
         let base_url = BACKEND.expect("BACKEND environment variable not set");
         let url: String = format!("{base_url}/jobs",);
@@ -216,6 +231,41 @@ pub fn jobs_view() -> HtmlResult {
             .json::<JobContainer>()
             .await
     })?;
+
+    {
+        let work_functions = use_future(|| async {
+            let base_url = BACKEND.expect("BACKEND environment variable not set");
+            let url: String = format!("{base_url}/work/functions",);
+            Request::get(&url)
+                .send()
+                .await?
+                .json::<WorkFunctionsContainer>()
+                .await
+        })?;
+    
+        let work_industries = use_future(|| async {
+            let base_url = BACKEND.expect("BACKEND environment variable not set");
+            let url: String = format!("{base_url}/work/industries",);
+            Request::get(&url)
+                .send()
+                .await?
+                .json::<WorkIndustriesContainer>()
+                .await
+        })?;
+
+        gstate.set(State {
+            work_functions: work_functions
+                .as_ref()
+                .unwrap_or(&WorkFunctionsContainer::default())
+                .work_functions
+                .clone(),
+            work_industries: work_industries
+                .as_ref()
+                .unwrap_or(&WorkIndustriesContainer::default())
+                .work_industries
+                .clone(),
+        });
+    }
 
     let jobs = jobs.as_ref().ok();
     let jobs = jobs

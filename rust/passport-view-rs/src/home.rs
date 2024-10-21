@@ -6,7 +6,7 @@ use crate::theme::{Theme, ThemeContext};
 pub fn home() -> Html {
     let theme_ctx = use_context::<ThemeContext>().expect("no theme context found");
     let dark_mode_active = theme_ctx.is_dark;
-    let dark_mode_active_class = if !dark_mode_active { "dark" } else { "" };
+    let dark_mode_active_class = if !dark_mode_active { "" } else { "dark" };
     let toggle_dark_mode = {
         Callback::from(move |_: MouseEvent| {
             theme_ctx.set(Theme {

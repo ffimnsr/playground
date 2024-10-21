@@ -22,7 +22,7 @@ pub fn footer() -> Html {
                 {socials}
                 <div class="mt-8 md:order-1 md:mt-0">
                     <p class="text-center text-xs leading-5 text-gray-500">
-                        {"© 2024 Jobs gSe-same. All rights reserved."}
+                        {"© 2024 Jobs Se-same. All rights reserved."}
                     </p>
                 </div>
             </div>

@@ -77,3 +77,7 @@
 	path = machine-configs/nuc8-efi-ht-config
 	url = git@github.com:ffimnsr/nuc8-efi-ht-config.git
 	branch = master
+[submodule "rust/bounce-rs"]
+	path = rust/bounce-rs
+	url = git@github.com:ffimnsr/bounce-rs.git
+	branch = master

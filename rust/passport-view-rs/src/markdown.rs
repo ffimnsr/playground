@@ -79,12 +79,12 @@ impl TagWriter {
             Tag::Heading { level, .. } => {
                 let mut el = VTag::new(level.to_string());
                 match level {
-                    HeadingLevel::H1 => el.add_attribute("class", "mb-4 text-5xl font-extrabold"),
-                    HeadingLevel::H2 => el.add_attribute("class", "mb-4 text-4xl font-bold"),
-                    HeadingLevel::H3 => el.add_attribute("class", "mb-4 text-3xl font-bold"),
-                    HeadingLevel::H4 => el.add_attribute("class", "mb-4 text-2xl font-bold"),
-                    HeadingLevel::H5 => el.add_attribute("class", "mb-2 text-xl font-bold"),
-                    HeadingLevel::H6 => el.add_attribute("class", "mb-2 text-lg font-bold"),
+                    HeadingLevel::H1 => el.add_attribute("class", "my-4 text-5xl font-extrabold"),
+                    HeadingLevel::H2 => el.add_attribute("class", "my-4 text-4xl font-bold"),
+                    HeadingLevel::H3 => el.add_attribute("class", "my-4 text-3xl font-bold"),
+                    HeadingLevel::H4 => el.add_attribute("class", "my-4 text-2xl font-bold"),
+                    HeadingLevel::H5 => el.add_attribute("class", "my-2 text-xl font-bold"),
+                    HeadingLevel::H6 => el.add_attribute("class", "my-2 text-lg font-bold"),
                 }
                 el
             },
@@ -278,8 +278,8 @@ impl TagWriter {
     }
 }
 
-/// Renders a string of Markdown to HTML with the default options (footnotes
-/// disabled, tables disabled).
+/// Renders a string of Markdown to HTML with the default options
+/// (footnotes disabled, tables disabled).
 pub fn render_markdown(src: &str) -> Html {
     let mut writer = TagWriter::new();
 

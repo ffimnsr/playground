@@ -1,5 +1,6 @@
 use yew_router::prelude::*;
 use yew::prelude::*;
+use bounce::BounceRoot;
 use crate::route::{switch, Route};
 use crate::theme::ThemeProvider;
 
@@ -10,15 +11,18 @@ mod model;
 mod markdown;
 mod not_found;
 mod route;
+mod state;
 mod theme;
 
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
         <ThemeProvider>
-            <BrowserRouter>
-                <Switch<Route> render={switch} />
-            </BrowserRouter>
+            <BounceRoot>
+                <BrowserRouter>
+                    <Switch<Route> render={switch} />
+                </BrowserRouter>
+            </BounceRoot>
         </ThemeProvider>
     }
 }

@@ -23,6 +23,9 @@ dependencies = [
     "install-wasm-bindgen-cli",
 ]
 
+[tasks.s]
+alias="serve"
+
 [tasks.create-package]
 script = '''
 trunk build --release
