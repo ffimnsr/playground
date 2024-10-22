@@ -4,6 +4,7 @@ use serde::Deserialize;
 use yew::{prelude::*, suspense::use_future};
 use yew_router::prelude::*;
 use bounce::prelude::*;
+use crate::components::{realize_contract_type, realize_date, title_case};
 use crate::model::*;
 use crate::markdown;
 use crate::route::{Route, JobsRoute};
@@ -11,53 +12,6 @@ use crate::state::State;
 use super::Modal;
 
 const BACKEND: Option<&str> = option_env!("BACKEND");
-
-fn title_case(input: &str) -> String {
-    input
-        .split_whitespace()
-        .map(|word| {
-            let mut chars = word.chars();
-            match chars.next() {
-                None => String::new(),
-                Some(f) => f.to_uppercase().collect::<String>() + chars.as_str(),
-            }
-        })
-        .collect::<Vec<_>>()
-        .join(" ")
-}
-
-fn split_on_capitals(input: &str) -> Vec<String> {
-    let mut result = Vec::new();
-    let mut current = String::new();
-
-    for c in input.chars() {
-        if c.is_uppercase() && !current.is_empty() {
-            result.push(current.clone());
-            current.clear();
-        }
-        current.push(c);
-    }
-
-    if !current.is_empty() {
-        result.push(current);
-    }
-
-    result
-}
-
-fn realize_contract_type(contract_type: Option<String>) -> String {
-    if let Some(c) = contract_type {
-        let c = split_on_capitals(&c);
-        return c.join(" ");
-    }
-
-    "Not Specified".to_string()
-}
-
-fn realize_date(date: &str) -> String {
-    let dt = DateTime::parse_from_rfc3339(date).unwrap();
-    dt.format("%Y-%m-%d").to_string()
-}
 
 #[derive(Debug, Default, Clone, PartialEq, Deserialize)]
 struct WorkFunctionsContainer {
@@ -105,8 +59,8 @@ fn jobs_list(JobsListProps { jobs }: &JobsListProps) -> Html {
                             </div>
                         </div>
                         <div class="ml-2 flex items-center text-sm text-gray-500">
-                            <svg class="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd"></path>
+                            <svg class="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
                             {realize_date(&job.created_at.clone())}
                         </div>
@@ -326,6 +280,23 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
         Request::get(&url).send().await?.json::<Job>().await
     })?;
 
+    let location_href = web_sys::window()
+        .and_then(|w| w.location().href().ok())
+        .unwrap_or_else(|| "Unknown".to_string());
+
+    let location_href = url::form_urlencoded::byte_serialize(location_href.as_bytes())
+        .collect::<String>();
+
+    let fb_share_url = format!(
+        "https://www.facebook.com/sharer/sharer.php?u={}",
+        location_href
+    );
+
+    let in_share_url = format!(
+        "https://www.linkedin.com/shareArticle?mini=true&url={}",
+        location_href
+    );
+
     let job = jobs.as_ref();
     if job.is_err() {
         return Ok(html! {
@@ -448,6 +419,19 @@ pub fn job_detail_view(props: &JobDetailViewProps) -> HtmlResult {
                 <div class="px-4 py-6 sm:p-6">
                     {description}
                 </div>
+            </div>
+            <div class="mt-10 flex flex-1 gap-x-2">
+                <span>{"Share to: "}</span>
+                <a class="hover:text-blue-500" href={fb_share_url} target="_blank">
+                    <svg viewBox="0 0 448 512" fill="currentColor" class="size-8">
+                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64h98.2V334.2H109.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H255V480H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/>
+                    </svg>
+                </a>
+                <a class="hover:text-blue-500" href={in_share_url} target="_blank">
+                    <svg viewBox="0 0 448 512" fill="currentColor" class="size-8">
+                        <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+                    </svg>
+                </a>
             </div>
         </>
     })

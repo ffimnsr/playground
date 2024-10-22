@@ -5,6 +5,8 @@ use crate::route::{switch, Route};
 use crate::theme::ThemeProvider;
 
 mod components;
+mod gig_detail;
+mod gig_landing;
 mod home;
 mod job_detail;
 mod model;
