@@ -1,6 +1,0 @@
-/target
-/dist
-/dist.zip
-/.env
-/.env.production
-/.env.staging
