@@ -1,0 +1,6 @@
+- https://github.com/infinyon/fluvio - Lean and mean distributed stream processing system written in rust and web assembly. Alternative to Kafka + Flink in one.
+	- https://www.fluvio.io/docs/fluvio/installation/docker
+- https://github.com/liftbridge-io/liftbridge - Lightweight, fault-tolerant message streams.
+- https://docs.nats.io/nats-concepts/jetstream - JetStream allows the NATS server to capture messages and replay them to consumers as needed
+- https://github.com/redpanda-data/redpanda/ - Redpanda is a streaming data platform for developers. Kafka API compatible. 10x faster. No ZooKeeper. No JVM!
+- https://pulsar.apache.org/ - Open-source, distributed messaging and streaming platform built for the cloud.

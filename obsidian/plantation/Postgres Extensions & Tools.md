@@ -1,0 +1,61 @@
+#### Extensions
+- https://github.com/eulerto/wal2json - JSON output plugin for changeset extraction
+	- `sudo apt-get install postgresql-16-wal2json`
+- https://github.com/pgvector/pgvector - Open-source vector similarity search for Postgres
+- https://github.com/citusdata/citus - Distributed PostgreSQL as an extension
+	- `sudo apt-get -y install postgresql-16-citus-12.1`
+- https://github.com/citusdata/pg_cron - Run periodic jobs in PostgreSQL
+	- `sudo apt-get -y install postgresql-16-cron`
+- https://github.com/aws/pg_tle - Framework for building trusted language extensions for PostgreSQL
+	- https://github.com/aws/pg_tle/blob/main/docs/01_install.md
+- https://github.com/zombodb/zombodb - Making Postgres and Elasticsearch work together like it's 2023
+- https://postgis.net/ - PostGIS extends the capabilities of the [PostgreSQL](https://postgresql.org/) relational database by adding support for storing, indexing, and querying geospatial data.
+- https://pgrouting.org/ - Extension of PostGIS - provides geospatial routing functionalities.
+- https://www.pgaudit.org/ - Generate highly compliant audit logs.
+- https://github.com/eradman/pg-safeupdate - A simple extension to PostgreSQL that requires criteria for UPDATE and DELETE
+- https://github.com/michelp/pgjwt - PostgreSQL implementation of JWT (JSON Web Tokens)
+- https://github.com/pgexperts/pg_plan_filter - filter statements by their execution plans.
+- https://github.com/pramsey/pgsql-http - HTTP client for PostgreSQL, retrieve a web page from inside the database.
+- https://github.com/supabase/pg_net - A PostgreSQL extension that enables asynchronous (non-blocking) HTTP/HTTPS requests with SQL
+- https://github.com/reorg/pg_repack - Reorganize tables in PostgreSQL databases with minimal locks
+- https://github.com/postgrespro/rum - RUM access method - inverted index with additional information in posting lists
+- https://github.com/postgrespro/aqo - Adaptive query optimization for PostgreSQL
+- https://github.com/postgrespro/pg_tsparser - parser for text search
+- https://github.com/postgrespro/jsquery - json query language with GIN indexing support
+- https://github.com/postgrespro/imgsmlr - Similar images search for PostgreSQL
+- https://github.com/iCyberon/pg_hashids - Short unique id generator for PostgreSQL, using hashids
+- https://github.com/michelp/pgsodium - Modern cryptography for PostgreSQL using libsodium.
+- https://github.com/percona/pg_stat_monitor - Query Performance Monitoring Tool for PostgreSQL
+- https://github.com/tada/pljava - Write in Java functions in Postgres.
+- https://github.com/plv8/plv8 - V8 Engine Javascript Procedural Language add-on for PostgreSQL
+- https://pgtap.org/ - Unit Testing for Postgres.
+- https://github.com/timescale/timescaledb - An open-source time-series SQL database optimized for fast ingest and complex queries. Packaged as a PostgreSQL extension.
+- https://github.com/HypoPG/hypopg - PostgreSQL extension for creating hypothetical/virtual indexes. HypoPG allows users to rapidly create hypothetical/virtual indexes that have no resource cost (CPU, disk, memory) that are visible to the PostgreSQL query planner.
+	- https://supabase.com/docs/guides/database/extensions/hypopg?queryGroups=database-method&database-method=sql
+- https://github.com/supabase/index_advisor - Postgres extension for recommending indexes to improve query performance.
+	- Requires `hypopg`
+	- https://supabase.com/docs/guides/database/extensions/index_advisor
+- https://github.com/pgroonga/pgroonga - PGroonga is a PostgreSQL extension to use Groonga as index. PGroonga makes PostgreSQL fast full text search platform for all languages!
+- https://github.com/supabase/pg_graphql - PostgreSQL extension for interacting with the database using [GraphQL](https://graphql.org/) instead of SQL.
+- https://github.com/supabase/pg_jsonschema - PostgreSQL extension providing JSON Schema validation
+- https://github.com/supabase/wrappers - Postgres Foreign Data Wrapper development framework in Rust.
+- https://github.com/supabase/vault - Extension for storing encrypted secrets in the Vault
+#### Tools
+- https://github.com/dbcli/pgcli - Postgres CLI with autocompletion and syntax highlighting
+	- `sudo apt-get install pgcli`
+- https://github.com/EnterpriseDB/repmgr - A lightweight replication manager for PostgreSQL (Postgres)
+- https://temboard.readthedocs.io/en/latest/ - A powerful management tool for PostgreSQL. You can use it to monitor, optimize or configure multiple PostgreSQL instances.
+- https://pgxn.github.io/pgxnclient/ - The [PGXN Client](https://github.com/pgxn/pgxnclient) is a command line tool designed to interact with the [PostgreSQL Extension Network](http://pgxn.org/) allowing searching, compiling, installing, and removing extensions in PostgreSQL databases.
+	- https://pgxn.org/
+- https://github.com/tembo-io/trunk - Package manager and registry for Postgres extensions
+	- https://pgt.dev/
+- https://github.com/wal-g/wal-g - Archival and Restoration for databases in the Cloud
+- https://www.pgbouncer.org/ - Lightweight connection pooler for PostgreSQL
+#### Security
+- https://github.com/supabase/postgres/tree/develop/ansible/files/fail2ban_config - Fail2ban config for postgresql and pgbouncer
+#### Dashboards
+- https://github.com/getredash/redash - Make Your Company Data Driven. Connect to any data source, easily visualize, dashboard and share your data.
+- https://github.com/metabase/metabase - The simplest, fastest way to get business intelligence and analytics to everyone in your company
+#### References
+- https://github.com/pg-tr/awesome-postgres
+- https://github.com/supabase/postgres/blob/develop/migrations/schema.sql
