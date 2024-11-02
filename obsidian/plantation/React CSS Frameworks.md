@@ -18,6 +18,9 @@
 - AtlasKit - https://atlaskit.atlassian.com/
 - OnsenUI - https://github.com/OnsenUI/OnsenUI
 - CoreUI - https://github.com/coreui/coreui-react
+- Framework7 - https://github.com/framework7io/framework7
+- Ariakit - https://github.com/ariakit/ariakit
+- React Email UI - https://github.com/resend/react-email
 - Radix UI - https://www.radix-ui.com/
 	- https://github.com/radix-ui/themes
 	- https://github.com/radix-ui/primitives
