@@ -4,3 +4,13 @@
 - [autocannon](https://github.com/mcollina/autocannon) - Fast HTTP/1.1 benchmarking tool written in Node.js.
 - [oha](https://github.com/hatoo/oha) - HTTP load generator.
 - [drill](https://github.com/fcsonline/drill) - HTTP load testing application written in rust.
+#### Authentication helpers
+- oauth2-proxy - https://github.com/oauth2-proxy/oauth2-proxy
+- stack-auth - https://github.com/stack-auth/stack
+- authelia - https://github.com/authelia/authelia
+- authentik - https://github.com/goauthentik/authentik
+- zitadel - https://github.com/zitadel/zitadel
+- casdoor - https://github.com/casdoor/casdoor
+- keycloak - https://github.com/keycloak/keycloak
+#### Networking
+- nebula - https://github.com/slackhq/nebula
