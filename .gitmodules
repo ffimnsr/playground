@@ -99,3 +99,7 @@
 	url = git@github.com:ffimnsr/bounce-rs.git
 	branch = master
 	update = rebase
+[submodule "contrib/refine"]
+	path = contrib/refine
+	url = git@github.com:ffimnsr/refine.git
+	branch = master
