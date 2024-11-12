@@ -15,3 +15,4 @@
 - OpenBlocks - https://github.com/openblocks-dev/openblocks
 - Toolpad - https://github.com/mui/toolpad
 - React Admin - https://github.com/marmelab/react-admin
+- Strapi - https://github.com/strapi/strapi
