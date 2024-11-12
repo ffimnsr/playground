@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ZSH History Expansion.md",
+                "file": "Tips/Rebasing on git.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ZSH History Expansion.md",
+                "file": "Tips/Rebasing on git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ZSH History Expansion.md",
+                "file": "Tips/Rebasing on git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ZSH History Expansion.md"
+                "file": "Tips/Rebasing on git.md"
               }
             }
           }
@@ -148,6 +148,7 @@
   },
   "active": "06f2fdda0fa12de1",
   "lastOpenFiles": [
+    "Tips/Fix divergence commits on git rebase.md",
     "ZSH History Expansion.md",
     "Tips/Zero-knowledge proofs (ZKP).md",
     "Tips/Rebasing on git.md",
@@ -184,7 +185,6 @@
     "Tips/Install ms-edge and code on Fedora using package manger.md",
     "Tips/OpenSSH with FIDO2 or PKCS11.md",
     "Tips/Smart card U2F authentication in Fedora.md",
-    "Tips/Splitting subfolder out into a new repository.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
