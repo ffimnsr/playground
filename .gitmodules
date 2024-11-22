@@ -110,3 +110,7 @@
 [submodule "typescript/refine-postgrest-ts"]
 	path = typescript/refine-postgrest-ts
 	url = git@github.com:ffimnsr/refine-postgrest-ts.git
+[submodule "priv"]
+	path = priv
+	url = git@github.com:ffimnsr/priv.git
+	branch = main
