@@ -1,2 +1,8 @@
  - https://github.com/twentyhq/twenty - Building a modern alternative to Salesforce, powered by the community.
- - 
+ - https://github.com/woodpecker-ci/woodpecker - Woodpecker is a simple, yet powerful CI/CD engine with great extensibility.
+ - https://github.com/supabase/auth - A JWT based API for managing users and issuing JWT tokens.
+ - https://github.com/activepieces/activepieces - Workflow automation tool like Zapier.
+ - https://github.com/automatisch/automatisch - The open source Zapier alternative.
+ - https://github.com/inovector/mixpost - Self-hosted social media management software.
+ - https://github.com/plausible/analytics - Simple, open source, lightweight (< 1 KB) and privacy-friendly web analytics alternative to Google Analytics.
+ - https://github.com/umami-software/umami - Umami is a simple, fast, privacy-focused alternative to Google Analytics.

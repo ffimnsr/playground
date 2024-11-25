@@ -114,3 +114,7 @@
 	path = priv
 	url = git@github.com:ffimnsr/priv.git
 	branch = main
+[submodule "contrib/react-telegram-web-app"]
+	path = contrib/react-telegram-web-app
+	url = git@github.com:osslocal/react-telegram-web-app.git
+	branch = master
