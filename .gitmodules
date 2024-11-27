@@ -118,3 +118,7 @@
 	path = contrib/react-telegram-web-app
 	url = git@github.com:osslocal/react-telegram-web-app.git
 	branch = master
+[submodule "contrib/supabase-auth"]
+	path = contrib/supabase-auth
+	url = git@github.com:ffimnsr/auth.git
+	branch = master
