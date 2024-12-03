@@ -122,3 +122,7 @@
 	path = contrib/supabase-auth
 	url = git@github.com:ffimnsr/auth.git
 	branch = master
+[submodule "toasted-garlic-bread"]
+	path = toasted-garlic-bread
+	url = git@github.com:ffimnsr/toasted-garlic-bread.git
+	branch = main
