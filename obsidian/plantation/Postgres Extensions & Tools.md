@@ -40,6 +40,7 @@
 - https://github.com/supabase/pg_jsonschema - PostgreSQL extension providing JSON Schema validation
 - https://github.com/supabase/wrappers - Postgres Foreign Data Wrapper development framework in Rust.
 - https://github.com/supabase/vault - Extension for storing encrypted secrets in the Vault
+- https://github.com/tembo-io/pgmq - A lightweight message queue. Like AWS SQS and RSMQ but on Postgres.
 #### Tools
 - https://github.com/dbcli/pgcli - Postgres CLI with autocompletion and syntax highlighting
 	- `sudo apt-get install pgcli`
