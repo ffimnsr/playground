@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Self-Host Apps.md",
+                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "split",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Self-Host Apps.md",
+                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Self-Host Apps.md",
+                "file": "Tips/Splitting subfolder out into a new repository.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Self-Host Apps.md"
+                "file": "Tips/Splitting subfolder out into a new repository.md"
               }
             }
           }
@@ -148,19 +149,23 @@
   },
   "active": "bc2af09f4cf3d49a",
   "lastOpenFiles": [
+    "Tips/Big O - the time complexity chart.md",
+    "Tips/Implementing blockchain-based voting system.md",
+    "Tips/Zero-knowledge proofs (ZKP).md",
+    "Tips/Create a secure single node CockroachDB.md",
+    "Tips/Cloning Myrient directories using rclone command.md",
+    "Tips/Configure IPFS container server.md",
+    "Tips/Fix divergence commits on git rebase.md",
+    "Tips/Fixing Postman flatpak missing certs crash.md",
+    "Self-Host Apps.md",
     "Postgres Extensions & Tools.md",
     "Linux CLI Tools.md",
     "DevOps Tools.md",
     "NFTables Cheatsheet.md",
     "Anything About React.md",
-    "Tips/Fixing Postman flatpak missing certs crash.md",
     "Tips/Rebasing on git.md",
-    "Tips/Fix divergence commits on git rebase.md",
     "ZSH History Expansion.md",
-    "Tips/Zero-knowledge proofs (ZKP).md",
-    "Tips/Implementing blockchain-based voting system.md",
     "Tips/All about git hooks.md",
-    "Tips/Big O - the time complexity chart.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments/Pasted image 20240909222126.png",
@@ -181,10 +186,6 @@
     "Tips/Sort Gnome 40+ app grid alphabetically.md",
     "Tips/Change Thunderbird's default folder sort.md",
     "Tips/Manage SELinux systems.md",
-    "Tips/Resize logical volume.md",
-    "Tips/List open ports on macOS.md",
-    "Tips/Setup Hackintosh on Intel NUC8i5BEH.md",
-    "Tips/Stable Diffusion prompt tips.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
