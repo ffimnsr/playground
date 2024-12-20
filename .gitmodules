@@ -126,3 +126,7 @@
 	path = toasted-garlic-bread
 	url = git@github.com:ffimnsr/toasted-garlic-bread.git
 	branch = main
+[submodule "typescript/refine-chakra-ui-v3-ts"]
+	path = typescript/refine-chakra-ui-v3-ts
+	url = git@github.com:ffimnsr/refine-chakra-ui-v3-ts.git
+	branch = main
