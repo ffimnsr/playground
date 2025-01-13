@@ -8,18 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    Text("Hello, world!")
-                }
-            }
-            .navigationTitle("Pepper Meal Planner")
-        }
+  var body: some View {
+    NavigationStack {
+      HomeView().navigationBarHidden(true)
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }

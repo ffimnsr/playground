@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2C75057B2D356D2400C39319 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 2C75057A2D356D2400C39319 /* SwiftUIX */; };
+		2CA80CED2D350A5E008A7F39 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2CA80CEC2D350A5E008A7F39 /* Kingfisher */; };
+		2CA80CF02D350DD2008A7F39 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2CA80CEF2D350DD2008A7F39 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2C589CC02D315EFF0038997F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C75057B2D356D2400C39319 /* SwiftUIX in Frameworks */,
+				2CA80CED2D350A5E008A7F39 /* Kingfisher in Frameworks */,
+				2CA80CF02D350DD2008A7F39 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,7 @@
 				2C589CB12D315EFC0038997F /* PepperMealPlanner */,
 				2C589CC22D315EFF0038997F /* PepperMealPlannerTests */,
 				2C589CCC2D315EFF0038997F /* PepperMealPlannerUITests */,
+				2CA80CEB2D350A5E008A7F39 /* Frameworks */,
 				2C589CB02D315EFC0038997F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +100,13 @@
 				2C589CC92D315EFF0038997F /* PepperMealPlannerUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2CA80CEB2D350A5E008A7F39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +129,9 @@
 			);
 			name = PepperMealPlanner;
 			packageProductDependencies = (
+				2CA80CEC2D350A5E008A7F39 /* Kingfisher */,
+				2CA80CEF2D350DD2008A7F39 /* Alamofire */,
+				2C75057A2D356D2400C39319 /* SwiftUIX */,
 			);
 			productName = PepperMealPlanner;
 			productReference = 2C589CAF2D315EFC0038997F /* PepperMealPlanner.app */;
@@ -195,6 +215,11 @@
 			);
 			mainGroup = 2C589CA62D315EFC0038997F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2CA80CEA2D350A32008A7F39 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2CA80CEE2D350DBF008A7F39 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2C7505792D356D1600C39319 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C589CB02D315EFC0038997F /* Products */;
 			projectDirPath = "";
@@ -558,6 +583,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C7505792D356D1600C39319 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftuix/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.3;
+			};
+		};
+		2CA80CEA2D350A32008A7F39 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.3;
+			};
+		};
+		2CA80CEE2D350DBF008A7F39 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C75057A2D356D2400C39319 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C7505792D356D1600C39319 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		2CA80CEC2D350A5E008A7F39 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CA80CEA2D350A32008A7F39 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		2CA80CEF2D350DD2008A7F39 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CA80CEE2D350DBF008A7F39 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C589CA72D315EFC0038997F /* Project object */;
 }
