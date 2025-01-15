@@ -26,7 +26,7 @@ struct ContentView: View {
           .tag(Tab.profile)
       }
       
-      CustomBottomTabBarView(currentTab: $selectedTab)
+      CustomBottomTabBar(currentTab: $selectedTab)
         .padding(.bottom)
     }
   }

@@ -34,16 +34,19 @@ struct RecipeListView: View {
         } else {
           List {
             ForEach(recipeViewModel.items) { recipe in
-              HStack {
-                VStack(alignment: .leading) {
-                  Text(recipe.name)
-                    .font(.headline)
-                  Text(recipe.type)
-                    .lineLimit(1)
+              NavigationLink(destination: {
+                RecipeDetailsView()
+              }) {
+                HStack {
+                  VStack(alignment: .leading) {
+                    Text(recipe.name)
+                      .font(.headline)
+                    Text(recipe.type)
+                      .lineLimit(1)
+                  }
+                  Spacer()
+                  Text("35 mins")
                 }
-                
-                Spacer()
-                Text("Hello")
               }
             }
             .onDelete(perform: recipeViewModel.removeRecipes)

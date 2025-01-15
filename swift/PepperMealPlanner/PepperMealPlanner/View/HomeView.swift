@@ -24,14 +24,22 @@ struct HomeView: View {
         }
         .padding([.horizontal, .top])
         
+        DateScroller()
+          .frame(maxHeight: 120)
         Divider()
         
         ScrollView(.vertical, showsIndicators: false) {
           VStack(spacing: 25) {
             ForEach(1...5, id: \.self) { _ in
-              RecipeItemView(recipe: Recipe(name: "Spaghetti", imageUrl: "spaghetti"))
+              let recipe = Recipe(name: "Spaghetti", imageUrl: "spaghetti")
+              NavigationLink(destination: {
+                Text("Detail view")
+              }) {
+                RecipeItemView(recipe: recipe)
+              }
             }
           }
+          .padding(.bottom, 100)
         }
         Spacer()
       }

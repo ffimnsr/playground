@@ -25,7 +25,7 @@ struct RecipeItemView: View {
         Text(recipe.name)
           .font(.title2)
           .fontWeight(.bold)
-          .foregroundStyle(.primary)
+          .foregroundStyle(.black)
         Spacer(minLength: 0)
         ForEach(0..<5) { index in
           Image(systemName: "star.fill")
@@ -36,7 +36,7 @@ struct RecipeItemView: View {
       HStack {
         Text(recipe.description ?? "No description available.")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(.gray)
           .lineLimit(2)
         Spacer(minLength: 0)
       }

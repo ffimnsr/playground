@@ -1,5 +1,5 @@
 //
-//  CustomBottomTabBarView.swift
+//  CustomBottomTabBar.swift
 //  PepperMealPlanner
 //
 //  Created by Edward Fitz Abucay on 1/14/25.
@@ -9,7 +9,7 @@ import SwiftUI
 
 fileprivate let buttonSize: CGFloat = 55
 
-struct CustomBottomTabBarView: View {
+struct CustomBottomTabBar: View {
   @Binding var currentTab: Tab
  
   var body: some View {
@@ -86,5 +86,5 @@ struct CustomBottomTabBarView: View {
 
 #Preview {
   @Previewable @State var currentTab: Tab = .home
-  CustomBottomTabBarView(currentTab: $currentTab)
+  CustomBottomTabBar(currentTab: $currentTab)
 }

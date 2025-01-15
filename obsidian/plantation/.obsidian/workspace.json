@@ -44,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "split",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,8 +61,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -139,7 +138,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fdfa07fc0ba79e2a",
+  "active": "9b755031fdd9380e",
   "lastOpenFiles": [
     "Tips/Splitting subfolder out into a new repository.md",
     "Tips/Big O - the time complexity chart.md",
