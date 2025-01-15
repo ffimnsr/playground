@@ -22,6 +22,7 @@ extension DateFormatter {
 
   static var dayFormatter: DateFormatter {
     let formatter = DateFormatter()
+    // Day of month (.e.g., 1 to 31)
     formatter.dateFormat = "d"
     return formatter
   }

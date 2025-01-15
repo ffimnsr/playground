@@ -8,31 +8,63 @@
 import Foundation
 
 extension Date {
-  // Divide the current month dates into weeks, including previous and next month's days
+  /// Returns all weeks (array of date arrays) in the same month as this date.
+  /// Each inner array represents a single week.
+  /// Placeholders can be set to Date.distantPast for days not in the month (otherwise optional could be used).
   func weeksInMonth() -> [[Date]] {
-    let datesInMonth = self.allDatesInMonth()
-    let firstDayOfWeek = self.firstDayOfWeek()
-
+    var calendar = Calendar.current
+    // Ensure consistent week start (e.g., Sunday or Monday)
+    calendar.firstWeekday = 1 // Sunday = 1, Monday = 2
+    // Calculate the range of days in this month
+    guard let monthRange = calendar.range(of: .day, in: .month, for: self) else {
+      return []
+    }
+    
+    // Create a 2D array, each sub-array is a single week
     var weeks: [[Date]] = []
-    var currentWeek: [Date] = Array(repeating: Date.distantPast, count: firstDayOfWeek)
-
-    for date in datesInMonth {
+    var currentWeek: [Date] = []
+    
+    // Find the first day of the month
+    let components = calendar.dateComponents([.year, .month], from: self)
+    guard let firstOfMonth = calendar.date(from: components) else {
+      return []
+    }
+    
+    // Fill in "leading" days not in the month
+    let weekdayOfFirst = calendar.component(.weekday, from: firstOfMonth)
+    // Example: if first day is Wednesday (weekday=4) and Sunday is first
+    // weekday=1, we need 3 placeholders (4 - 1).
+    let placeholdersCount = weekdayOfFirst - calendar.firstWeekday
+    for _ in 0..<placeholdersCount {
+      currentWeek.append(.distantPast)
+    }
+    
+    // Fill in actual days of the month
+    for day in monthRange {
+      guard let date = calendar.date(byAdding: .day, value: day - 1, to: firstOfMonth) else {
+        continue
+      }
+      
       currentWeek.append(date)
+      // If a week is complete (7 days), append it
       if currentWeek.count == 7 {
         weeks.append(currentWeek)
-        currentWeek = []
+        currentWeek.removeAll()
       }
     }
-
+    
+    // Fill remaining slots in the last week with placeholders if needed
     if !currentWeek.isEmpty {
-      currentWeek.append(
-        contentsOf: Array(repeating: Date.distantPast, count: 7 - currentWeek.count))
+      while currentWeek.count < 7 {
+        currentWeek.append(.distantPast)
+      }
       weeks.append(currentWeek)
     }
-
+    
     return weeks
   }
-
+  
+  
   // Get the first day of the month
   func startOfMonth() -> Date {
     let components = Calendar.current.dateComponents([.year, .month], from: self)

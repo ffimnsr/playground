@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C75057B2D356D2400C39319 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 2C75057A2D356D2400C39319 /* SwiftUIX */; };
+		2C7DD85A2D36BEFF00468ECF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7DD8592D36BEFF00468ECF /* Lottie */; };
 		2CA80CED2D350A5E008A7F39 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2CA80CEC2D350A5E008A7F39 /* Kingfisher */; };
-		2CA80CF02D350DD2008A7F39 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2CA80CEF2D350DD2008A7F39 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 			files = (
 				2C75057B2D356D2400C39319 /* SwiftUIX in Frameworks */,
 				2CA80CED2D350A5E008A7F39 /* Kingfisher in Frameworks */,
-				2CA80CF02D350DD2008A7F39 /* Alamofire in Frameworks */,
+				2C7DD85A2D36BEFF00468ECF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +130,8 @@
 			name = PepperMealPlanner;
 			packageProductDependencies = (
 				2CA80CEC2D350A5E008A7F39 /* Kingfisher */,
-				2CA80CEF2D350DD2008A7F39 /* Alamofire */,
 				2C75057A2D356D2400C39319 /* SwiftUIX */,
+				2C7DD8592D36BEFF00468ECF /* Lottie */,
 			);
 			productName = PepperMealPlanner;
 			productReference = 2C589CAF2D315EFC0038997F /* PepperMealPlanner.app */;
@@ -217,8 +217,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				2CA80CEA2D350A32008A7F39 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				2CA80CEE2D350DBF008A7F39 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2C7505792D356D1600C39319 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				2C7DD8552D36BB7200468ECF /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C589CB02D315EFC0038997F /* Products */;
@@ -593,20 +593,20 @@
 				minimumVersion = 0.2.3;
 			};
 		};
+		2C7DD8552D36BB7200468ECF /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
 		2CA80CEA2D350A32008A7F39 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 8.1.3;
-			};
-		};
-		2CA80CEE2D350DBF008A7F39 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -617,15 +617,15 @@
 			package = 2C7505792D356D1600C39319 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
 		};
+		2C7DD8592D36BEFF00468ECF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C7DD8552D36BB7200468ECF /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		2CA80CEC2D350A5E008A7F39 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2CA80CEA2D350A32008A7F39 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		2CA80CEF2D350DD2008A7F39 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2CA80CEE2D350DBF008A7F39 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
