@@ -134,3 +134,7 @@
 	path = rust/mk-rs
 	url = git@github.com:ffimnsr/mk-rs.git
 	branch = main
+[submodule "swift/todo-swift"]
+	path = swift/todo-swift
+	url = git@github.com:ffimnsr/todo-swift.git
+	branch = main
