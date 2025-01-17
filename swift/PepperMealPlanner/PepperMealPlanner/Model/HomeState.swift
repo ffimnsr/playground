@@ -6,10 +6,10 @@
 //
 
 import Combine
-import SwiftUI
 import Observation
+import SwiftUI
 
 @Observable
 class HomeState {
-  
+
 }

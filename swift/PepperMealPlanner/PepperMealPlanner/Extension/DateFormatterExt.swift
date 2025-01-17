@@ -26,7 +26,7 @@ extension DateFormatter {
     formatter.dateFormat = "d"
     return formatter
   }
-  
+
   static var yearFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy"

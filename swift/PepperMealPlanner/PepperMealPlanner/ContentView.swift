@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+  @AppStorage("showOnboarding") var showOnboarding: Bool = true
   @Environment(\.colorScheme) var colorScheme
   @State private var selectedTab: Tab = .home
-  
+
   var body: some View {
     ZStack(alignment: .bottom) {
       TabView(selection: $selectedTab) {
@@ -25,9 +26,12 @@ struct ContentView: View {
           .toolbar(.hidden, for: .tabBar)
           .tag(Tab.profile)
       }
-      
+
       CustomBottomTabBar(currentTab: $selectedTab)
         .padding(.bottom)
+    }
+    .fullScreenCover(isPresented: $showOnboarding) {
+      OnboardingView(showOnboarding: $showOnboarding)
     }
   }
 }

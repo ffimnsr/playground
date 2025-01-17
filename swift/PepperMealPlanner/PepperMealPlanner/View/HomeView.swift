@@ -19,15 +19,15 @@ struct HomeView: View {
             .font(.title)
             .fontWeight(.medium)
             .foregroundStyle(.primary)
-          
+
           Spacer()
         }
         .padding([.horizontal, .top])
-        
+
         DateScroller()
           .frame(maxHeight: 120)
         Divider()
-        
+
         ScrollView(.vertical, showsIndicators: false) {
           VStack(spacing: 25) {
             ForEach(1...5, id: \.self) { _ in

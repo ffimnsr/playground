@@ -12,7 +12,7 @@ struct RecipeItemView: View {
   var recipe: Recipe
 
   let screenBounds = UIScreen.main.bounds
-  let url = URL(string: "https://placehold.co/1280x566.png")
+  let url = URL(string: "https://placehold.co/1280x566.png?font=raleway&text=Recipe")
   var body: some View {
     VStack {
       KFImage(url)
@@ -53,4 +53,5 @@ struct RecipeItemView: View {
     imageUrl: "https://placehold.co/1280x566.png"
   )
   RecipeItemView(recipe: recipe)
+    .frame(height: 400)
 }

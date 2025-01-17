@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
+  let recipe: Recipe
+
   var body: some View {
     Text("Recipe Details")
   }
 }
 
 #Preview {
-  RecipeDetailsView()
+  let recipe = Recipe(name: "Pancit Canton")
+  RecipeDetailsView(recipe: recipe)
 }

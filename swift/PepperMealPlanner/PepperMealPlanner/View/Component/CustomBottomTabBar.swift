@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-fileprivate let buttonSize: CGFloat = 55
+private let buttonSize: CGFloat = 55
 
 struct CustomBottomTabBar: View {
   @Binding var currentTab: Tab
- 
+
   var body: some View {
     HStack {
       TabBarButton(imageName: Tab.home.rawValue)
@@ -19,17 +19,17 @@ struct CustomBottomTabBar: View {
         .onTapGesture {
           currentTab = .home
         }
-      
+
       Spacer()
-      
+
       TabBarButton(imageName: Tab.recipes.rawValue)
         .frame(width: buttonSize, height: buttonSize)
         .onTapGesture {
           currentTab = .recipes
         }
-      
+
       Spacer()
-      
+
       TabBarButton(imageName: Tab.profile.rawValue)
         .frame(width: buttonSize, height: buttonSize)
         .onTapGesture {
@@ -45,9 +45,11 @@ struct CustomBottomTabBar: View {
       SelectedTabCircle(currentTab: $currentTab)
     }
     .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 10)
-    .animation(.interactiveSpring(response: 0.5, dampingFraction: 0.65, blendDuration: 0.65), value: currentTab)
+    .animation(
+      .interactiveSpring(response: 0.5, dampingFraction: 0.65, blendDuration: 0.65),
+      value: currentTab)
   }
-  
+
   struct TabBarButton: View {
     let imageName: String
     var body: some View {
@@ -57,10 +59,10 @@ struct CustomBottomTabBar: View {
         .fontWeight(.bold)
     }
   }
-  
+
   struct SelectedTabCircle: View {
     @Binding var currentTab: Tab
-    
+
     private var horizontalOffset: CGFloat {
       switch currentTab {
       case .home: return -84
@@ -68,13 +70,13 @@ struct CustomBottomTabBar: View {
       case .profile: return 84
       }
     }
-    
+
     var body: some View {
       ZStack {
         Circle()
           .fill(.blue)
           .frame(width: buttonSize, height: buttonSize)
-        
+
         TabBarButton(imageName: "\(currentTab.rawValue).fill")
           .foregroundStyle(.white)
       }
@@ -82,7 +84,6 @@ struct CustomBottomTabBar: View {
     }
   }
 }
-
 
 #Preview {
   @Previewable @State var currentTab: Tab = .home

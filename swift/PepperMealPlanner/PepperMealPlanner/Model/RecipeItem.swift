@@ -12,4 +12,3 @@ struct RecipeItem: Identifiable {
   let name: String
   let type: String
 }
-

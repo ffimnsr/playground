@@ -17,7 +17,7 @@ struct DateScroller: View {
     let range = calendar.range(of: .day, in: .month, for: today)!
     let components = calendar.dateComponents([.year, .month], from: today)
     let startOfMonth = calendar.date(from: components)!
-    
+
     for day in range {
       if let date = calendar.date(byAdding: .day, value: day - 1, to: startOfMonth) {
         dates.append(date)
@@ -40,7 +40,7 @@ struct DateScroller: View {
                 Text(date, formatter: DateFormatter.dayFormatter)
                   .font(.largeTitle)
                   .fontWeight(.bold)
-                
+
                 Text(date, formatter: DateFormatter.weekdayFormatter)
                   .font(.caption)
               }
@@ -48,7 +48,10 @@ struct DateScroller: View {
               .frame(width: 80, height: 100)
               .background(
                 RoundedRectangle(cornerRadius: 10)
-                  .fill(date == selectedDate ? Color.orange.opacity(0.2) : (date == today ? Color.blue.opacity(0.2) : Color.gray.opacity(0.2)))
+                  .fill(
+                    date == selectedDate
+                      ? Color.orange.opacity(0.2)
+                      : (date == today ? Color.blue.opacity(0.2) : Color.gray.opacity(0.2)))
               )
             }
             .buttonStyle(PlainButtonStyle())
