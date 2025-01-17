@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddRecipeView: View {
-  @State private var viewModel = ViewModel()
-  @Environment(RecipeViewModel.self) private var recipeViewModel
+  @Environment(\.modelContext) private var context
   @Environment(\.dismiss) var dismiss
+  @Query private var items: [Recipe]
+  @State private var viewModel = ViewModel()
   
-  
-  let recipeTypes = ["Soup", "Main Dish", "Appetizer", "Dessert"]
   var body: some View {
     NavigationStack{
       Form {
         Section {
-          TextField("Recipe Name", text: $viewModel.recipeName)
-          Picker("Recipe Type", selection: $viewModel.recipeType) {
-            ForEach(recipeTypes, id: \.self) {
-              Text($0)
+          TextField("Recipe Name", text: $viewModel.name)
+          TextField("Description", text: $viewModel.desc)
+          Picker("Recipe Type", selection: $viewModel.type) {
+            ForEach(RecipeType.allCases) { type in
+              Text(type.rawValue.capitalized)
             }
           }
 //          TextField(text: $viewModel.recipeDescription)
@@ -40,14 +41,15 @@ struct AddRecipeView: View {
         }
         
         Section {
-          TextField("Notes", text: $viewModel.notes)
+          TextField("Steps", text: $viewModel.steps)
         }
       }
       .navigationTitle("Recipe Creator")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         Button("Save") {
-          recipeViewModel.addRecipe(name: viewModel.recipeName, type: viewModel.recipeType)
+          let recipe = Recipe(name: viewModel.name)
+          context.insert(recipe)
           dismiss()
         }
       }
@@ -58,16 +60,14 @@ struct AddRecipeView: View {
 extension AddRecipeView {
   @Observable
   class ViewModel {
-    var recipeName = ""
-    var recipeType = "Soup"
-    var recipeDescription = ""
-    var notes = ""
+    var name = ""
+    var type: RecipeType = .soup
+    var desc = ""
+    var steps = ""
   }
 }
 
 #Preview {
-  VStack {
-    AddRecipeView()
-  }
-  .environment(RecipeViewModel())
+  AddRecipeView()
+    .modelContainer(for: Recipe.self, inMemory: true)
 }

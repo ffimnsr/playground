@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "map_user_to_recipes",
+  "info": {
+    "singularName": "map-user-to-recipe",
+    "pluralName": "map-user-to-recipes",
+    "displayName": "MapUserToRecipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "usersPermissionsUser": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "mapUserToRecipes"
+    },
+    "recipe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::recipe.recipe"
+    }
+  }
+}

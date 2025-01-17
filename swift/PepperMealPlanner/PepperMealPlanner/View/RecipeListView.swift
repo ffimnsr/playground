@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 import Observation
 
 struct RecipeListView: View {
+  @Environment(\.modelContext) private var context
+  @Query private var items: [Recipe]
   @State private var viewModel = ViewModel()
-  @State private var recipeViewModel = RecipeViewModel()
   
   var body: some View {
     NavigationStack {
       VStack {
-        if recipeViewModel.items.isEmpty {
+        if items.isEmpty {
           VStack {
             Image(systemName: "tray")
               .resizable()
@@ -33,7 +35,7 @@ struct RecipeListView: View {
           .padding()
         } else {
           List {
-            ForEach(recipeViewModel.items) { recipe in
+            ForEach(items) { recipe in
               NavigationLink(destination: {
                 RecipeDetailsView()
               }) {
@@ -49,7 +51,7 @@ struct RecipeListView: View {
                 }
               }
             }
-            .onDelete(perform: recipeViewModel.removeRecipes)
+            .onDelete(perform: deleteItems)
           }
         }
       }
@@ -60,9 +62,16 @@ struct RecipeListView: View {
         }
       }
       .sheet(isPresented: $viewModel.showingAddRecipe) {
-        AddRecipeView()
+//        AddRecipeView()
       }
-      .environment(recipeViewModel)
+    }
+  }
+  
+  private func deleteItems(offsets: IndexSet) {
+    withAnimation {
+      for index in offsets {
+        context.delete(items[index])
+      }
     }
   }
 }
@@ -77,5 +86,6 @@ extension RecipeListView {
 #Preview {
   NavigationStack {
     RecipeListView()
+      .modelContainer(for: Recipe.self, inMemory: true)
   }
 }

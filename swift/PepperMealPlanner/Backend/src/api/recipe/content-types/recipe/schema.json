@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    },
+    "mealType": {
+      "type": "enumeration",
+      "enum": [
+        "soup",
+        "main",
+        "side",
+        "appetizer",
+        "entree",
+        "dessert",
+        "salad"
+      ]
+    },
+    "preparationTime": {
+      "type": "time"
+    },
+    "cookTime": {
+      "type": "time"
+    },
+    "ingredients": {
+      "type": "json"
+    },
+    "steps": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "text"
+    },
+    "noOfServings": {
+      "type": "integer"
+    },
+    "nutritionalInformation": {
+      "type": "json"
+    },
+    "recipeIngredients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::recipe-ingredient.recipe-ingredient"
+    }
+  }
+}

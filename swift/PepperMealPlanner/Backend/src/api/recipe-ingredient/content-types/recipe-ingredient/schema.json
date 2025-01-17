@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipe_ingredients",
+  "info": {
+    "singularName": "recipe-ingredient",
+    "pluralName": "recipe-ingredients",
+    "displayName": "RecipeIngredient"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
