@@ -14,9 +14,13 @@ final class Recipe: Identifiable, Hashable {
   var name: String
   var type: RecipeType?
   var desc: String?
+  var servings: Int?
+  var preparationTime: Int?
+  var cookingTime: Int?
   var imageUrl: String?
-  var steps: String?
   var totalCost: Double?
+  var ingredients: [String]?
+  var instructions: [String]?
 
   init(name: String) {
     self.name = name
@@ -31,5 +35,19 @@ final class Recipe: Identifiable, Hashable {
     self.name = name
     self.desc = desc
     self.imageUrl = imageUrl
+  }
+  
+  init(
+    name: String,
+    preparationTime: Int,
+    servings: Int,
+    ingredients: [String],
+    instructions: [String]
+  ) {
+    self.name = name
+    self.preparationTime = preparationTime
+    self.servings = servings
+    self.ingredients = ingredients
+    self.instructions = instructions
   }
 }
