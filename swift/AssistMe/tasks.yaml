@@ -1,0 +1,9 @@
+tasks:
+  fmt:
+    commands:
+      - swift format -i -p --recursive .
+    description: Format the project source
+  lint:
+    commands:
+      - swift format lint --recursive .
+    description: Lint the project source
