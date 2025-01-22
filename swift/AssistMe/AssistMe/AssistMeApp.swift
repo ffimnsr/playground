@@ -1,10 +1,3 @@
-//
-//  AssistMeApp.swift
-//  AssistMe
-//
-//  Created by pastel on 1/22/25.
-//
-
 import SwiftUI
 
 @main
