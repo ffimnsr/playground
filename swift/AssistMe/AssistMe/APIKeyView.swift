@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct APIKeyView: View {
-  @Binding var apiKey: String
+  @State private var apiKey: String = ""
 
   var body: some View {
     VStack(spacing: 20) {

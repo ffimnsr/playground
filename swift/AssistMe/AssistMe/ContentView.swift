@@ -10,7 +10,7 @@ struct ContentView: View {
     NavigationStack {
       VStack {
         if apiKey.isEmpty {
-          APIKeyView(apiKey: $apiKey)
+          APIKeyView()
         } else {
           ScrollView {
             LazyVStack(alignment: .leading, spacing: 12) {
