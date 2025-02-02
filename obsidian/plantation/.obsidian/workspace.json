@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Resize logical volume.md",
+                "file": "Tips/Fix divergence commits on git rebase.md",
                 "mode": "source",
                 "source": false
               }
@@ -29,9 +29,24 @@
     "type": "split",
     "children": [
       {
-        "id": "1586d31daa50f4c9",
+        "id": "17e1cf799888965e",
         "type": "tabs",
         "children": [
+          {
+            "id": "92e3b0d10fcc0fcc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "merge",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
           {
             "id": "9b755031fdd9380e",
             "type": "leaf",
@@ -39,21 +54,6 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "byCreatedTimeReverse"
-              }
-            }
-          },
-          {
-            "id": "92e3b0d10fcc0fcc",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical"
               }
             }
           },
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Resize logical volume.md",
+                "file": "Tips/Fix divergence commits on git rebase.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Resize logical volume.md",
+                "file": "Tips/Fix divergence commits on git rebase.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Resize logical volume.md"
+                "file": "Tips/Fix divergence commits on git rebase.md"
               }
             }
           }
@@ -148,6 +148,10 @@
   },
   "active": "fdfa07fc0ba79e2a",
   "lastOpenFiles": [
+    "Tips/Rebasing on git.md",
+    "Tips/Solana SPL Token.md",
+    "Tips/attachments/Pasted image 20250131153725.png",
+    "Tips/Resize logical volume.md",
     "Tips/Splitting subfolder out into a new repository.md",
     "Tips/Big O - the time complexity chart.md",
     "Tips/Implementing blockchain-based voting system.md",
@@ -163,7 +167,6 @@
     "DevOps Tools.md",
     "NFTables Cheatsheet.md",
     "Anything About React.md",
-    "Tips/Rebasing on git.md",
     "ZSH History Expansion.md",
     "Tips/All about git hooks.md",
     "Canvas/Local VMs Network Setup.canvas",
@@ -182,14 +185,10 @@
     "Plantation.md",
     "Rust Built Tools.md",
     "Journald Debugging.md",
-    "Tips/Create WinPE image using Debian.md",
-    "Tips/Sort Gnome 40+ app grid alphabetically.md",
-    "Tips/Change Thunderbird's default folder sort.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
     "Tips/attachments/Pasted image 20240910132820.png",
-    "Tips/attachments/Pasted image 20240910104743.png",
     "Knowledgebase/Rust",
     "Knowledgebase",
     "Homebrew",
