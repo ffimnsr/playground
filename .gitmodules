@@ -138,3 +138,7 @@
 	path = swift/todo-swift
 	url = git@github.com:ffimnsr/todo-swift.git
 	branch = main
+[submodule "rust/lumos-svm-rs"]
+	path = rust/lumos-svm-rs
+	url = git@github.com:ffimnsr/lumos-svm-rs.git
+	branch = main
