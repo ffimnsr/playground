@@ -1,8 +1,71 @@
-use std::{env, sync::Arc, time::Duration};
+use std::io::Write as _;
+use std::{
+    env,
+    fs::{File, OpenOptions},
+    path::Path,
+    sync::Arc,
+    time::Duration,
+};
 
-use git2::{IndexAddOption, Repository, Signature};
+use chrono::Local;
+use git2::{BranchType, Cred, IndexAddOption, PushOptions, RemoteCallbacks, Repository, Signature};
 use rand::{Rng, rng, seq::IndexedRandom as _};
 use tokio_cron_scheduler::{Job, JobScheduler};
+
+/// Validate the SSH URL
+/// # Arguments
+/// * `url` - SSH URL
+/// # Returns
+/// * `Result` - Result of the operation
+fn validate_ssh_url(url: &str) -> anyhow::Result<()> {
+    if !url.starts_with("git@") || !url.contains(":") {
+        anyhow::bail!("Invalid SSH URL format. Expected: git@hostname:username/repository.git");
+    }
+    Ok(())
+}
+
+/// Create a signature
+/// # Returns
+/// * `Result` - Result of the operation
+fn create_signature() -> anyhow::Result<Signature<'static>> {
+    // Create signature from scratch
+    let name = env::var("DC_COMMITTER_NAME").unwrap_or_else(|_| "Daily Committer".to_string());
+    let email =
+        env::var("DC_COMMITTER_EMAIL").unwrap_or_else(|_| "daily-committer@bot.com".to_string());
+    let signature = Signature::now(&name, &email)?;
+
+    Ok(signature)
+}
+
+/// Update the README file
+/// # Arguments
+/// * `repo_path` - Path to the repository
+/// # Returns
+/// * `Result` - Result of the operation
+fn update_readme(repo_path: &str) -> anyhow::Result<()> {
+    // Touch a README file
+    let readme = Path::new(repo_path).join("README.md");
+    if !readme.exists() {
+        File::create(&readme)?;
+    }
+
+    // Open the README file
+    let mut file = OpenOptions::new()
+        .write(true)
+        .truncate(true)
+        .create(true)
+        .open(&readme)?;
+
+    // Write the current date to the file
+    let current_time = Local::now();
+    writeln!(
+        file,
+        "Last updated: {}",
+        current_time.format("%Y-%m-%d %H:%M:%S")
+    )?;
+
+    Ok(())
+}
 
 /// Commit changes in the repository
 /// # Arguments
@@ -29,6 +92,62 @@ fn commit_changes(repo_path: &str, dry_run: bool) -> anyhow::Result<()> {
         anyhow::bail!("Can't work on bare repository");
     }
 
+    // Check and switch to main branch
+    // If main branch doesn't exist, create it
+    // If refs doesn't exist, create initial commit
+    let head = match repo.head() {
+        Ok(head) => head,
+        Err(_) => {
+            // Create initial commit if repository is empty
+            println!("Creating initial commit on main branch...");
+
+            // Create an empty tree
+            let tree_id = repo.index()?.write_tree()?;
+            let tree = repo.find_tree(tree_id)?;
+
+            // Create signature
+            let signature = match repo.signature() {
+                Ok(signature) => signature,
+                Err(_) => create_signature()?,
+            };
+
+            // Create initial commit
+            repo.commit(
+                Some("refs/heads/main"),
+                &signature,
+                &signature,
+                "🎉 Initial commit",
+                &tree,
+                &[],
+            )?;
+
+            // Set HEAD to main branch
+            repo.set_head("refs/heads/main")?;
+
+            // Get the head reference
+            repo.head()?
+        }
+    };
+
+    println!("Current branch: {:?}", head.name());
+
+    // Check if the main branch exists
+    if head.name() != Some("refs/heads/main") {
+        // Try to find main branch
+        if let Ok(mut branch) = repo.find_branch("main", BranchType::Local) {
+            branch.set_upstream(Some("origin/main"))?;
+            repo.set_head(branch.get().name().unwrap())?;
+        } else {
+            // Create main branch if it doesn't exist
+            let head_commit = head.peel_to_commit()?;
+            repo.branch("main", &head_commit, false)?;
+            repo.set_head("refs/heads/main")?;
+        }
+    }
+
+    // Update the README file
+    update_readme(repo_path)?;
+
     // Get the repository index
     let mut index = repo.index()?;
 
@@ -43,10 +162,10 @@ fn commit_changes(repo_path: &str, dry_run: bool) -> anyhow::Result<()> {
     let tree = repo.find_tree(tree_id)?;
 
     // Create signature from scratch
-    let signature = Signature::now(
-        "Daily Committer",
-        "daily-committer@bot.com",
-    )?;
+    let signature = match repo.signature() {
+        Ok(signature) => signature,
+        Err(_) => create_signature()?,
+    };
 
     // Get HEAD and parent commit
     let parent_commit = match repo.head()?.peel_to_commit() {
@@ -68,14 +187,45 @@ fn commit_changes(repo_path: &str, dry_run: bool) -> anyhow::Result<()> {
     )?;
 
     // Find the default remote (usually "origin")
-    let mut remote = repo.find_remote("origin")?;
+    let mut remote = match repo.find_remote("origin") {
+        Ok(remote) => remote,
+        Err(_) => {
+            let remote_url = env::var("DC_REMOTE_URL").ok();
+            if let Some(url) = remote_url {
+                // Validate if the URL is in SSH format
+                validate_ssh_url(&url)?;
+
+                // Add the remote
+                println!("Remote 'origin' not found, creating it...");
+                repo.remote("origin", &url)?
+            } else {
+                anyhow::bail!("Remote 'origin' not found and no URL provided");
+            }
+        }
+    };
+
+    // Set up SSH authentication
+    let mut callbacks = RemoteCallbacks::new();
+    callbacks.credentials(|_url, username_from_url, _allowed_types| {
+        let username = username_from_url.unwrap_or("git");
+        let home = env::var("HOME").unwrap_or_else(|_| "/root".to_string());
+        Cred::ssh_key(
+            username,
+            None,
+            Path::new(&format!("{}/.ssh/id_rsa", home)),
+            None,
+        )
+    });
+
+    // Set up push options
+    let mut push_options = PushOptions::new();
+    push_options.remote_callbacks(callbacks);
 
     // Push the changes to remote using the main branch
     let refspec = "refs/heads/main:refs/heads/main";
-    remote.push(&[refspec], None)?;
+    remote.push(&[refspec], Some(&mut push_options))?;
 
     println!("Changes pushed to remote repository");
-
     Ok(())
 }
 
@@ -217,6 +367,8 @@ async fn main() -> anyhow::Result<()> {
     if !check_repo(&repo_path) {
         anyhow::bail!("Invalid repository path: {}", repo_path);
     }
+
+    commit_changes(&repo_path, false)?;
 
     // Create a new scheduler
     let scheduler = JobScheduler::new().await?;
