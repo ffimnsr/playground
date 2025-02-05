@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "8823c53a8727ef26",
+        "id": "701f88bc50729420",
         "type": "tabs",
         "children": [
           {
-            "id": "fdfa07fc0ba79e2a",
+            "id": "bb4f7735344d0aef",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tips/Fix divergence commits on git rebase.md",
+                "file": "Recipes/To Try?.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tips/Fix divergence commits on git rebase.md",
+                "file": "Recipes/To Try?.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tips/Fix divergence commits on git rebase.md",
+                "file": "Recipes/To Try?.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tips/Fix divergence commits on git rebase.md"
+                "file": "Recipes/To Try?.md"
               }
             }
           }
@@ -146,8 +147,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fdfa07fc0ba79e2a",
+  "active": "bb4f7735344d0aef",
   "lastOpenFiles": [
+    "Recipes/To Try?.md",
+    "Recipes",
+    "Tips/Install ms-edge and code on Fedora using package manager.md",
+    "Tips/Creating patch using diff command.md",
+    "Tips/Rust shadowing concepts.md",
+    "Tips/Fix divergence commits on git rebase.md",
     "Tips/Rebasing on git.md",
     "Tips/Solana SPL Token.md",
     "Tips/attachments/Pasted image 20250131153725.png",
@@ -159,7 +166,6 @@
     "Tips/Create a secure single node CockroachDB.md",
     "Tips/Cloning Myrient directories using rclone command.md",
     "Tips/Configure IPFS container server.md",
-    "Tips/Fix divergence commits on git rebase.md",
     "Tips/Fixing Postman flatpak missing certs crash.md",
     "Self-Host Apps.md",
     "Postgres Extensions & Tools.md",
@@ -182,9 +188,6 @@
     "Notes/attachments",
     "Notes",
     "Flatpak.md",
-    "Plantation.md",
-    "Rust Built Tools.md",
-    "Journald Debugging.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",

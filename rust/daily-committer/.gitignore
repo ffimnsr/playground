@@ -1,0 +1,6 @@
+/target
+/.env
+/.env.staging
+/.env.production
+/test-dir
+**/*.rs.bk
