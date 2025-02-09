@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "701f88bc50729420",
+        "id": "ebd31d7b64a80dbe",
         "type": "tabs",
         "children": [
           {
-            "id": "bb4f7735344d0aef",
+            "id": "2f412e5100e5e681",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Recipes/To Try?.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Recipes/To Try?.md",
+                "file": "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +99,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Recipes/To Try?.md",
+                "file": "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Recipes/To Try?.md"
+                "file": "Tips/Problems on compiling certain creates on MacOS for Wasm32.md"
               }
             }
           }
@@ -147,8 +143,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bb4f7735344d0aef",
+  "active": "9b755031fdd9380e",
   "lastOpenFiles": [
+    "Tips/Error on Github action runner.md",
+    "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
     "Recipes/To Try?.md",
     "Recipes",
     "Tips/Install ms-edge and code on Fedora using package manager.md",
@@ -183,11 +181,9 @@
     "Tips/attachments/Pasted image 20240930203241.png",
     "Tips/attachments/Pasted image 20240910132920.png",
     "Tips/attachments/Pasted image 20240930203123.png",
-    "Notes/IBC Protocol.md",
     "Notes/attachments/Pasted image 20240928223900.png",
     "Notes/attachments",
     "Notes",
-    "Flatpak.md",
     "Untitled.canvas",
     "Canvas",
     "Untitled 1.canvas",
