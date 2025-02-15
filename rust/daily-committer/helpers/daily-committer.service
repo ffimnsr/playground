@@ -1,0 +1,15 @@
+[Unit]
+Description=daily-committer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/local/bin/daily-committer /home/<user>/<repo_name>
+User=<user>
+Group=<group>
+Restart=on-failure
+RestartSec=40s
+
+[Install]
+WantedBy=multi-user.target
