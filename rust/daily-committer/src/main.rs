@@ -4,10 +4,9 @@ use std::{
     fs::{File, OpenOptions},
     path::Path,
     sync::Arc,
-    time::Duration,
 };
 
-use chrono::Local;
+use chrono::{Local, Timelike};
 use git2::{BranchType, Cred, IndexAddOption, PushOptions, RemoteCallbacks, Repository, Signature};
 use rand::{Rng, rng, seq::IndexedRandom as _};
 use tokio_cron_scheduler::{Job, JobScheduler};
@@ -168,10 +167,7 @@ fn commit_changes(repo_path: &str, dry_run: bool) -> anyhow::Result<()> {
     };
 
     // Get HEAD and parent commit
-    let parent_commit = match repo.head()?.peel_to_commit() {
-        Ok(commit) => Some(commit),
-        Err(_) => None,
-    };
+    let parent_commit = repo.head()?.peel_to_commit().ok();
 
     // Create a list of parent commits
     let parents = parent_commit.as_ref().map(|c| vec![c]).unwrap_or(vec![]);
@@ -205,16 +201,24 @@ fn commit_changes(repo_path: &str, dry_run: bool) -> anyhow::Result<()> {
     };
 
     // Set up SSH authentication
+
     let mut callbacks = RemoteCallbacks::new();
     callbacks.credentials(|_url, username_from_url, _allowed_types| {
         let username = username_from_url.unwrap_or("git");
         let home = env::var("HOME").unwrap_or_else(|_| "/root".to_string());
-        Cred::ssh_key(
-            username,
-            None,
-            Path::new(&format!("{}/.ssh/id_rsa", home)),
-            None,
-        )
+
+        let ssh_ed25519_key_path = format!("{}/.ssh/id_ed25519", home);
+        let ssh_ed25519_key = Path::new(&ssh_ed25519_key_path);
+        let ssh_rsa_key_path = format!("{}/.ssh/id_rsa", home);
+        let ssh_rsa_key = Path::new(&ssh_rsa_key_path);
+
+        if ssh_ed25519_key.exists() {
+            Cred::ssh_key(username, None, ssh_ed25519_key, None)
+        } else if ssh_rsa_key.exists() {
+            Cred::ssh_key(username, None, ssh_rsa_key, None)
+        } else {
+            Cred::ssh_key_from_agent(username)
+        }
     });
 
     // Set up push options
@@ -258,10 +262,10 @@ fn check_repo(repo_path: &str) -> bool {
 async fn schedule_random_job(
     scheduler: &JobScheduler,
     repo_path: &str,
-    hours: &[i32],
+    hours: &[u32],
 ) -> anyhow::Result<()> {
     // Schedule a new job for each chosen hour
-    for hour in hours.to_owned() {
+    for hour in hours.iter().copied() {
         // Generate the cron expression
         let cron_expr: &str = &format!("0 0 {} * * *", hour);
         println!("Added new job scheduled for {:02}:00", hour);
@@ -308,14 +312,14 @@ async fn schedule_job(
     scheduler: &JobScheduler,
     repo_path: &str,
     cron_expr: &str,
-    hour: i32,
+    hour: u32,
 ) -> anyhow::Result<()> {
     // Clone the repository path as it will be moved into the job
     let repo_path = repo_path.to_string();
 
     // Add a new job to the scheduler
     scheduler
-        .add(Job::new_async(&cron_expr, move |_, _| {
+        .add(Job::new_async(cron_expr, move |_, _| {
             let repo_path = repo_path.clone();
             Box::pin(async move {
                 if let Err(e) = commit_changes(&repo_path, false) {
@@ -331,13 +335,26 @@ async fn schedule_job(
 }
 
 /// Generate a list of chosen hours
-fn generate_chosen_hours() -> Vec<i32> {
+fn generate_chosen_hours() -> Vec<u32> {
+    // Get the current hour
+    let current_hour = Local::now().hour();
+
+    // Ensure the current hour is not 0 or greater than 24
+    // Handle the edge case by setting it to 1
+    let current_hour = if current_hour == 0 || current_hour > 24 {
+        1
+    } else {
+        current_hour
+    };
+
     // Generate a list of hours from 1 to 24
-    let hours: Vec<_> = (1..=24).collect();
+    let hours: Vec<_> = (current_hour..=24).collect();
 
     // Choose a random number of hours
     let mut rng = rng();
-    let num_commits = rng.random_range(1..=4);
+
+    // Generate a random number of commits
+    let num_commits = rng.random_range(1..=8);
 
     // Choose random hours from the list
     let mut chosen_hours: Vec<_> = hours
@@ -389,13 +406,6 @@ async fn main() -> anyhow::Result<()> {
                     eprintln!("Failed to schedule new random job: {}", e);
                 }
             })
-        })?)
-        .await?;
-
-    // Run a job once after 18 seconds
-    scheduler
-        .add(Job::new_one_shot(Duration::from_secs(5), |_uuid, _l| {
-            println!("I only run once");
         })?)
         .await?;
 
