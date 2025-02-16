@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct RecipeItem: Identifiable {
+struct RecipeIngredient: Identifiable {
   var id = UUID()
   let name: String
-  let type: String
 }

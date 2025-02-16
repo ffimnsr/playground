@@ -12,15 +12,16 @@ import SwiftData
 final class Recipe: Identifiable, Hashable {
   var id = UUID()
   var name: String
+  var imageUrl: String?
   var type: RecipeType?
+  var ingredientPortions: [String: String]?
+  var instructions: [String]?
   var desc: String?
   var servings: Int?
-  var preparationTime: Int?
-  var cookingTime: Int?
-  var imageUrl: String?
-  var totalCost: Double?
+  var nutritionalInformation: [String: String]?
   var ingredients: [String]?
-  var instructions: [String]?
+  var cookingTime: Int?
+  var preparationTime: Int?
 
   init(name: String) {
     self.name = name

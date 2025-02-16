@@ -25,7 +25,7 @@
         "images"
       ]
     },
-    "mealType": {
+    "type": {
       "type": "enumeration",
       "enum": [
         "soup",
@@ -37,31 +37,31 @@
         "salad"
       ]
     },
-    "preparationTime": {
-      "type": "time"
-    },
-    "cookTime": {
-      "type": "time"
-    },
-    "ingredients": {
+    "ingredientPortions": {
       "type": "json"
     },
-    "steps": {
+    "instructions": {
       "type": "richtext"
     },
     "description": {
       "type": "text"
     },
-    "noOfServings": {
+    "servings": {
       "type": "integer"
     },
     "nutritionalInformation": {
       "type": "json"
     },
-    "recipeIngredients": {
+    "ingredients": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::recipe-ingredient.recipe-ingredient"
+    },
+    "cookingTime": {
+      "type": "integer"
+    },
+    "preparationTime": {
+      "type": "integer"
     }
   }
 }

@@ -24,8 +24,8 @@ struct HomeView: View {
         }
         .padding([.horizontal, .top])
 
-        DateScroller()
-          .frame(maxHeight: 120)
+//        DateScroller()
+//          .frame(maxHeight: 120)
         Divider()
 
         ScrollView(.vertical, showsIndicators: false) {

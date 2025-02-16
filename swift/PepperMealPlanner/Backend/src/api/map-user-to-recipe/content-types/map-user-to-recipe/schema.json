@@ -4,18 +4,18 @@
   "info": {
     "singularName": "map-user-to-recipe",
     "pluralName": "map-user-to-recipes",
-    "displayName": "MapUserToRecipe"
+    "displayName": "MapUserToRecipe",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "usersPermissionsUser": {
+    "user": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "mapUserToRecipes"
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     },
     "recipe": {
       "type": "relation",

@@ -373,6 +373,7 @@ export interface ApiMapUserToRecipeMapUserToRecipe
   extends Struct.CollectionTypeSchema {
   collectionName: 'map_user_to_recipes';
   info: {
+    description: '';
     displayName: 'MapUserToRecipe';
     pluralName: 'map-user-to-recipes';
     singularName: 'map-user-to-recipe';
@@ -395,8 +396,8 @@ export interface ApiMapUserToRecipeMapUserToRecipe
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    usersPermissionsUser: Schema.Attribute.Relation<
-      'manyToOne',
+    user: Schema.Attribute.Relation<
+      'oneToOne',
       'plugin::users-permissions.user'
     >;
   };
@@ -443,32 +444,32 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    cookTime: Schema.Attribute.Time;
+    cookingTime: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     imageUrl: Schema.Attribute.Media<'files' | 'images'>;
-    ingredients: Schema.Attribute.JSON;
+    ingredientPortions: Schema.Attribute.JSON;
+    ingredients: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::recipe-ingredient.recipe-ingredient'
+    >;
+    instructions: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::recipe.recipe'
     > &
       Schema.Attribute.Private;
-    mealType: Schema.Attribute.Enumeration<
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    nutritionalInformation: Schema.Attribute.JSON;
+    preparationTime: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    servings: Schema.Attribute.Integer;
+    type: Schema.Attribute.Enumeration<
       ['soup', 'main', 'side', 'appetizer', 'entree', 'dessert', 'salad']
     >;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    noOfServings: Schema.Attribute.Integer;
-    nutritionalInformation: Schema.Attribute.JSON;
-    preparationTime: Schema.Attribute.Time;
-    publishedAt: Schema.Attribute.DateTime;
-    recipeIngredients: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::recipe-ingredient.recipe-ingredient'
-    >;
-    steps: Schema.Attribute.RichText;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -950,10 +951,6 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
-    mapUserToRecipes: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::map-user-to-recipe.map-user-to-recipe'
-    >;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
