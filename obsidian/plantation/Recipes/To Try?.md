@@ -1,1 +1,8 @@
 - Buffalo mushroom garlic
+	- https://www.tiktok.com/@abigailfmarquez/video/7408550786646428949
+- Chicken Ala-King
+	- https://www.tiktok.com/@abigailfmarquez/video/7451189975183363335
+- Chao fan
+	- https://www.tiktok.com/@abigailfmarquez/video/7435254054776884487
+- Tapsilog
+	- https://www.tiktok.com/@abigailfmarquez/video/7417439178633383186
