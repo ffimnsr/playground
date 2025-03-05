@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		2CA1A66C2D6FF23D00C63961 /* StandUpReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = StandUpReminder.app; path = "/Users/eabucay/Projects/playground/swift/StandUpReminder/build/Debug-iphoneos/StandUpReminder.app"; sourceTree = "<absolute>"; };
+		9844BC5A2D7812EC00116B99 /* StandUpReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandUpReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				2CA1A66E2D6FF23D00C63961 /* StandUpReminder */,
+				9844BC5A2D7812EC00116B99 /* StandUpReminder.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = StandUpReminder;
-			productReference = 2CA1A66C2D6FF23D00C63961 /* StandUpReminder.app */;
+			productReference = 9844BC5A2D7812EC00116B99 /* StandUpReminder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
