@@ -17,6 +17,9 @@ struct SettingsView: View {
     @State private var isDarkModeEnabled = false
     @State private var dailyTarget = 8
     @State private var weeklyGoals = 5
+    @State private var isWorkingHoursPickerPresented = false
+    @State private var isDailyTargetPickerPresented = false
+    @State private var isWeeklyGoalsPickerPresented = false
     
     var body: some View {
         Form {
@@ -41,11 +44,35 @@ struct SettingsView: View {
                     Text("Working Hours")
                     Spacer()
                     Text("\(workingHoursStart) AM - \(workingHoursEnd) PM")
-                    Stepper("", onIncrement: {
-                        if workingHoursEnd < 23 { workingHoursEnd += 1 }
-                    }, onDecrement: {
-                        if workingHoursStart > 0 { workingHoursStart -= 1 }
-                    })
+                        .foregroundStyle(.blue)
+                }
+                .onTapGesture {
+                    isWorkingHoursPickerPresented.toggle()
+                }
+                .sheet(isPresented: $isWorkingHoursPickerPresented) {
+                    VStack {
+                        Text("Select Working Hours")
+                            .font(.headline)
+                            .padding()
+                        
+                        HStack {
+                            Picker("Start Time", selection: $workingHoursStart) {
+                                ForEach(0..<workingHoursEnd, id: \.self) { hour in
+                                    Text("\(hour):00").tag(hour)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                            
+                            Picker("End Time", selection: $workingHoursEnd) {
+                                ForEach(workingHoursStart+1..<24, id: \.self) { hour in
+                                    Text("\(hour):00").tag(hour)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                        }
+                        .padding()
+                    }
+                    .presentationDetents([.medium])
                 }
             }
             
@@ -56,8 +83,55 @@ struct SettingsView: View {
             }
             
             Section(header: Text("Health Goals").font(.headline)) {
-                Stepper("Daily Target: \(dailyTarget) times", value: $dailyTarget, in: 1...20)
-                Stepper("Weekly Goals: \(weeklyGoals) days", value: $weeklyGoals, in: 1...7)
+                HStack {
+                    Text("Daily Target")
+                    Spacer()
+                    Text("^[\(dailyTarget) times](inflect: true)")
+                        .foregroundStyle(.blue)
+                }
+                .onTapGesture {
+                    isDailyTargetPickerPresented.toggle()
+                }
+                .sheet(isPresented: $isDailyTargetPickerPresented) {
+                    VStack {
+                        Text("Select Daily Target")
+                            .font(.headline)
+                            .padding()
+                        Picker("", selection: $dailyTarget) {
+                            ForEach(1..<20, id: \.self) { target in
+                                Text("\(target)").tag(target)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .padding()
+                    }
+                    .presentationDetents([.medium])
+                }
+                HStack {
+                    Text("Weekly Goals")
+                    Spacer()
+                    Text("^[\(weeklyGoals) day](inflect: true)")
+                        .foregroundStyle(.blue)
+                }
+                .onTapGesture {
+                    isWeeklyGoalsPickerPresented.toggle()
+                }
+                .sheet(isPresented: $isWeeklyGoalsPickerPresented) {
+                    VStack {
+                        Text("Select Weekly Goals")
+                            .font(.headline)
+                            .padding()
+                        
+                        Picker("", selection: $weeklyGoals) {
+                            ForEach(1..<20, id: \.self) { goal in
+                                Text("^[\(goal) day](inflect: true)").tag(goal)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .padding()
+                    }
+                    .presentationDetents([.medium])
+                }
             }
             
             Section {

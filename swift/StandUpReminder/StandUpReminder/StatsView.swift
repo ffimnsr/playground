@@ -34,6 +34,19 @@ struct StatsView: View {
     }
 }
 
+struct MonthlyStreakView: View {
+    let daysInMonth: Int = 30
+    let successfulDays = [1, 2, 3, 5, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 24, 26, 27, 28, 29, 30]
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Monthly Streak")
+                .font(.headline)
+            
+        }
+    }
+}
+
 #Preview {
     StatsView()
 }
