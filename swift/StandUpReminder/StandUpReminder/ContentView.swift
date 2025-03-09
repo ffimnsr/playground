@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            ReminderView()
+            TimerView()
                 .tabItem {
                     Image(systemName: "bell.fill")
                     Text("Reminder")
@@ -19,6 +19,11 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("Stats")
+                }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text("Settings")
                 }
         }
     }
