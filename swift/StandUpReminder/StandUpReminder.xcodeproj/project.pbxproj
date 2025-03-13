@@ -10,9 +10,27 @@
 		9844BC5A2D7812EC00116B99 /* StandUpReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandUpReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2C37E3122D830D84006FD68B /* Exceptions for "StandUpReminder" folder in "StandUpReminder" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2CA1A66B2D6FF23D00C63961 /* StandUpReminder */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		2C881E112D831BBC00F0AF18 /* Playground */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Playground;
+			sourceTree = "<group>";
+		};
 		2CA1A66E2D6FF23D00C63961 /* StandUpReminder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2C37E3122D830D84006FD68B /* Exceptions for "StandUpReminder" folder in "StandUpReminder" target */,
+			);
 			path = StandUpReminder;
 			sourceTree = "<group>";
 		};
@@ -32,6 +50,7 @@
 		2CA1A6632D6FF23D00C63961 = {
 			isa = PBXGroup;
 			children = (
+				2C881E112D831BBC00F0AF18 /* Playground */,
 				2CA1A66E2D6FF23D00C63961 /* StandUpReminder */,
 				9844BC5A2D7812EC00116B99 /* StandUpReminder.app */,
 			);
@@ -53,6 +72,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				2C881E112D831BBC00F0AF18 /* Playground */,
 				2CA1A66E2D6FF23D00C63961 /* StandUpReminder */,
 			);
 			name = StandUpReminder;
@@ -246,11 +266,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StandUpReminder/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StandUpReminder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Standup Reminder";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -274,11 +296,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StandUpReminder/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StandUpReminder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Standup Reminder";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

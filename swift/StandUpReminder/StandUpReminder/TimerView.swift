@@ -68,7 +68,7 @@ struct TimerView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Stand Up Timer")
+            .navigationTitle("Standup Timer")
             .onAppear(perform: viewModel.startTimer)
             .onDisappear(perform: viewModel.stopTimer)
         }
@@ -109,15 +109,21 @@ class TimerViewModel {
     @MainActor
     private func startStandupTimer() {
         isStandUpMode = true
+#if DEBUG
         timeRemaining = 35
-//        timeRemaining = settings.standDuration * 60
+#else
+        timeRemaining = settings.standDuration * 60
+#endif
     }
 
     @MainActor
     private func startReminderTimer() {
         isStandUpMode = false
+#if DEBUG
         timeRemaining = 10
-//        timeRemaining = settings.reminderFrequency * 60
+#else
+        timeRemaining = settings.reminderFrequency * 60
+#endif
     }
 
     @MainActor

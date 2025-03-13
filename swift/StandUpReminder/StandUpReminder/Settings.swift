@@ -12,81 +12,82 @@ import SwiftUI
 @Observable
 final class Settings {
     static let shared = Settings()
+    let defaults = UserDefaults.standard
 
     var reminderFrequency: Int {
         didSet {
-            UserDefaults.standard.set(
+            defaults.set(
                 reminderFrequency, forKey: "reminderFrequency")
         }
     }
 
     var standDuration: Int {
         didSet {
-            UserDefaults.standard.set(standDuration, forKey: "standDuration")
+            defaults.set(standDuration, forKey: "standDuration")
         }
     }
 
     var workingHoursStart: Int {
         didSet {
-            UserDefaults.standard.set(
+            defaults.set(
                 workingHoursStart, forKey: "workingHoursStart")
         }
     }
 
     var workingHoursEnd: Int {
         didSet {
-            UserDefaults.standard.set(
+            defaults.set(
                 workingHoursEnd, forKey: "workingHoursEnd")
         }
     }
 
     var isVibrationEnabled: Bool {
         didSet {
-            UserDefaults.standard.set(
+            defaults.set(
                 isVibrationEnabled, forKey: "isVibrationEnabled")
         }
     }
 
     var isSoundEnabled: Bool {
         didSet {
-            UserDefaults.standard.set(isSoundEnabled, forKey: "isSoundEnabled")
+            defaults.set(isSoundEnabled, forKey: "isSoundEnabled")
         }
     }
 
     var dailyTarget: Int {
         didSet {
-            UserDefaults.standard.set(dailyTarget, forKey: "dailyTarget")
+            defaults.set(dailyTarget, forKey: "dailyTarget")
         }
     }
 
     var weeklyGoals: Int {
         didSet {
-            UserDefaults.standard.set(weeklyGoals, forKey: "weeklyGoals")
+            defaults.set(weeklyGoals, forKey: "weeklyGoals")
         }
     }
 
-    init() {
+    private init() {
         self.reminderFrequency =
-            UserDefaults.standard.object(forKey: "reminderFrequency") as? Int
+            defaults.object(forKey: "reminderFrequency") as? Int
             ?? 60
         self.standDuration =
-            UserDefaults.standard
+            defaults
             .object(forKey: "standDuration") as? Int ?? 1
         self.workingHoursStart =
-            UserDefaults.standard.object(forKey: "workingHoursStart") as? Int
+            defaults.object(forKey: "workingHoursStart") as? Int
             ?? 9
         self.workingHoursEnd =
-            UserDefaults.standard.object(forKey: "workingHoursEnd") as? Int
+            defaults.object(forKey: "workingHoursEnd") as? Int
             ?? 17
         self.isVibrationEnabled =
-            UserDefaults.standard.object(forKey: "isVibrationEnabled") as? Bool
+            defaults.object(forKey: "isVibrationEnabled") as? Bool
             ?? true
         self.isSoundEnabled =
-            UserDefaults.standard.object(forKey: "isSoundEnabled") as? Bool
+            defaults.object(forKey: "isSoundEnabled") as? Bool
             ?? true
         self.dailyTarget =
-            UserDefaults.standard.object(forKey: "dailyTarget") as? Int ?? 8
+            defaults.object(forKey: "dailyTarget") as? Int ?? 8
         self.weeklyGoals =
-            UserDefaults.standard.object(forKey: "weeklyGoals") as? Int ?? 300
+            defaults.object(forKey: "weeklyGoals") as? Int ?? 300
     }
 }
