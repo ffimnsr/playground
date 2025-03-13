@@ -7,11 +7,13 @@
 
 import Foundation
 import UserNotifications
+import Observation
 
-class NotificationManager: ObservableObject {
+@Observable
+class NotificationManager {
     static let shared = NotificationManager()
 
-    @Published var isAuthorized = false
+    var isAuthorized = false
 
     init() {
         checkAuthorization()
@@ -21,7 +23,7 @@ class NotificationManager: ObservableObject {
         UNUserNotificationCenter.current().requestAuthorization(options: [
             .alert, .badge, .sound,
         ]) { granted, error in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.isAuthorized = granted
             }
 
@@ -35,7 +37,7 @@ class NotificationManager: ObservableObject {
 
     func checkAuthorization() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.isAuthorized = settings.authorizationStatus == .authorized
             }
         }

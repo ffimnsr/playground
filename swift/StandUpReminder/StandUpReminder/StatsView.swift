@@ -22,6 +22,8 @@ struct StatsView: View {
 }
 
 struct WeeklySummaryView: View {
+    @State private var viewModel = WeeklySummaryViewModel()
+
     let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     let values = [75, 90, 60, 85, 70, 40, 65] // Example values
 
@@ -51,7 +53,7 @@ struct WeeklySummaryView: View {
                 VStack(alignment: .leading) {
                     Text("Weekly Average")
                         .font(.headline)
-                    Text("6.2/8")
+                    Text("6.2/\(viewModel.dailyTarget)")
                         .font(.title)
                     Text("stand-ups per day")
                         .font(.caption)
@@ -78,12 +80,42 @@ struct WeeklySummaryView: View {
     }
 }
 
+@Observable
+class WeeklySummaryViewModel {
+    private let settings = Settings.shared
+
+    var dailyTarget: Int {
+        settings.standDuration
+    }
+
+    var weeklyTarget: Int {
+        settings.weeklyGoals
+    }
+
+    @MainActor
+    func loadWeeklySummary() async -> [Int] {
+        return [75, 90, 60, 85, 70, 40, 65]
+    }
+}
+
 struct MonthlyStreakView: View {
     let daysInMonth: Int = 30
     let successfulDays = [
         1, 2, 3, 5, 6, 7, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 24,
         26, 27, 28, 29, 30,
     ]
+
+    var currentStreak: Int {
+        var streak = 0
+        var currentDay = daysInMonth
+
+        while currentDay > 0 && successfulDays.contains(currentDay) {
+            streak += 1
+            currentDay -= 1
+        }
+
+        return streak
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -116,7 +148,7 @@ struct MonthlyStreakView: View {
                 }
             }
 
-            Text("Current Streak: 5 days")
+            Text("Current Streak: \(currentStreak) days")
                 .font(.headline)
                 .padding(.vertical)
         }

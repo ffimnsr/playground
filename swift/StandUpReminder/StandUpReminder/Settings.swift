@@ -9,9 +9,10 @@ import Combine
 import Observation
 import SwiftUI
 
-@Observable class Settings {
+@Observable
+final class Settings {
     static let shared = Settings()
-    
+
     var reminderFrequency: Int {
         didSet {
             UserDefaults.standard.set(
@@ -84,7 +85,7 @@ import SwiftUI
             UserDefaults.standard.object(forKey: "isSoundEnabled") as? Bool
             ?? true
         self.dailyTarget =
-            UserDefaults.standard.object(forKey: "dailyTarget") as? Int ?? 60
+            UserDefaults.standard.object(forKey: "dailyTarget") as? Int ?? 8
         self.weeklyGoals =
             UserDefaults.standard.object(forKey: "weeklyGoals") as? Int ?? 300
     }
