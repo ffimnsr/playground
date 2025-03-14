@@ -41,7 +41,7 @@ class AppDelegate: NSObject, UIApplicationDelegate,
             content.title = "Time to Stand Up!"
             content.body = "You snoozed your previous reminder. Stand up now!"
             content.sound = UNNotificationSound.default
-            content.categoryIdentifier = "STANDUP_REMINDER"
+            content.categoryIdentifier = "STAND_UP_REMINDER"
 
             let trigger = UNTimeIntervalNotificationTrigger(
                 timeInterval: 5 * 60, repeats: false)

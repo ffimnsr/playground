@@ -12,14 +12,13 @@ struct SettingsView: View {
     @State private var settings = Settings.shared
     @State private var isWorkingHoursPickerPresented = false
     @State private var isDailyTargetPickerPresented = false
-    @State private var isWeeklyGoalsPickerPresented = false
 
     var body: some View {
         NavigationStack {
             Form {
                 Section(header: Text("Reminder Settings").font(.headline)) {
                     Picker("Reminder Frequency", selection: $settings.reminderFrequency) {
-                        ForEach([1, 30, 60, 90, 120], id: \.self) {
+                        ForEach([30, 60, 90, 120], id: \.self) {
                             frequency in
                             Text("Every \(frequency) mins").tag(frequency)
                         }
@@ -27,7 +26,7 @@ struct SettingsView: View {
                     .pickerStyle(.menu)
 
                     Picker("Stand Duration", selection: $settings.standDuration) {
-                        ForEach(1...10, id: \.self) {
+                        ForEach(5...15, id: \.self) {
                             duration in
                             Text("\(duration) minutes").tag(duration)
                         }
@@ -98,31 +97,6 @@ struct SettingsView: View {
                             Picker("", selection: $settings.dailyTarget) {
                                 ForEach(1...20, id: \.self) { target in
                                     Text("\(target)").tag(target)
-                                }
-                            }
-                            .pickerStyle(.wheel)
-                            .padding()
-                        }
-                        .presentationDetents([.medium])
-                    }
-                    HStack {
-                        Text("Weekly Goals")
-                        Spacer()
-                        Text("^[\(settings.weeklyGoals) day](inflect: true)")
-                            .foregroundStyle(.blue)
-                    }
-                    .onTapGesture {
-                        isWeeklyGoalsPickerPresented.toggle()
-                    }
-                    .sheet(isPresented: $isWeeklyGoalsPickerPresented) {
-                        VStack {
-                            Text("Select Weekly Goals")
-                                .font(.headline)
-                                .padding()
-
-                            Picker("", selection: $settings.weeklyGoals) {
-                                ForEach(1..<20, id: \.self) { goal in
-                                    Text("^[\(goal) day](inflect: true)").tag(goal)
                                 }
                             }
                             .pickerStyle(.wheel)

@@ -25,8 +25,8 @@ extension NotificationManager {
         )
 
         // Define the category that includes these actions
-        let standupCategory = UNNotificationCategory(
-            identifier: "STANDUP_REMINDER",
+        let standUpCategory = UNNotificationCategory(
+            identifier: "STAND_UP_REMINDER",
             actions: [snoozeAction, doneAction],
             intentIdentifiers: [],
             options: []
@@ -34,7 +34,7 @@ extension NotificationManager {
 
         // Register the category
         UNUserNotificationCenter.current().setNotificationCategories([
-            standupCategory
+            standUpCategory
         ])
     }
 }

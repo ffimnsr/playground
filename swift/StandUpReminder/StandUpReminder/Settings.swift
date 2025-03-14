@@ -60,22 +60,16 @@ final class Settings {
         }
     }
 
-    var weeklyGoals: Int {
-        didSet {
-            defaults.set(weeklyGoals, forKey: "weeklyGoals")
-        }
-    }
-
     private init() {
         self.reminderFrequency =
             defaults.object(forKey: "reminderFrequency") as? Int
             ?? 60
         self.standDuration =
             defaults
-            .object(forKey: "standDuration") as? Int ?? 1
+            .object(forKey: "standDuration") as? Int ?? 10
         self.workingHoursStart =
             defaults.object(forKey: "workingHoursStart") as? Int
-            ?? 9
+            ?? 7
         self.workingHoursEnd =
             defaults.object(forKey: "workingHoursEnd") as? Int
             ?? 17
@@ -87,7 +81,5 @@ final class Settings {
             ?? true
         self.dailyTarget =
             defaults.object(forKey: "dailyTarget") as? Int ?? 8
-        self.weeklyGoals =
-            defaults.object(forKey: "weeklyGoals") as? Int ?? 300
     }
 }

@@ -9,17 +9,17 @@ import Foundation
 import UserNotifications
 
 extension NotificationManager {
-    func scheduleStandupReminders(interval: TimeInterval = 3600) {  // Default 1 hour (3600 seconds)
+    func scheduleStandUpReminders(interval: TimeInterval = 3600) {  // Default 1 hour (3600 seconds)
         // Cancel any existing notifications
-        cancelStandupReminders()
+        cancelStandUpReminders()
 
         // Create notification content
         let content = UNMutableNotificationContent()
         content.title = "Time to Stand Up!"
         content.body =
             "You've been sitting for an hour. Take a short break and stretch your legs."
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "STANDUP_REMINDER"
+        content.sound = .default
+        content.categoryIdentifier = "STAND_UP_REMINDER"
 
         // Create a repeating trigger
         let trigger = UNTimeIntervalNotificationTrigger(
@@ -27,7 +27,7 @@ extension NotificationManager {
 
         // Create the request
         let request = UNNotificationRequest(
-            identifier: "standupReminder",
+            identifier: "standUpReminder",
             content: content,
             trigger: trigger
         )
@@ -42,8 +42,8 @@ extension NotificationManager {
         }
     }
 
-    func cancelStandupReminders() {
+    func cancelStandUpReminders() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(
-            withIdentifiers: ["standupReminder"])
+            withIdentifiers: ["standUpReminder"])
     }
 }

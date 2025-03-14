@@ -53,7 +53,7 @@ struct TimerView: View {
 
                         Text("Last stood up: 15 minutes ago")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.brand2)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(40)
@@ -68,7 +68,7 @@ struct TimerView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Standup Timer")
+            .navigationTitle("Stand Up Timer")
             .onAppear(perform: viewModel.startTimer)
             .onDisappear(perform: viewModel.stopTimer)
         }
@@ -77,6 +77,7 @@ struct TimerView: View {
 
 @Observable
 class TimerViewModel {
+    private let notificationManager = NotificationManager.shared
     var timeRemaining: Int
     var isTimerRunning: Bool = true
     var isStandUpMode: Bool = false
@@ -90,40 +91,47 @@ class TimerViewModel {
 
     @MainActor
     func startTimer() {
+        notificationManager.requestAuthorization()
+
         timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                if self.timeRemaining > 0 && self.isTimerRunning {
-                    self.timeRemaining -= 1
-                } else if self.timeRemaining == 0 {
-                    if self.isStandUpMode {
-                        self.startReminderTimer()
-                    } else {
-                        self.startStandupTimer()
-                    }
-                }
+                self.updateTimer()
             }
     }
 
     @MainActor
-    private func startStandupTimer() {
+    private func updateTimer() {
+        if timeRemaining > 0 && isTimerRunning {
+            timeRemaining -= 1
+        } else if timeRemaining == 0 {
+            if isStandUpMode {
+                startReminderTimer()
+            } else {
+                startStandUpTimer()
+            }
+        }
+    }
+
+    @MainActor
+    private func startStandUpTimer() {
         isStandUpMode = true
-#if DEBUG
-        timeRemaining = 35
-#else
-        timeRemaining = settings.standDuration * 60
-#endif
+        #if DEBUG
+            timeRemaining = 35
+        #else
+            timeRemaining = settings.standDuration * 60
+        #endif
     }
 
     @MainActor
     private func startReminderTimer() {
         isStandUpMode = false
-#if DEBUG
-        timeRemaining = 10
-#else
-        timeRemaining = settings.reminderFrequency * 60
-#endif
+        #if DEBUG
+            timeRemaining = 10
+        #else
+            timeRemaining = settings.reminderFrequency * 60
+        #endif
     }
 
     @MainActor
@@ -171,6 +179,7 @@ struct CircularTimerView: View {
                     "\(timeRemaining / 60):\(String(format: "%02d", timeRemaining % 60))"
                 )
                 .font(.system(size: 50, weight: .bold, design: .rounded))
+
                 Text("minutes left")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -208,13 +217,7 @@ struct HourlyBreakdownView: View {
                                         ? Color.green : Color.gray.opacity(0.3)
                                 )
                                 .frame(height: 40)
-
-//                            if hour <= 5 {
-//                                Image(systemName: "checkmark")
-//                                    .foregroundStyle(.white)
-//                            }
                         }
-
                     }
                 }
 

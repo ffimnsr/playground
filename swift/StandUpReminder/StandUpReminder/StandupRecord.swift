@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct StandupRecord: Codable {
+struct StandUpRecord: Codable {
     let date: Date
-    let standupCount: Int
-    let standupTarget: Int
+    let standUpCount: Int
+    let standUpTarget: Int
     let completed: Bool
 }

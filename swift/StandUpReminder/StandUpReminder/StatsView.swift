@@ -88,10 +88,6 @@ class WeeklySummaryViewModel {
         settings.standDuration
     }
 
-    var weeklyTarget: Int {
-        settings.weeklyGoals
-    }
-
     @MainActor
     func loadWeeklySummary() async -> [Int] {
         return [75, 90, 60, 85, 70, 40, 65]
