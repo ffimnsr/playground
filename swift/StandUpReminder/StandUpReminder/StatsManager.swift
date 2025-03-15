@@ -5,36 +5,22 @@
 //  Created by Edward Fitz Abucay on 2/27/25.
 //
 
-import Foundation
 import Observation
+import SwiftUI
+import SwiftData
 
-@Observable class StatsManager {
+@Observable
+class StatsManager {
     static let shared = StatsManager()
 
-    var events: [Event] {
-        didSet {
-            saveEvents()
+    func addEvent(context: ModelContext, type: EventType) {
+        let event = Event(type: type)
+        context.insert(event)
+     
+        do {
+            try context.save()
+        } catch {
+            print("Error saving event: \(error.localizedDescription)")
         }
-    }
-
-    init() {
-        if let data = UserDefaults.standard.data(forKey: "events"),
-            let decodedEvents = try? JSONDecoder().decode(
-                [Event].self, from: data)
-        {
-            self.events = decodedEvents
-        } else {
-            self.events = []
-        }
-    }
-
-    private func saveEvents() {
-        if let encoded = try? JSONEncoder().encode(events) {
-            UserDefaults.standard.set(encoded, forKey: "events")
-        }
-    }
-
-    func addEvent(type: EventType) {
-        events.append(Event(date: Date(), type: type))
     }
 }

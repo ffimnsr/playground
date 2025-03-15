@@ -6,11 +6,17 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Event: Identifiable, Codable {
-    var id = UUID()
-    let date: Date
-    let type: EventType
+@Model
+final class Event {
+    var timestamp: Date
+    var type: EventType
+    
+    init(type: EventType) {
+        self.timestamp = .now
+        self.type = type
+    }
 }
 
 enum EventType: String, Codable {

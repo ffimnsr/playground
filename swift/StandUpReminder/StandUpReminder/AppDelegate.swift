@@ -7,10 +7,13 @@
 
 import SwiftUI
 import UserNotifications
+import SwiftData
 
 class AppDelegate: NSObject, UIApplicationDelegate,
     UNUserNotificationCenterDelegate
 {
+    var modelContext: ModelContext?
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication
@@ -22,7 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate,
 
         // Setup notification actions
         NotificationManager.shared.setupNotificationActions()
-
+        
         return true
     }
 
@@ -32,6 +35,10 @@ class AppDelegate: NSObject, UIApplicationDelegate,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
+        guard let context = modelContext else {
+            completionHandler()
+            return
+        }
 
         // Handle different actions
         switch response.actionIdentifier {
@@ -50,13 +57,13 @@ class AppDelegate: NSObject, UIApplicationDelegate,
             )
 
             UNUserNotificationCenter.current().add(request)
-            StatsManager.shared.addEvent(type: .snooze)
+            StatsManager.shared.addEvent(context: context, type: .snooze)
 
         case "DONE_ACTION":
-            StatsManager.shared.addEvent(type: .standUp)
+            StatsManager.shared.addEvent(context: context, type: .standUp)
 
         default:
-            StatsManager.shared.addEvent(type: .ignore)
+            StatsManager.shared.addEvent(context: context, type: .ignore)
             break
         }
 
