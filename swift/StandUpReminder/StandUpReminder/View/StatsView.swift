@@ -22,7 +22,7 @@ struct StatsView: View {
 }
 
 struct WeeklySummaryView: View {
-    @State private var viewModel = WeeklySummaryViewModel()
+    @State private var settings = Settings.shared
 
     let weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     let values = [75, 90, 60, 85, 70, 40, 65] // Example values
@@ -53,7 +53,7 @@ struct WeeklySummaryView: View {
                 VStack(alignment: .leading) {
                     Text("Weekly Average")
                         .font(.headline)
-                    Text("6.2/\(viewModel.dailyTarget)")
+                    Text("6.2/\(dailyTarget)")
                         .font(.title)
                     Text("stand-ups per day")
                         .font(.caption)
@@ -78,19 +78,9 @@ struct WeeklySummaryView: View {
         .background(Color.secondary.opacity(0.1))
         .cornerRadius(10)
     }
-}
-
-@Observable
-class WeeklySummaryViewModel {
-    private let settings = Settings.shared
 
     var dailyTarget: Int {
         settings.standDuration
-    }
-
-    @MainActor
-    func loadWeeklySummary() async -> [Int] {
-        return [75, 90, 60, 85, 70, 40, 65]
     }
 }
 

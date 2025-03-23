@@ -10,8 +10,13 @@ import Observation
 import SwiftUI
 
 struct TimerView: View {
-    @State private var viewModel = TimerViewModel()
+    @State private var notificationManager = NotificationManager.shared
+    @State private var settings = Settings.shared
+    @State private var timeRemaining: Int = Settings.shared.reminderFrequency * 60
     @State private var showStandUpTimer = false
+    @State private var isTimerRunning: Bool = true
+    @State private var isStandUpMode: Bool = false
+    @State private var timerCancellable: AnyCancellable?
 
     // MARK: TimerView Body
     var body: some View {
@@ -20,15 +25,15 @@ struct TimerView: View {
                 VStack(spacing: 20) {
                     VStack(spacing: 20) {
                         CircularTimerView(
-                            timeRemaining: viewModel.timeRemaining,
+                            timeRemaining: timeRemaining,
                             totalTime: 60 * 60
                         )
                         .frame(height: 250)
 
                         HStack(spacing: 20) {
-                            Button(action: { viewModel.toggleTimer() }) {
+                            Button(action: { toggleTimer() }) {
                                 Image(
-                                    systemName: viewModel.isTimerRunning
+                                    systemName: isTimerRunning
                                         ? "pause.circle.fill"
                                         : "play.circle.fill"
                                 )
@@ -70,46 +75,17 @@ struct TimerView: View {
                 .padding()
             }
             .navigationTitle("Stand Up Timer")
-            .onAppear(perform: viewModel.startTimer)
-            .onDisappear(perform: viewModel.stopTimer)
+            .onAppear(perform: startTimer)
+            .onDisappear(perform: stopTimer)
             .fullScreenCover(isPresented: $showStandUpTimer) {
-                StandUpTimerView(timeRemaining: viewModel.timeRemaining)
+                StandUpTimerView(timeRemaining: timeRemaining)
             }
         }
-        .onChange(of: viewModel.timeRemaining) { oldValue, newValue in
-            if newValue == 0 && viewModel.isStandUpMode {
+        .onChange(of: timeRemaining) { oldValue, newValue in
+            if newValue == 0 && isStandUpMode {
                 showStandUpTimer = true
             }
         }
-    }
-}
-
-struct StandUpTimerView: View {
-    let timeRemaining: Int
-    
-    var body: some View {
-        VStack {
-            Text("Stand Up")
-                .font(.largeTitle)
-                .padding()
-        }
-        .background(Color.white)
-        .edgesIgnoringSafeArea(.all)
-    }
-}
-
-@Observable
-class TimerViewModel {
-    private let notificationManager = NotificationManager.shared
-    var timeRemaining: Int
-    var isTimerRunning: Bool = true
-    var isStandUpMode: Bool = false
-
-    private var timerCancellable: AnyCancellable?
-    private let settings = Settings.shared
-
-    init() {
-        self.timeRemaining = settings.reminderFrequency * 60
     }
 
     @MainActor
@@ -118,8 +94,7 @@ class TimerViewModel {
 
         timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
-            .sink { [weak self] _ in
-                guard let self = self else { return }
+            .sink { [self] _ in
                 self.updateTimer()
             }
     }
@@ -140,21 +115,21 @@ class TimerViewModel {
     @MainActor
     private func startStandUpTimer() {
         isStandUpMode = true
-        #if DEBUG
-            timeRemaining = 35
-        #else
-            timeRemaining = settings.standDuration * 60
-        #endif
+#if DEBUG
+        timeRemaining = 35
+#else
+        timeRemaining = settings.standDuration * 60
+#endif
     }
 
     @MainActor
     private func startReminderTimer() {
         isStandUpMode = false
-        #if DEBUG
-            timeRemaining = 10
-        #else
-            timeRemaining = settings.reminderFrequency * 60
-        #endif
+#if DEBUG
+        timeRemaining = 10
+#else
+        timeRemaining = settings.reminderFrequency * 60
+#endif
     }
 
     @MainActor
@@ -170,6 +145,20 @@ class TimerViewModel {
         } else {
             stopTimer()
         }
+    }
+}
+
+struct StandUpTimerView: View {
+    let timeRemaining: Int
+    
+    var body: some View {
+        VStack {
+            Text("Stand Up")
+                .font(.largeTitle)
+                .padding()
+        }
+        .background(Color.white)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

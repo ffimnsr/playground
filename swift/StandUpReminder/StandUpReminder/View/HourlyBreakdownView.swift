@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HourlyBreakdownView: View {
-    @State private var viewModel = HourlyBreakdownViewModel()
+    @State private var settings = Settings.shared
 
     let hours = 8
 
@@ -21,13 +21,13 @@ struct HourlyBreakdownView: View {
             HStack {
                 Text("Completed")
                 Spacer()
-                Text("5/\(viewModel.dailyTarget) stand-ups")
+                Text("5/\(dailyTarget) stand-ups")
             }
 
             ProgressView(value: 5, total: 8)
 
             HStack {
-                ForEach(1...viewModel.dailyTarget, id: \.self) { hour in
+                ForEach(1...dailyTarget, id: \.self) { hour in
                     VStack {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
@@ -43,11 +43,11 @@ struct HourlyBreakdownView: View {
             }
 
             HStack {
-                Text("\(viewModel.workingHoursStart.toStandardTime())")
+                Text("\(workingHoursStart.toStandardTime())")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Text("\(viewModel.workingHoursEnd.toStandardTime())")
+                Text("\(workingHoursEnd.toStandardTime())")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
@@ -56,11 +56,6 @@ struct HourlyBreakdownView: View {
         .background(Color.secondary.opacity(0.1))
         .cornerRadius(10)
     }
-}
-
-@Observable
-class HourlyBreakdownViewModel {
-    private let settings = Settings.shared
 
     var dailyTarget: Int {
         settings.dailyTarget
