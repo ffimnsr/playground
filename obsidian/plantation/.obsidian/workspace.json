@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Recipes/To Try?.md",
+                "file": "Self-Host Apps.md",
                 "mode": "source",
                 "source": false
               }
@@ -38,7 +38,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "merge",
+                "query": "kanb",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Recipes/To Try?.md",
+                "file": "Self-Host Apps.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Recipes/To Try?.md",
+                "file": "Self-Host Apps.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Recipes/To Try?.md"
+                "file": "Self-Host Apps.md"
               }
             }
           }
@@ -147,11 +146,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2f412e5100e5e681",
+  "active": "92e3b0d10fcc0fcc",
   "lastOpenFiles": [
+    "Recipes/To Try?.md",
     "Tips/Error on Github action runner.md",
     "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
-    "Recipes/To Try?.md",
     "Recipes",
     "Tips/Install ms-edge and code on Fedora using package manager.md",
     "Tips/Creating patch using diff command.md",
