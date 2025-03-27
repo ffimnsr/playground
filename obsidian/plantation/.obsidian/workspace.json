@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "ebd31d7b64a80dbe",
+        "id": "837a95e7aea97953",
         "type": "tabs",
         "children": [
           {
-            "id": "2f412e5100e5e681",
+            "id": "c1751fa7636f9148",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Self-Host Apps.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -65,7 +61,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Self-Host Apps.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Self-Host Apps.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Self-Host Apps.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,8 +139,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "92e3b0d10fcc0fcc",
+  "active": "c1751fa7636f9148",
   "lastOpenFiles": [
+    "Tips/Sharing singleton to extended class in Typescript.md",
+    "Self-Host Apps.md",
     "Recipes/To Try?.md",
     "Tips/Error on Github action runner.md",
     "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
@@ -168,14 +163,12 @@
     "Tips/Cloning Myrient directories using rclone command.md",
     "Tips/Configure IPFS container server.md",
     "Tips/Fixing Postman flatpak missing certs crash.md",
-    "Self-Host Apps.md",
     "Postgres Extensions & Tools.md",
     "Linux CLI Tools.md",
     "DevOps Tools.md",
     "NFTables Cheatsheet.md",
     "Anything About React.md",
     "ZSH History Expansion.md",
-    "Tips/All about git hooks.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments/Pasted image 20240909222126.png",
