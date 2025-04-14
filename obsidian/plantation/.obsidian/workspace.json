@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "837a95e7aea97953",
+        "id": "d48e4b2c4e0c3d6e",
         "type": "tabs",
         "children": [
           {
-            "id": "c1751fa7636f9148",
+            "id": "e82e5746049cd046",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -34,7 +34,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "kanb",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,8 +61,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -139,8 +138,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c1751fa7636f9148",
+  "active": "e82e5746049cd046",
   "lastOpenFiles": [
+    "Tips/Cloning Myrient directories using rclone command.md",
     "Tips/Sharing singleton to extended class in Typescript.md",
     "Self-Host Apps.md",
     "Recipes/To Try?.md",
@@ -160,7 +160,6 @@
     "Tips/Implementing blockchain-based voting system.md",
     "Tips/Zero-knowledge proofs (ZKP).md",
     "Tips/Create a secure single node CockroachDB.md",
-    "Tips/Cloning Myrient directories using rclone command.md",
     "Tips/Configure IPFS container server.md",
     "Tips/Fixing Postman flatpak missing certs crash.md",
     "Postgres Extensions & Tools.md",
