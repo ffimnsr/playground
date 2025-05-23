@@ -9,49 +9,49 @@ import Kingfisher
 import SwiftUI
 
 struct RecipeItemView: View {
-  var recipe: Recipe
+    var recipe: Recipe
 
-  let screenBounds = UIScreen.main.bounds
-  let url = URL(string: "https://placehold.co/1280x566.png?font=raleway&text=Recipe")
-  var body: some View {
-    VStack {
-      KFImage(url)
-        .resizable()
-        .aspectRatio(contentMode: .fill)
-        .frame(width: screenBounds.width - 40, height: 250)
-        .cornerRadius(10)
+    let screenBounds = UIScreen.main.bounds
+    let url = URL(string: "https://placehold.co/1280x566.png?font=raleway&text=Recipe")
+    var body: some View {
+        VStack {
+            KFImage(url)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: screenBounds.width - 40, height: 250)
+                .cornerRadius(10)
 
-      HStack(spacing: 5) {
-        Text(recipe.name)
-          .font(.title2)
-          .fontWeight(.bold)
-          .foregroundStyle(.black)
-        Spacer(minLength: 0)
-        ForEach(0..<5) { index in
-          Image(systemName: "star.fill")
-            .foregroundStyle(.yellow)
+            HStack(spacing: 5) {
+                Text(recipe.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.black)
+                Spacer(minLength: 0)
+                ForEach(0..<5) { index in
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(.yellow)
+                }
+            }
+
+            HStack {
+                Text(recipe.desc ?? "No description available.")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+                    .lineLimit(2)
+                Spacer(minLength: 0)
+            }
         }
-      }
-
-      HStack {
-        Text(recipe.desc ?? "No description available.")
-          .font(.caption)
-          .foregroundStyle(.gray)
-          .lineLimit(2)
-        Spacer(minLength: 0)
-      }
+        .padding(.horizontal)
     }
-    .padding(.horizontal)
-  }
 }
 
 #Preview {
-  // Initialize a recipe
-  let recipe = Recipe(
-    name: "Chicken Adobo",
-    desc: "A classic Filipino dish made with chicken, soy sauce, vinegar, and garlic.",
-    imageUrl: "https://placehold.co/1280x566.png"
-  )
-  RecipeItemView(recipe: recipe)
-    .frame(height: 400)
+    // Initialize a recipe
+    let recipe = Recipe(
+        name: "Chicken Adobo",
+        desc: "A classic Filipino dish made with chicken, soy sauce, vinegar, and garlic.",
+        imageUrl: "https://placehold.co/1280x566.png"
+    )
+    RecipeItemView(recipe: recipe)
+        .frame(height: 400)
 }

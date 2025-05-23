@@ -8,10 +8,10 @@
 import Foundation
 
 enum RecipeType: String, CaseIterable, Identifiable, Codable {
-  case soup = "soup"
-  case mainDish = "main"
-  case sideDish = "side"
-  case appetizer = "appetizer"
-  case dessert = "dessert"
-  var id: Self { self }
+    case soup = "soup"
+    case mainDish = "main"
+    case sideDish = "side"
+    case appetizer = "appetizer"
+    case dessert = "dessert"
+    var id: Self { self }
 }

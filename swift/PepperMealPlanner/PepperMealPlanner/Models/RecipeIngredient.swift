@@ -8,6 +8,6 @@
 import Foundation
 
 struct RecipeIngredient: Identifiable {
-  var id = UUID()
-  let name: String
+    var id = UUID()
+    let name: String
 }

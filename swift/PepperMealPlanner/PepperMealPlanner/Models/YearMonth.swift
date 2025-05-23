@@ -8,6 +8,6 @@
 import Foundation
 
 struct YearMonth: Equatable, Hashable {
-  var year: Int
-  var month: Int
+    var year: Int
+    var month: Int
 }

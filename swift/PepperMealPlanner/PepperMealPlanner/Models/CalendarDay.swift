@@ -8,6 +8,6 @@
 import Foundation
 
 struct CalendarDay: Hashable {
-  let date: Date
-  let isCurrentMonth: Bool
+    let date: Date
+    let isCurrentMonth: Bool
 }

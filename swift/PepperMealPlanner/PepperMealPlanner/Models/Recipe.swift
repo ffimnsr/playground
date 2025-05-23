@@ -10,45 +10,45 @@ import SwiftData
 
 @Model
 final class Recipe: Identifiable, Hashable {
-  var id = UUID()
-  var name: String
-  var imageUrl: String?
-  var type: RecipeType?
-  var ingredientPortions: [String: String]?
-  var instructions: [String]?
-  var desc: String?
-  var servings: Int?
-  var nutritionalInformation: [String: String]?
-  var ingredients: [String]?
-  var cookingTime: Int?
-  var preparationTime: Int?
+    var id = UUID()
+    var name: String
+    var imageUrl: String?
+    var type: RecipeType?
+    var ingredientPortions: [String: String]?
+    var instructions: [String]?
+    var desc: String?
+    var servings: Int?
+    var nutritionalInformation: [String: String]?
+    var ingredients: [String]?
+    var cookingTime: Int?
+    var preparationTime: Int?
 
-  init(name: String) {
-    self.name = name
-  }
+    init(name: String) {
+        self.name = name
+    }
 
-  init(name: String, imageUrl: String) {
-    self.name = name
-    self.imageUrl = imageUrl
-  }
+    init(name: String, imageUrl: String) {
+        self.name = name
+        self.imageUrl = imageUrl
+    }
 
-  init(name: String, desc: String, imageUrl: String) {
-    self.name = name
-    self.desc = desc
-    self.imageUrl = imageUrl
-  }
-  
-  init(
-    name: String,
-    preparationTime: Int,
-    servings: Int,
-    ingredients: [String],
-    instructions: [String]
-  ) {
-    self.name = name
-    self.preparationTime = preparationTime
-    self.servings = servings
-    self.ingredients = ingredients
-    self.instructions = instructions
-  }
+    init(name: String, desc: String, imageUrl: String) {
+        self.name = name
+        self.desc = desc
+        self.imageUrl = imageUrl
+    }
+
+    init(
+        name: String,
+        preparationTime: Int,
+        servings: Int,
+        ingredients: [String],
+        instructions: [String]
+    ) {
+        self.name = name
+        self.preparationTime = preparationTime
+        self.servings = servings
+        self.ingredients = ingredients
+        self.instructions = instructions
+    }
 }

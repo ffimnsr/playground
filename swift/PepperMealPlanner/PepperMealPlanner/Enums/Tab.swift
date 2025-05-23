@@ -8,7 +8,7 @@
 import Foundation
 
 enum Tab: String, Hashable, CaseIterable {
-  case home = "house"
-  case recipes = "book"
-  case profile = "person"
+    case home = "house"
+    case recipes = "book"
+    case profile = "person"
 }
