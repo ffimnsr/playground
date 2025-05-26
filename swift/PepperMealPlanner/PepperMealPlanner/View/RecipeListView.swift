@@ -12,19 +12,17 @@ import SwiftUI
 struct RecipeListView: View {
     @Environment(\.modelContext) private var context
     @Query private var recipes: [Recipe]
-    @State private var viewModel = ViewModel()
     @State private var navPath = NavigationPath()
+    @State private var showingAddRecipe = false
 
     var body: some View {
         NavigationStack(path: $navPath) {
             ScrollView {
                 VStack(spacing: 0) {
-                    // Featured Recipe Card
                     FeaturedRecipeView()
                         .cornerRadius(20)
                         .padding()
 
-                    // Recipe List Section
                     RecipeGridSection(recipes: recipes)
                 }
             }
@@ -35,11 +33,11 @@ struct RecipeListView: View {
                 }
                 ToolbarItem {
                     Button("Add Recipe", systemImage: "plus") {
-                        viewModel.showingAddRecipe.toggle()
+                        showingAddRecipe.toggle()
                     }
                 }
             }
-            .sheet(isPresented: $viewModel.showingAddRecipe) {
+            .sheet(isPresented: $showingAddRecipe) {
                 AddRecipeView()
             }
         }
@@ -193,11 +191,6 @@ struct RecipeCardView: View {
         .background(Color(.gray.opacity(0.1)))
         .cornerRadius(12)
     }
-}
-
-@Observable
-class ViewModel {
-    var showingAddRecipe = false
 }
 
 #Preview {

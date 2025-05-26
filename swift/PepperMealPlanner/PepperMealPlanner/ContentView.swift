@@ -8,35 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @AppStorage("showOnboarding") var showOnboarding: Bool = true
-//    @Environment(\.colorScheme) var colorScheme
-//    @State private var selectedTab: Tab = .home
-//
-//    var body: some View {
-//        ZStack(alignment: .bottom) {
-//            TabView(selection: $selectedTab) {
-//                HomeView()
-//                    .toolbar(.hidden, for: .tabBar)
-//                    .tag(Tab.home)
-//                RecipeListView()
-//                    .toolbar(.hidden, for: .tabBar)
-//                    .tag(Tab.recipes)
-//                Text("PROFILE")
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                    .toolbar(.hidden, for: .tabBar)
-//                    .tag(Tab.profile)
-//            }
-//
-//            CustomBottomTabBar(currentTab: $selectedTab)
-//                .padding(.bottom)
-//        }
-//        .fullScreenCover(isPresented: $showOnboarding) {
-//            OnboardingView(showOnboarding: $showOnboarding)
-//        }
-//    }
-    
+    @Environment(\.colorScheme) var colorScheme
+    @State private var selectedTab: Tab = .home
+
     var body: some View {
-        HomeView()
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                HomeView()
+                    .tag(Tab.home)
+                    .tabItem {
+                        Image(systemName: Tab.home.rawValue)
+                        Text("Home")
+                    }
+                RecipeListView()
+                    .tag(Tab.recipes)
+                    .tabItem {
+                        Image(systemName: Tab.recipes.rawValue)
+                        Text("Recipes")
+                    }
+                PlannerView()
+                    .tag(Tab.planner)
+                    .tabItem {
+                        Image(systemName: Tab.planner.rawValue)
+                        Text("Planner")
+                    }
+                Text("Stats View")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(Tab.stats)
+                    .tabItem {
+                        Image(systemName: Tab.stats.rawValue)
+                        Text("Stats")
+                    }
+            }
+        }
     }
 }
 

@@ -13,7 +13,6 @@ struct RecipeDetailsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Header Image
                 Rectangle()
                     .fill(Color.gray.opacity(0.2))
                     .frame(height: 250)
@@ -24,7 +23,6 @@ struct RecipeDetailsView: View {
                     }
 
                 VStack(alignment: .leading, spacing: 16) {
-                    // Recipe Title and Meta
                     VStack(alignment: .leading, spacing: 8) {
                         Text(recipe.name)
                             .font(.title)
@@ -38,7 +36,6 @@ struct RecipeDetailsView: View {
                         .font(.subheadline)
                     }
 
-                    // Ingredients Section
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Ingredients")
                             .font(.headline)
@@ -53,7 +50,6 @@ struct RecipeDetailsView: View {
                         }
                     }
 
-                    // Instructions Section
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Instructions")
                             .font(.headline)
@@ -83,6 +79,7 @@ struct RecipeDetailsView: View {
     NavigationStack {
         let recipe = Recipe(
             name: "Pancit Canton",
+            briefDescription: "A popular Filipino stir-fried noodle dish with vegetables and meat.",
             preparationTime: 30,
             servings: 4,
             ingredients: [

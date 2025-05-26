@@ -16,7 +16,7 @@ final class Recipe: Identifiable, Hashable {
     var type: RecipeType?
     var ingredientPortions: [String: String]?
     var instructions: [String]?
-    var desc: String?
+    var briefDescription: String?
     var servings: Int?
     var nutritionalInformation: [String: String]?
     var ingredients: [String]?
@@ -32,20 +32,22 @@ final class Recipe: Identifiable, Hashable {
         self.imageUrl = imageUrl
     }
 
-    init(name: String, desc: String, imageUrl: String) {
+    init(name: String, briefDescription: String, imageUrl: String) {
         self.name = name
-        self.desc = desc
+        self.briefDescription = briefDescription
         self.imageUrl = imageUrl
     }
 
     init(
         name: String,
+        briefDescription: String,
         preparationTime: Int,
         servings: Int,
         ingredients: [String],
         instructions: [String]
     ) {
         self.name = name
+        self.briefDescription = briefDescription
         self.preparationTime = preparationTime
         self.servings = servings
         self.ingredients = ingredients
