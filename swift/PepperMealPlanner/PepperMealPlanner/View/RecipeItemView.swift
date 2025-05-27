@@ -34,7 +34,7 @@ struct RecipeItemView: View {
             }
 
             HStack {
-                Text(recipe.desc ?? "No description available.")
+                Text(recipe.briefDescription ?? "No description available.")
                     .font(.caption)
                     .foregroundStyle(.gray)
                     .lineLimit(2)
@@ -49,7 +49,7 @@ struct RecipeItemView: View {
     // Initialize a recipe
     let recipe = Recipe(
         name: "Chicken Adobo",
-        desc: "A classic Filipino dish made with chicken, soy sauce, vinegar, and garlic.",
+        briefDescription: "A classic Filipino dish made with chicken, soy sauce, vinegar, and garlic.",
         imageUrl: "https://placehold.co/1280x566.png"
     )
     RecipeItemView(recipe: recipe)
