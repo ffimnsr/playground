@@ -45,7 +45,7 @@ struct RecipeListView: View {
 
     @ViewBuilder var recipeList: some View {
         if recipes.isEmpty {
-            EmptyList()
+            EmptyListView()
         } else {
             List {
                 ForEach(recipes) { recipe in

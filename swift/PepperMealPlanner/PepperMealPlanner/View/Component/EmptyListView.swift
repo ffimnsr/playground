@@ -1,5 +1,5 @@
 //
-//  EmptyList.swift
+//  EmptyListView.swift
 //  PepperMealPlanner
 //
 //  Created by pastel on 1/17/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmptyList: View {
+struct EmptyListView: View {
     var body: some View {
         VStack {
             Image(systemName: "tray")

@@ -12,10 +12,10 @@ struct RecipeItemView: View {
     var recipe: Recipe
 
     let screenBounds = UIScreen.main.bounds
-    let url = URL(string: "https://placehold.co/1280x566.png?font=raleway&text=Recipe")
+
     var body: some View {
         VStack {
-            KFImage(url)
+            KFImage(URL(string: recipe.imageUrl ?? "https://placehold.co/1280x566.png?font=raleway&text=Recipe"))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: screenBounds.width - 40, height: 250)

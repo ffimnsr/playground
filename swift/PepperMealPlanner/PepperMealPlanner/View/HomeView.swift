@@ -6,11 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
-    
     var body: some View {
-        VStack(spacing: 0) {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    FeaturedRecipesView()
+
+                    MealPlanSuggestionsView()
+
+                    Spacer()
+                        .frame(height: 20)
+                }
+            }
+            .navigationBarHidden(true)
         }
     }
 }
