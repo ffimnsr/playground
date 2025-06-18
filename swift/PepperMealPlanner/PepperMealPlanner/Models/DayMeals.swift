@@ -8,13 +8,6 @@
 import Foundation
 import SwiftData
 
-enum MealType: String, Codable {
-    case breakfast = "Breakfast"
-    case lunch = "Lunch"
-    case dinner = "Dinner"
-    case snack = "Snack"
-}
-
 @Model
 class DayMeals {
     var date: Date
