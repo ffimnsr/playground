@@ -380,6 +380,14 @@ async fn main() -> anyhow::Result<()> {
         }
     };
 
+    // Check if can connect to internet otherwise exit
+    // This is a simple check to ensure that the program can connect to the internet
+    // by trying to access a well-known website like Google
+    // and prevent creating a job if no internet connection is available
+    if !reqwest::blocking::get("https://www.google.com").is_ok() {
+        anyhow::bail!("No internet connection. Please check your network.");
+    }
+
     // Check if the repository exists
     if !check_repo(&repo_path) {
         anyhow::bail!("Invalid repository path: {}", repo_path);
