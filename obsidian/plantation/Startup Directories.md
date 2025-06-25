@@ -1,0 +1,7 @@
+- https://ahrefs.com/backlink-checker/?input=vastorigins.com&mode=subdomains
+- https://startupfa.me/
+- https://www.producthunt.com/
+- https://www.uneed.best/
+- https://theresanaiforthat.com/
+- https://news.ycombinator.com/
+- https://www.launchingnext.com/

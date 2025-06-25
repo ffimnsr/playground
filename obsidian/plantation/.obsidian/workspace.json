@@ -11,8 +11,12 @@
             "id": "e82e5746049cd046",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Startup Directories.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -61,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Startup Directories.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Startup Directories.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Startup Directories.md"
+              }
             }
           }
         ]
@@ -140,6 +149,7 @@
   },
   "active": "e82e5746049cd046",
   "lastOpenFiles": [
+    "Startup Directories.md",
     "Tips/Cloning Myrient directories using rclone command.md",
     "Tips/Sharing singleton to extended class in Typescript.md",
     "Self-Host Apps.md",
@@ -167,7 +177,6 @@
     "DevOps Tools.md",
     "NFTables Cheatsheet.md",
     "Anything About React.md",
-    "ZSH History Expansion.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments/Pasted image 20240909222126.png",
