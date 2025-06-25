@@ -1,0 +1,8 @@
+tasks:
+  validator:
+    commands:
+      - |
+        solana-test-validator \
+          --url https://api.devnet.solana.com \
+          --reset
+    description: Run a test validator
