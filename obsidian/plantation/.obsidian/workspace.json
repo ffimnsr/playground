@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Startup Directories.md",
+                "file": "Tips/Rsync filter .gitignore files.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Startup Directories.md",
+                "file": "Tips/Rsync filter .gitignore files.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Startup Directories.md",
+                "file": "Tips/Rsync filter .gitignore files.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Startup Directories.md"
+                "file": "Tips/Rsync filter .gitignore files.md"
               }
             }
           }
@@ -149,13 +149,15 @@
   },
   "active": "e82e5746049cd046",
   "lastOpenFiles": [
-    "Startup Directories.md",
+    "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
+    "Tips/Rsync filter .gitignore files.md",
     "Tips/Cloning Myrient directories using rclone command.md",
+    "Linux CLI Tools.md",
+    "Startup Directories.md",
     "Tips/Sharing singleton to extended class in Typescript.md",
     "Self-Host Apps.md",
     "Recipes/To Try?.md",
     "Tips/Error on Github action runner.md",
-    "Tips/Problems on compiling certain creates on MacOS for Wasm32.md",
     "Recipes",
     "Tips/Install ms-edge and code on Fedora using package manager.md",
     "Tips/Creating patch using diff command.md",
@@ -173,10 +175,8 @@
     "Tips/Configure IPFS container server.md",
     "Tips/Fixing Postman flatpak missing certs crash.md",
     "Postgres Extensions & Tools.md",
-    "Linux CLI Tools.md",
     "DevOps Tools.md",
     "NFTables Cheatsheet.md",
-    "Anything About React.md",
     "Canvas/Local VMs Network Setup.canvas",
     "Tips/attachments/Pasted image 20240828224706.png",
     "Tips/attachments/Pasted image 20240909222126.png",
