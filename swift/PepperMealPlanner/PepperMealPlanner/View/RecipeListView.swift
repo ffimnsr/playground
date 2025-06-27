@@ -17,13 +17,30 @@ struct RecipeListView: View {
 
     var body: some View {
         NavigationStack(path: $navPath) {
-            ScrollView {
-                VStack(spacing: 0) {
+            VStack(spacing: 0) {
+                FeaturedRecipeView()
+                    .cornerRadius(20)
+                    .padding()
+
+                List {
                     FeaturedRecipeView()
                         .cornerRadius(20)
                         .padding()
 
-                    RecipeGridSection(recipes: recipes)
+                    ForEach(recipes) { recipe in
+                        Button(action: {
+                            navPath.append(recipe)
+                        }) {
+                            HStack {
+                                Text(recipe.name)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
             }
             .navigationTitle("Recipes")
@@ -137,59 +154,17 @@ struct FeaturedRecipeView: View {
     }
 }
 
-struct RecipeGridSection: View {
-    let recipes: [Recipe]
-
+struct TableHeaderView: View {
     var body: some View {
-        LazyVGrid(
-            columns: [
-                GridItem(.flexible())
-            ], spacing: 16
-        ) {
-            ForEach(recipes) { recipe in
-                RecipeCardView(recipe: recipe)
-            }
+        HStack {
+            Text("Recipe Name")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            Spacer()
         }
-        .padding()
-    }
-}
-
-struct RecipeCardView: View {
-    let recipe: Recipe
-
-    var body: some View {
-        HStack(spacing: 12) {
-            // Recipe Image
-            Rectangle()
-                .fill(Color.gray.opacity(0.2))
-                .aspectRatio(1, contentMode: .fit)
-                .overlay {
-                    Image(systemName: "photo")
-                        .foregroundColor(.gray)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .frame(height: 80)
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text(recipe.name)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-
-                HStack(spacing: 8) {
-                    Label("35 mins", systemImage: "clock")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                    Label("2 servings", systemImage: "person.2")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .padding()
-        .background(Color(.gray.opacity(0.1)))
-        .cornerRadius(12)
+        .padding(.vertical, 8)
+        .padding(.horizontal)
+        .background(Color(.systemGray6))
     }
 }
 

@@ -11,18 +11,22 @@ import SwiftData
 @Model
 class DayMeals {
     var date: Date
-    var meals: [MealType] = []
+    var recipes: [MealAssignment] = []
 
-    init(date: Date, meals: [MealType]) {
+    init(date: Date, recipes: [MealAssignment]) {
         self.date = date
-        self.meals = meals
+        self.recipes = recipes
     }
 
-    func insertMeal(meal: MealType) {
-        meals.append(meal)
+    func insertMeal(meal: MealType, recipe: Recipe) {
+        if let index = recipes.firstIndex(where: { $0.mealType == meal }) {
+            recipes[index].recipe = recipe
+        } else {
+            recipes.append(MealAssignment(mealType: meal, recipe: recipe))
+        }
     }
 
     func removeMeal(meal: MealType) {
-        meals.removeAll { $0 == meal }
+        recipes.removeAll { $0.mealType == meal }
     }
 }
