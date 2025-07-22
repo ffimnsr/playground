@@ -1,0 +1,36 @@
+FROM ghcr.io/linuxserver/baseimage-selkies:ubuntunoble
+
+# title
+ENV TITLE=Telegram
+
+RUN \
+  echo "**** add icon ****" && \
+  curl -o \
+    /usr/share/selkies/www/icon.png \
+    https://kasm-static-content.s3.amazonaws.com/icons/telegram.png && \
+  echo "**** install packages ****" && \
+  apt-key adv \
+    --keyserver hkp://keyserver.ubuntu.com:80 \
+    --recv-keys 5301FA4FD93244FBC6F6149982BB6851C64F6880 && \
+  echo \
+    "deb https://ppa.launchpadcontent.net/xtradeb/apps/ubuntu noble main" > \
+    /etc/apt/sources.list.d/xtradeb.list && \
+  apt-get update && \
+  apt-get install -y libatk1.0-0t64 libatk-bridge2.0-0t64 libgtk-3-0t64 xz-utils && \
+  mkdir -p /opt/Telegram && \
+  mkdir -p /tmp && \
+  curl -L https://telegram.org/dl/desktop/linux -o /tmp/telegram.tgz && \
+  tar -xvf /tmp/telegram.tgz -C /opt/ && \
+  rm -rf /tmp/telegram.tgz && \
+  rm -rf \
+    /var/lib/apt/lists/* \
+    /var/tmp/* \
+    /tmp/*
+
+# add local files
+COPY /root /
+
+# ports and volumes
+EXPOSE 3000
+
+VOLUME /config
