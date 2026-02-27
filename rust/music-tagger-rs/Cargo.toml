@@ -1,0 +1,12 @@
+[package]
+name = "music-tagger"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5.60", features = ["derive"] }
+image = { version = "0.25.8", default-features = false, features = ["jpeg", "png", "webp"] }
+metaflac = "0.2.8"
+reqwest = { version = "0.13.2", default-features = false, features = ["blocking", "json", "query", "rustls"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
