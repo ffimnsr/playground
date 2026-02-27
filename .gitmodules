@@ -142,7 +142,3 @@
 	path = rust/lumos-svm-rs
 	url = git@github.com:ffimnsr/lumos-svm-rs.git
 	branch = main
-[submodule "pepper-meal-gleam"]
-	path = ocean/pepper-meal-gleam
-	url = git@github.com:ffimnsr/pepper-meal-gleam.git
-	branch = main
