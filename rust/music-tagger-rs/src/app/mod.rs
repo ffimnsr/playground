@@ -1,6 +1,8 @@
 use clap::Parser;
 use std::error::Error;
+use std::fs;
 use std::io::{self, Write};
+use std::path::Path;
 use std::path::PathBuf;
 use std::time::Duration;
 
@@ -44,6 +46,9 @@ struct Cli {
 
     #[arg(long, default_value_t = false)]
     print_release_candidates: bool,
+
+    #[arg(long, default_value_t = false)]
+    recursive: bool,
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
@@ -57,14 +62,9 @@ pub fn run() -> Result<(), Box<dyn Error>> {
     let mut failures = 0usize;
     let mut matched = 0usize;
     let mut tagged = 0usize;
+    let files = collect_input_files(&cli.files, cli.recursive)?;
 
-    for file in &cli.files {
-        if !is_flac(file) {
-            eprintln!("Skipping non-FLAC: {}", file.display());
-            failures += 1;
-            continue;
-        }
-
+    for file in &files {
         let Some(parsed) = parse_track_from_path(file) else {
             eprintln!(
                 "Skipping (could not parse filename pattern): {}",
@@ -123,7 +123,7 @@ pub fn run() -> Result<(), Box<dyn Error>> {
                 }
             }
         } else {
-            recording_match.releases.first().cloned()
+            choose_default_release(file, &recording_match.releases, &parsed.title)
         };
 
         let tags = recording_match.to_track_tags(selected_release.as_ref());
@@ -184,14 +184,14 @@ pub fn run() -> Result<(), Box<dyn Error>> {
             "Summary: matched={}, failed={}, total={} (dry-run)",
             matched,
             failures,
-            cli.files.len()
+            files.len()
         );
     } else {
         println!(
             "Summary: tagged={}, failed={}, total={}",
             tagged,
             failures,
-            cli.files.len()
+            files.len()
         );
     }
 
@@ -265,11 +265,104 @@ fn choose_release_by_id(
     Some(selected)
 }
 
-fn is_flac(path: &PathBuf) -> bool {
+fn is_flac(path: &Path) -> bool {
     path.extension()
         .and_then(|ext| ext.to_str())
         .map(|ext| ext.eq_ignore_ascii_case("flac"))
         .unwrap_or(false)
+}
+
+fn choose_default_release(
+    path: &PathBuf,
+    releases: &[ReleaseCandidate],
+    song_title: &str,
+) -> Option<ReleaseCandidate> {
+    if let Some(selected) = releases
+        .iter()
+        .find(|release| normalized_title_eq(&release.title, song_title))
+        .cloned()
+    {
+        let date = selected
+            .date
+            .clone()
+            .unwrap_or_else(|| "unknown-date".to_string());
+        println!(
+            "Release selected by title match: {} ({}) [{}]",
+            selected.title, date, selected.id
+        );
+        return Some(selected);
+    }
+
+    let selected = releases.first().cloned();
+    if let Some(first) = &selected {
+        let date = first
+            .date
+            .clone()
+            .unwrap_or_else(|| "unknown-date".to_string());
+        println!(
+            "Release selected by fallback (first candidate): {} ({}) [{}] ({})",
+            first.title,
+            date,
+            first.id,
+            path.display()
+        );
+    }
+    selected
+}
+
+fn normalized_title_eq(left: &str, right: &str) -> bool {
+    normalize_title_for_match(left) == normalize_title_for_match(right)
+}
+
+fn normalize_title_for_match(value: &str) -> String {
+    value.split_whitespace().collect::<Vec<_>>().join(" ").to_lowercase()
+}
+
+fn collect_input_files(inputs: &[PathBuf], recursive: bool) -> Result<Vec<PathBuf>, Box<dyn Error>> {
+    let mut files = Vec::new();
+    for input in inputs {
+        collect_flac_paths(input, recursive, &mut files)?;
+    }
+
+    files.sort();
+    files.dedup();
+
+    if files.is_empty() {
+        return Err("No FLAC files found in provided input paths".into());
+    }
+
+    Ok(files)
+}
+
+fn collect_flac_paths(path: &Path, recursive: bool, out: &mut Vec<PathBuf>) -> Result<(), Box<dyn Error>> {
+    if path.is_file() {
+        if is_flac(path) {
+            out.push(path.to_path_buf());
+        }
+        return Ok(());
+    }
+
+    if path.is_dir() {
+        let mut entries = fs::read_dir(path)?.collect::<Result<Vec<_>, _>>()?;
+        entries.sort_by_key(|entry| entry.path());
+
+        for entry in entries {
+            let entry_path = entry.path();
+            if entry_path.is_file() {
+                if is_flac(&entry_path) {
+                    out.push(entry_path);
+                }
+                continue;
+            }
+
+            if recursive && entry_path.is_dir() {
+                collect_flac_paths(&entry_path, true, out)?;
+            }
+        }
+        return Ok(());
+    }
+
+    Err(format!("Input path does not exist: {}", path.display()).into())
 }
 
 fn report_match(path: &PathBuf, tags: &TrackTags) {

@@ -35,30 +35,32 @@ impl MusicBrainzClient {
         artist: &str,
         title: &str,
     ) -> Result<Option<RecordingMatch>, Box<dyn Error>> {
-        self.wait_for_rate_limit();
+        let mut recordings = Vec::new();
+        for query in build_query_variants(artist, title) {
+            self.wait_for_rate_limit();
 
-        let query = format!(
-            "artist:\"{}\" AND recording:\"{}\"",
-            escape_query_value(artist),
-            escape_query_value(title)
-        );
+            let response = self
+                .client
+                .get(format!("{API_ROOT}/recording"))
+                .query(&[
+                    ("query", query.as_str()),
+                    ("fmt", "json"),
+                    ("limit", "10"),
+                    ("inc", "releases+artist-credits"),
+                ])
+                .send()?
+                .error_for_status()?;
 
-        let response = self
-            .client
-            .get(format!("{API_ROOT}/recording"))
-            .query(&[
-                ("query", query.as_str()),
-                ("fmt", "json"),
-                ("limit", "10"),
-                ("inc", "releases+artist-credits"),
-            ])
-            .send()?
-            .error_for_status()?;
+            self.last_request_at = Some(Instant::now());
 
-        self.last_request_at = Some(Instant::now());
+            let body: RecordingSearchResponse = response.json()?;
+            if !body.recordings.is_empty() {
+                recordings = body.recordings;
+                break;
+            }
+        }
 
-        let body: RecordingSearchResponse = response.json()?;
-        let Some(primary_recording) = body.recordings.first() else {
+        let Some(primary_recording) = recordings.first() else {
             return Ok(None);
         };
 
@@ -68,7 +70,7 @@ impl MusicBrainzClient {
         let mut releases = Vec::new();
         let mut seen_release_ids = HashSet::new();
 
-        for recording in &body.recordings {
+        for recording in &recordings {
             let mut from_browse = self.fetch_recording_releases(&recording.id)?;
             if from_browse.is_empty() {
                 from_browse = recording
@@ -90,7 +92,17 @@ impl MusicBrainzClient {
             }
         }
 
-        releases.sort_by(|left, right| {
+        let mut filtered_releases: Vec<ReleaseCandidate> = releases
+            .iter()
+            .filter(|release| !is_ignored_compilation_release_title(&release.title))
+            .cloned()
+            .collect();
+
+        if filtered_releases.is_empty() {
+            filtered_releases = releases;
+        }
+
+        filtered_releases.sort_by(|left, right| {
             let left_date = left.date.as_deref().unwrap_or("9999-99-99");
             let right_date = right.date.as_deref().unwrap_or("9999-99-99");
             left_date
@@ -102,7 +114,7 @@ impl MusicBrainzClient {
             artist: artist_name,
             title: primary_recording.title.clone(),
             musicbrainz_recording_id: primary_recording.id.clone(),
-            releases,
+            releases: filtered_releases,
         }))
     }
 
@@ -202,8 +214,233 @@ impl MusicBrainzClient {
     }
 }
 
+fn build_query_variants(artist: &str, title: &str) -> Vec<String> {
+    let exact_artist = clean_spaces(artist);
+    let exact_title = clean_spaces(title);
+    let normalized_artist = normalize_artist(artist);
+    let normalized_title = normalize_title(title);
+
+    let mut variants = Vec::new();
+
+    push_query(
+        &mut variants,
+        Some(exact_artist.as_str()),
+        exact_title.as_str(),
+    );
+    push_query(
+        &mut variants,
+        Some(normalized_artist.as_str()),
+        exact_title.as_str(),
+    );
+    push_query(
+        &mut variants,
+        Some(exact_artist.as_str()),
+        normalized_title.as_str(),
+    );
+    push_query(
+        &mut variants,
+        Some(normalized_artist.as_str()),
+        normalized_title.as_str(),
+    );
+    push_query(&mut variants, None, normalized_title.as_str());
+    push_query(&mut variants, None, exact_title.as_str());
+
+    let mut deduped = Vec::new();
+    let mut seen = HashSet::new();
+    for query in variants {
+        if seen.insert(query.clone()) {
+            deduped.push(query);
+        }
+    }
+
+    deduped
+}
+
+fn push_query(queries: &mut Vec<String>, artist: Option<&str>, title: &str) {
+    if title.trim().is_empty() {
+        return;
+    }
+
+    let recording = escape_query_value(title);
+    if let Some(artist_value) = artist {
+        if !artist_value.trim().is_empty() {
+            let artist_part = escape_query_value(artist_value);
+            queries.push(format!(
+                "artist:\"{}\" AND recording:\"{}\"",
+                artist_part, recording
+            ));
+            return;
+        }
+    }
+
+    queries.push(format!("recording:\"{}\"", recording));
+}
+
+fn normalize_artist(artist: &str) -> String {
+    clean_spaces(&artist.replace('&', " and "))
+}
+
+fn normalize_title(title: &str) -> String {
+    let mut value = clean_spaces(title);
+    value = strip_feature_segment(&value);
+    value = strip_noise_suffixes(&value);
+    clean_spaces(&value)
+}
+
+fn strip_feature_segment(title: &str) -> String {
+    let lower = title.to_lowercase();
+    let markers = [" feat. ", " ft. ", " featuring ", " feat ", " ft "];
+
+    let mut cut_index: Option<usize> = None;
+    for marker in markers {
+        if let Some(index) = lower.find(marker) {
+            cut_index = Some(match cut_index {
+                Some(existing) => existing.min(index),
+                None => index,
+            });
+        }
+    }
+
+    if let Some(index) = cut_index {
+        return title[..index].trim().to_string();
+    }
+
+    title.to_string()
+}
+
+fn strip_noise_suffixes(title: &str) -> String {
+    let mut value = title.trim().to_string();
+
+    for separator in [" ｜", " |", " - "] {
+        if let Some(index) = value.find(separator) {
+            let suffix = value[index + separator.len()..].to_lowercase();
+            if contains_noise_word(&suffix) {
+                value = value[..index].trim().to_string();
+            }
+        }
+    }
+
+    loop {
+        let Some(end_index) = value.rfind(')') else {
+            break;
+        };
+        if end_index != value.len() - 1 {
+            break;
+        }
+        let Some(start_index) = value[..end_index].rfind('(') else {
+            break;
+        };
+
+        let inside = value[start_index + 1..end_index].to_lowercase();
+        if !contains_noise_word(&inside) {
+            break;
+        }
+
+        value = value[..start_index].trim().to_string();
+    }
+
+    value
+}
+
+fn contains_noise_word(value: &str) -> bool {
+    [
+        "cover",
+        "live",
+        "lyrics",
+        "tiny desk",
+        "wish",
+        "bus",
+        "full",
+        "prod.",
+        "concert",
+        "version",
+    ]
+    .iter()
+    .any(|word| value.contains(word))
+}
+
+fn clean_spaces(value: &str) -> String {
+    value.split_whitespace().collect::<Vec<_>>().join(" ")
+}
+
 fn escape_query_value(value: &str) -> String {
     value.replace('"', "")
+}
+
+fn is_ignored_compilation_release_title(title: &str) -> bool {
+    let lower = clean_spaces(title).to_lowercase();
+    let normalized = normalize_compilation_title(&lower);
+
+    if normalized.contains("top hits") {
+        return true;
+    }
+
+    if normalized.contains("so fresh") && normalized.contains("hits") {
+        return true;
+    }
+
+    if normalized.contains("hits")
+        && (contains_year(&normalized)
+            || contains_decade_token(&normalized)
+            || normalized.contains("edition")
+            || normalized.contains("summer")
+            || normalized.contains("autumn")
+            || normalized.contains("winter")
+            || normalized.contains("spring"))
+    {
+        return true;
+    }
+
+    if normalized.contains("collection")
+        && (normalized.contains("no 1") || normalized.contains("number 1"))
+        && (contains_year(&normalized)
+            || contains_decade_token(&normalized)
+            || normalized.contains("digital collection"))
+    {
+        return true;
+    }
+
+    if normalized.contains("dj collection")
+        && (contains_year(&normalized)
+            || contains_decade_token(&normalized)
+            || normalized.contains("digital collection"))
+    {
+        return true;
+    }
+
+    false
+}
+
+fn normalize_compilation_title(value: &str) -> String {
+    value
+        .chars()
+        .map(|char| {
+            if char.is_ascii_alphanumeric() || char.is_whitespace() {
+                char
+            } else {
+                ' '
+            }
+        })
+        .collect::<String>()
+        .split_whitespace()
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+fn contains_year(value: &str) -> bool {
+    value
+        .split(|char: char| !char.is_ascii_digit())
+        .filter(|part| part.len() == 4)
+        .filter_map(|part| part.parse::<u16>().ok())
+        .any(|year| (1900..=2099).contains(&year))
+}
+
+fn contains_decade_token(value: &str) -> bool {
+    value
+        .split_whitespace()
+        .filter(|part| part.len() == 5 && part.ends_with('s'))
+        .filter_map(|part| part[..4].parse::<u16>().ok())
+        .any(|year| (1900..=2099).contains(&year))
 }
 
 fn artist_from_credit(credits: &[ArtistCredit]) -> Option<String> {
