@@ -103,10 +103,6 @@
 	path = contrib/refine
 	url = git@github.com:ffimnsr/refine.git
 	branch = main
-[submodule "contrib/zitadel"]
-	path = contrib/zitadel
-	url = git@github.com:osslocal/zitadel.git
-	branch = main
 [submodule "typescript/refine-postgrest-ts"]
 	path = typescript/refine-postgrest-ts
 	url = git@github.com:ffimnsr/refine-postgrest-ts.git
