@@ -102,7 +102,7 @@
 [submodule "contrib/refine"]
 	path = contrib/refine
 	url = git@github.com:ffimnsr/refine.git
-	branch = master
+	branch = main
 [submodule "contrib/zitadel"]
 	path = contrib/zitadel
 	url = git@github.com:osslocal/zitadel.git
